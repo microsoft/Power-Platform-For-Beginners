@@ -1,3 +1,13 @@
+[![GitHub license](https://img.shields.io/github/license/microsoft/LowCode-For-Beginners.svg)](https://github.com/microsoft/LowCode-For-Beginners/blob/master/LICENSE)
+[![GitHub contributors](https://img.shields.io/github/contributors/microsoft/LowCode-For-Beginners.svg)](https://GitHub.com/microsoft/LowCode-For-Beginners/graphs/contributors/)
+[![GitHub issues](https://img.shields.io/github/issues/microsoft/LowCode-For-Beginners.svg)](https://GitHub.com/microsoft/LowCode-For-Beginners/issues/)
+[![GitHub pull-requests](https://img.shields.io/github/issues-pr/microsoft/LowCode-For-Beginners.svg)](https://GitHub.com/microsoft/LowCode-For-Beginners/pulls/)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
+
+[![GitHub watchers](https://img.shields.io/github/watchers/microsoft/LowCode-For-Beginners.svg?style=social&label=Watch)](https://GitHub.com/microsoft/LowCode-For-Beginners/watchers/)
+[![GitHub forks](https://img.shields.io/github/forks/microsoft/LowCode-For-Beginners.svg?style=social&label=Fork)](https://GitHub.com/microsoft/LowCode-For-Beginners/network/)
+[![GitHub stars](https://img.shields.io/github/stars/microsoft/LowCode-For-Beginners.svg?style=social&label=Star)](https://GitHub.com/microsoft/LowCode-For-Beginners/stargazers/)
+
 # Low-Code for Beginners - A Curriculum
 
 Azure Cloud Advocates at Microsoft are pleased to offer a series of sessions/lessons curriculum all about Low-Code. 
