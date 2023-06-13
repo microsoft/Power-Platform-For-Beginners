@@ -14,13 +14,13 @@ Azure Cloud Advocates at Microsoft are pleased to offer a series of sessions/les
 
 The following curriculum framework is designed to provide a structured and comprehensive academic program focused on Power Platform and AI Copilot. The curriculum aims to equip students with essential knowledge and practical skills in leveraging Power Platform tools and utilizing AI Copilot to build intelligent applications and automate business processes. The framework is adaptable and can be customized based on the desired depth and duration of the program.
 
-## 1. Fundamentals of Power Platform:
+## 1. Fundamentals of Power Platform
    - Introduction to Power Platform and its components (Power Apps, Power Automate, Power BI, Power Virtual Agents).
    - Understanding data sources and connectors.
    - Building basic canvas apps and model-driven apps.
    - Designing and customizing forms, views, and dashboards.
 
-## 2. Power Apps Development:
+## 2. Power Apps Development
    - Exploring app templates and design principles.
    - Creating user interfaces with galleries, forms, and controls.
    - Working with data sources, formulas, and variables.
@@ -34,14 +34,14 @@ The following curriculum framework is designed to provide a structured and compr
    - Building approval processes and notifications.
    - Developing custom connectors and actions.
 
-## 4. Power BI:
+## 4. Power BI
    - Understanding data visualization principles and best practices.
    - Connecting to various data sources and transforming data.
    - Creating interactive reports and dashboards.
    - Implementing data modeling and calculations.
    - Sharing and collaborating on Power BI content.
 
-## 5. Power Virtual Agents:
+## 5. Power Virtual Agents
    - Building chatbots and virtual agents for customer engagement.
    - Designing conversational flows and natural language understanding.
    - Integrating chatbots with other Power Platform components.
@@ -55,14 +55,14 @@ The following curriculum framework is designed to provide a structured and compr
    - Enhancing productivity with AI-powered coding assistance.
    - Integrating AI Copilot with development environments and workflows.
 
-## 7. Advanced Topics and Applications:
+## 7. Advanced Topics and Applications
    - Power Platform administration and governance.
    - Advanced app development techniques (custom controls, plugins).
    - Building complex workflows and process automation scenarios.
    - Advanced data modeling and analytics in Power BI.
    - Exploring AI-driven solutions with Power Platform and AI Copilot.
 
-## 8. Capstone Project:
+## 8. Capstone Project
    - Applying acquired knowledge and skills to develop a real-world project.
    - Demonstrating proficiency in Power Platform and AI Copilot concepts.
    - Collaborating with peers and industry partners.
