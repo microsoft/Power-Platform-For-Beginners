@@ -8,9 +8,9 @@
 [![GitHub forks](https://img.shields.io/github/forks/microsoft/LowCode-For-Beginners.svg?style=social&label=Fork)](https://GitHub.com/microsoft/LowCode-For-Beginners/network/)
 [![GitHub stars](https://img.shields.io/github/stars/microsoft/LowCode-For-Beginners.svg?style=social&label=Star)](https://GitHub.com/microsoft/LowCode-For-Beginners/stargazers/)
 
-# Low-Code for Beginners - A Curriculum
+# Power Platform for Beginners - A Curriculum
 
-Azure Cloud Advocates at Microsoft are pleased to offer a series of sessions/lessons curriculum all about Low-Code. 
+Azure Cloud Advocates at Microsoft are pleased to offer a series of sessions/lessons curriculum all about Power Platform. This was possible with the collaboration of Microsoft MVPs/RDs and Students Ambassadors from around the world!
 
 The following curriculum framework is designed to provide a structured and comprehensive academic program focused on Power Platform and AI Copilot. The curriculum aims to equip students with essential knowledge and practical skills in leveraging Power Platform tools and utilizing AI Copilot to build intelligent applications and automate business processes. The framework is adaptable and can be customized based on the desired depth and duration of the program.
 
@@ -34,35 +34,41 @@ The following curriculum framework is designed to provide a structured and compr
    - Building approval processes and notifications.
    - Developing custom connectors and actions.
 
-## 4. Power BI
+## 4. Power Pages
+   - Creating beautiful and responsive pages.
+   - Simple and multi-pages form.
+   - Display data securely on pages.
+   - Exploring authentication and permissions.
+
+## 5. Power BI
    - Understanding data visualization principles and best practices.
    - Connecting to various data sources and transforming data.
    - Creating interactive reports and dashboards.
    - Implementing data modeling and calculations.
    - Sharing and collaborating on Power BI content.
 
-## 5. Power Virtual Agents
+## 6. Power Virtual Agents
    - Building chatbots and virtual agents for customer engagement.
    - Designing conversational flows and natural language understanding.
    - Integrating chatbots with other Power Platform components.
    - Monitoring and analyzing bot performance and user interactions.
    - Enhancing chatbots with AI capabilities.
 
-## 6. AI Builder (Copilot)
+## 7. AI Builder (Copilot)
    - Introduction to AI Copilot and its features.
    - Exploring language models and their applications.
    - Leveraging AI Copilot for code completion and generation.
    - Enhancing productivity with AI-powered coding assistance.
    - Integrating AI Copilot with development environments and workflows.
 
-## 7. Advanced Topics and Applications
+## 8. Advanced Topics and Applications
    - Power Platform administration and governance.
    - Advanced app development techniques (custom controls, plugins).
    - Building complex workflows and process automation scenarios.
    - Advanced data modeling and analytics in Power BI.
    - Exploring AI-driven solutions with Power Platform and AI Copilot.
 
-## 8. Capstone Project
+## 9. Capstone Project
    - Applying acquired knowledge and skills to develop a real-world project.
    - Demonstrating proficiency in Power Platform and AI Copilot concepts.
    - Collaborating with peers and industry partners.
