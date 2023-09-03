@@ -129,3 +129,11 @@ Explain some key functions
 ##### views
 
 #### Business Process flows
+
+## Licensing
+
+### Introduction
+
+#### Canvas Apps with Standard connectors
+#### Canvas Apps with Premium connectors
+#### Model Driven Apps
