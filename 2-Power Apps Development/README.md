@@ -114,26 +114,39 @@ Explain some key functions
 
 ## model driven apps
 
+### Model-Driven vs Canvas Apps
+
+#### What are the Key Differences?
+
+#### Deciding Between Canvas and Model-Driven Apps: Use Cases and Guidelines
+
 ### Dataverse
 
-#### tables
+#### Tables
 
-##### columns
+#### Columns
 
-##### relationships
+#### Relationships
 
-##### roles
+#### Forms
 
-##### forms
+#### Views
 
-##### views
+#### Business rules
 
 #### Business Process flows
+
+#### Recurity roles
+
+### Deploying
 
 ## Licensing
 
 ### Introduction
 
 #### Canvas Apps with Standard connectors
+
 #### Canvas Apps with Premium connectors
+
 #### Model Driven Apps
+
