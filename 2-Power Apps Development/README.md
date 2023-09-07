@@ -140,6 +140,13 @@ Explain some key functions
 
 ### Deploying
 
-#### publish
+## Licensing
 
-#### share
+### Introduction
+
+#### Canvas Apps with Standard connectors
+
+#### Canvas Apps with Premium connectors
+
+#### Model Driven Apps
+
