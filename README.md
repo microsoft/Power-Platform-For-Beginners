@@ -27,7 +27,7 @@ The following curriculum framework is designed to provide a structured and compr
    - Implementing navigation and user experience enhancements.
    - Integrating with external systems and services.
 
-## 3. Power Automate 
+## 3. Power Automate Development
    - Introduction to process automation and workflow concepts.
    - Creating automated flows using pre-built connectors and triggers.
    - Implementing business logic with conditions, loops, and expressions.
