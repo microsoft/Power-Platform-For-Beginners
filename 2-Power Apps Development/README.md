@@ -2,11 +2,20 @@
 
 ## Overview Power Apps
 
-### Canvas Apps und model-driven apps
+### Model-Driven vs Canvas Apps
+<!-- - Ahmed -->
+
+#### What are the Key Differences?
+<!-- - Ahmed -->
+
+#### Deciding Between Canvas and Model-Driven Apps: Use Cases and Guidelines
+<!-- - Ahmed -->
 
 ### How Power Apps are usually part of bigger solutions
+<!-- - Rebekka -->
 
 ### Use cases and examples
+<!-- - Rebekka -->
 
 ## Canvas Apps
 
@@ -18,35 +27,33 @@
 
 ### Building
 
-#### How to create an app
+#### Create your first "Hello World!" Power App
+<!-- - Make app in solution
+- Getting to know the Canvas App Studio
+- incl Save and auto save 
+- Rebekka -->
 
-#### Save and auto save
+#### Adding data to your App
+<!-- - Angelo -->
 
-#### Datasources
+##### Build an app using Excel
+<!-- - Angelo -->
 
-##### Intro to datasources
+##### Build an app using SharePoint
+<!-- - Angelo -->
 
-##### Discussion on impact on performance, security, developer experience for different datasources
+##### Build an app using Dataverse
+<!-- - Use sample data and show how to add that.  
+- Angelo -->
 
-##### How to create a datamodel
+#### Building an App that contains Media
 
-##### How to add datasources to an app
+#### Adding navigation to your App
 
-#### Connectors
+#### Adding logic to your app
 
-##### Intro to connectors
-
-##### Intro to connections
-
-##### How to add a connector to an app
-
-#### Media
-
-##### Intro to Media
-
-##### Discussion on media types and their impact on performance
-
-##### How to add media to an app
+#### Publishing and running your app
+<!-- - Version history -->
 
 ### UI
 
@@ -75,14 +82,8 @@
 #### Buttons
 
 ### Functions
-
-Explain some key functions
-
-#### (tbd which)
-
-#### difference declarative and imperative
-
-#### optional: custom functions
+<!-- - When to you use what
+- How to work with the functions documentation-->
 
 ### variables and collections
 
@@ -92,33 +93,7 @@ Explain some key functions
 
 #### Collections
 
-### Debugging
-
-#### Power Apps Monitor
-
-#### Version History
-
-### Testing
-
-#### Power Apps Test Studio
-
-### Deploying
-
-#### publish
-
-#### share
-
-#### publish solution
-
-#### add to Teams
-
-## model driven apps
-
-### Model-Driven vs Canvas Apps
-
-#### What are the Key Differences?
-
-#### Deciding Between Canvas and Model-Driven Apps: Use Cases and Guidelines
+## Model Driven Apps
 
 ### Dataverse
 
@@ -138,7 +113,11 @@ Explain some key functions
 
 #### Recurity roles
 
-### Deploying
+### Build
+
+#### Build your first Model Driven App
+
+#### Business Process flows
 
 ## Licensing
 
@@ -149,4 +128,3 @@ Explain some key functions
 #### Canvas Apps with Premium connectors
 
 #### Model Driven Apps
-
