@@ -8,6 +8,4 @@
 
 ## Advanced data modeling and analytics in Power BI
 
-## Exploring AI-driven solutions with Power Platform and AI Copilot
-
 ## Developing custom connectors and actions
