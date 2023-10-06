@@ -128,7 +128,7 @@ The dimension tables contain information about the Players and Games. And the fa
 
 The drawing of the datamodel looks like below figure. The below datamodel can be changed or amended based on what data is in the source, or based on how we proceed to create a proper analysis report. 
 
-![Datamodel planning](/5-Power%20BI/assets/Datamodel%20plan.jpg) 
+![Datamodel planning fix](/5-Power%20BI/assets/Datamodel%20plan%20fix.jpg) 
 
  
 
