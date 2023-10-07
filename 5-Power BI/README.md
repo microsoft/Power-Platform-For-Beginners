@@ -59,7 +59,7 @@ Link to the website: https://mavenanalytics.io/data-playground?page=5&pageSize=5
 Link to the file: https://1drv.ms/x/s!AvmCO4Wm--vEvDmDfSBEYGGHEMFI?e=gWy1Ig 
 
 
-## Purpose of the course 
+## Purpose of this writing 
 
 This course is designed to provide guidance systematically through the fundamentals of Power BI. Several key concepts, but only the basics, will be illustrated using the sample dataset, and by the end of the course, we will have constructed a Power BI report. You can actively participate in the tutorial by downloading the dataset from the link above. The datamodel and the process to create the analysis report that are described in this course is not an absolute and the only solution, but there might be several different ways to have the same result. The purpose of this course is to make Power BI starters have more fun in learning Power BI. If readers want to skip storing the source file or the source data in Fabric Lakehouse, the CSV file can be used from the your local computer and can be easily imported into Power BI Desktop.   
   
@@ -227,21 +227,30 @@ The source is given as a CSV file. I decide to store this source data in Fabric 
 
 ![dim table advanced editor](/5-Power%20BI/assets/pq%20editor%20dim%20table%20advanced%20editor.jpg)
 
+-- Note: The below M code is with comments after "//" that describes what does each step mean. The whole M code can be copy-pasted into Advanced Editor in Power Query Editor.
 
 ```
-let 
+let
     Source = chess_games_source,
+    // only select white id column
     #"white id" = Table.SelectColumns(Source,{"white_id"}),
     #"rename it to player id (white)" = Table.RenameColumns(#"white id",{{"white_id", "player_id"}}),
+
+    // only select black id column from the source, not from the previous step
     #"black id" = Table.SelectColumns(Source,{"black_id"}),
     #"rename it to palyer id (black)" = Table.RenameColumns(#"black id",{{"black_id", "player_id"}}),
+
+    // append the white id column and black id column
     #"Appended Query" = Table.Combine({#"rename it to player id (white)", #"rename it to palyer id (black)"}),
+
+    // remove duplicated ids
     #"Removed Duplicates" = Table.Distinct(#"Appended Query"),
     #"Sorted Rows" = Table.Sort(#"Removed Duplicates",{{"player_id", Order.Ascending}}),
-    #"Added Index" = Table.AddIndexColumn(#"Sorted Rows", "player_id_index", 1, 1, Int64.Type) 
 
-in 
-    #"Added Index" 
+    // create index column as primary key column
+    #"Added Index" = Table.AddIndexColumn(#"Sorted Rows", "player_id_index", 1, 1, Int64.Type)
+in
+    #"Added Index"
 ```
 
 19. Reference the source table and create dim_game table.
@@ -256,18 +265,22 @@ in
 
  
 ```
-let 
+let
     Source = chess_games_source,
+
+    // remove unneccessary columns
     #"Removed Other Columns" = Table.SelectColumns(Source,{"game_id", "rated", "turns", "victory_status", "winner", "time_increment", "white_id", "white_rating", "black_id", "black_rating", "opening_fullname", "opening_shortname"}),
+
+    // use player_id_index column from dim_player table for creating a foreign key column for white players and black players
     #"Merged Queries" = Table.NestedJoin(#"Removed Other Columns", {"white_id"}, dim_player, {"player_id"}, "dim_player", JoinKind.LeftOuter),
     #"Expanded dim_player" = Table.ExpandTableColumn(#"Merged Queries", "dim_player", {"player_id_index"}, {"player_id_index"}),
     #"Renamed Columns" = Table.RenameColumns(#"Expanded dim_player",{{"player_id_index", "white_player_id_index"}}),
     #"Merged Queries1" = Table.NestedJoin(#"Renamed Columns", {"black_id"}, dim_player, {"player_id"}, "dim_player", JoinKind.LeftOuter),
     #"Expanded dim_player1" = Table.ExpandTableColumn(#"Merged Queries1", "dim_player", {"player_id_index"}, {"player_id_index"}),
     #"Renamed Columns1" = Table.RenameColumns(#"Expanded dim_player1",{{"player_id_index", "black_player_id_index"}}),
-    #"Removed Other Columns1" = Table.SelectColumns(#"Renamed Columns1",{"game_id", "rated", "turns", "victory_status", "winner", "time_increment", "white_rating", "black_rating", "opening_fullname", "opening_shortname", "white_player_id_index", "black_player_id_index"}) 
-
-in 
+    
+    #"Removed Other Columns1" = Table.SelectColumns(#"Renamed Columns1",{"game_id", "rated", "turns", "victory_status", "winner", "time_increment", "white_rating", "black_rating", "opening_fullname", "opening_shortname", "white_player_id_index", "black_player_id_index"})
+in
     #"Removed Other Columns1" 
 ```
  
@@ -281,16 +294,23 @@ in
 ![pq editor fct table](/5-Power%20BI/assets/pq%20editor%20fct%20table.jpg)
  
 ```
-let 
+let
     Source = chess_games_source,
+
+    // remove unneccessary columns
     #"Removed Other Columns" = Table.SelectColumns(Source,{"game_id", "moves"}),
+
+    // the moves column contains all moves with spaces that differenciate each move, so split it by space
+    // split it vertically by game id
     #"Split Column by Delimiter" = Table.ExpandListColumn(Table.TransformColumns(#"Removed Other Columns", {{"moves", Splitter.SplitTextByDelimiter(" ", QuoteStyle.Csv), let itemType = (type nullable text) meta [Serialized.Text = true] in type {itemType}}}), "moves"),
+
+    // create move number column in each game
+    // group by each game id and add index column as a move number column
     #"Grouped Rows" = Table.Group(#"Split Column by Delimiter", {"game_id"}, {{"moves", each Table.AddIndexColumn( _, "move_number", 1, 1, Int64.Type)}}),
     #"Expanded moves" = Table.ExpandTableColumn(#"Grouped Rows", "moves", {"moves", "move_number"}, {"moves", "move_number"}),
-    #"Changed Type" = Table.TransformColumnTypes(#"Expanded moves",{{"moves", type text}, {"move_number", Int64.Type}}) 
-
-in 
-    #"Changed Type" 
+    #"Changed Type" = Table.TransformColumnTypes(#"Expanded moves",{{"moves", type text}, {"move_number", Int64.Type}})
+in
+    #"Changed Type"
 ```
 
 23. Close and apply to Power BI Desktop 
