@@ -4,7 +4,7 @@
     {
       "ordinal": 0,
       "scrollPosition": {
-        "x": 0,
+        "x": 300,
         "y": 0
       },
       "nodes": [
@@ -36,7 +36,7 @@
         },
         {
           "location": {
-            "x": 718,
+            "x": 673,
             "y": 0
           },
           "nodeIndex": "moves_fct",
@@ -46,6 +46,19 @@
             "width": 234
           },
           "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 1002,
+            "y": 157.5
+          },
+          "nodeIndex": "Key_Measures",
+          "nodeLineageTag": "d864110f-31a3-41fb-9312-8a2cb45729a4",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
         }
       ],
       "name": "All tables",

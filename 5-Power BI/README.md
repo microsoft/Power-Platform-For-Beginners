@@ -33,7 +33,7 @@
 
 - 2023/10/08 
 
-   Create DAX measures and visualizations 
+   Create DAX measures and visualizations to provide insights
 
 - 2023/10/15 
 
@@ -102,7 +102,7 @@ We, as a Power BI Report developer, have to share with end users about,
 
 By using the sample data, I pretend and assume that I had conversations with users a few times about what we agreed to describe on the report, and those are, 
 
-1. What is the next best move to win the game, and what is the winning percentage of the move based on the historical data that we have (the data has 20,051 games information)? 
+1. What is Black's optimal opening move that yields the highest probability of success following White's initial move of D4 (the data has 20,051 games information)? 
 
 2. What proportion of games were secured by the white player, and how many concluded as draws?  
 
@@ -237,22 +237,28 @@ Note: If you do not want to connect to Lakehouse, but if you want to import the 
 ```
 let
     Source = chess_games_source,
+
     // only select white id column
+
     #"white id" = Table.SelectColumns(Source,{"white_id"}),
     #"rename it to player id (white)" = Table.RenameColumns(#"white id",{{"white_id", "player_id"}}),
 
     // only select black id column from the source, not from the previous step
+
     #"black id" = Table.SelectColumns(Source,{"black_id"}),
     #"rename it to palyer id (black)" = Table.RenameColumns(#"black id",{{"black_id", "player_id"}}),
 
     // append the white id column and black id column
+
     #"Appended Query" = Table.Combine({#"rename it to player id (white)", #"rename it to palyer id (black)"}),
 
     // remove duplicated ids
+
     #"Removed Duplicates" = Table.Distinct(#"Appended Query"),
     #"Sorted Rows" = Table.Sort(#"Removed Duplicates",{{"player_id", Order.Ascending}}),
 
     // create index column as primary key column
+
     #"Added Index" = Table.AddIndexColumn(#"Sorted Rows", "player_id_index", 1, 1, Int64.Type)
 in
     #"Added Index"
@@ -274,9 +280,11 @@ let
     Source = chess_games_source,
 
     // remove unneccessary columns
+
     #"Removed Other Columns" = Table.SelectColumns(Source,{"game_id", "rated", "turns", "victory_status", "winner", "time_increment", "white_id", "white_rating", "black_id", "black_rating", "opening_fullname", "opening_shortname"}),
 
     // use player_id_index column from dim_player table for creating a foreign key column for white players and black players
+
     #"Merged Queries" = Table.NestedJoin(#"Removed Other Columns", {"white_id"}, dim_player, {"player_id"}, "dim_player", JoinKind.LeftOuter),
     #"Expanded dim_player" = Table.ExpandTableColumn(#"Merged Queries", "dim_player", {"player_id_index"}, {"player_id_index"}),
     #"Renamed Columns" = Table.RenameColumns(#"Expanded dim_player",{{"player_id_index", "white_player_id_index"}}),
@@ -303,14 +311,17 @@ let
     Source = chess_games_source,
 
     // remove unneccessary columns
+
     #"Removed Other Columns" = Table.SelectColumns(Source,{"game_id", "moves"}),
 
     // the moves column contains all moves with spaces that differenciate each move, so split it by space
     // split it vertically by game id
+
     #"Split Column by Delimiter" = Table.ExpandListColumn(Table.TransformColumns(#"Removed Other Columns", {{"moves", Splitter.SplitTextByDelimiter(" ", QuoteStyle.Csv), let itemType = (type nullable text) meta [Serialized.Text = true] in type {itemType}}}), "moves"),
 
     // create move number column in each game
     // group by each game id and add index column as a move number column
+
     #"Grouped Rows" = Table.Group(#"Split Column by Delimiter", {"game_id"}, {{"moves", each Table.AddIndexColumn( _, "move_number", 1, 1, Int64.Type)}}),
     #"Expanded moves" = Table.ExpandTableColumn(#"Grouped Rows", "moves", {"moves", "move_number"}, {"moves", "move_number"}),
     #"Changed Type" = Table.TransformColumnTypes(#"Expanded moves",{{"moves", type text}, {"move_number", Int64.Type}})
@@ -337,4 +348,373 @@ in
 ![relationship manage view in pbi](/5-Power%20BI/assets/relationship%20manage%20view.jpg)
 
 
-[def]: /5-Power%20BI/assets/pq%20editor%20disable%20load.jpg
+# 2023/10/08 
+
+## Create DAX measures and visualizations to provide insights. 
+
+There are two links from Microsoft useful to see and understand before starting this session. 
+
+Learn concept of DAX by video Link: https://learn.microsoft.com/en-us/dax/dax-learn-videos?wt.mc_id=DP-MVP-5004989 
+
+DAX Glossaries Link: https://learn.microsoft.com/en-us/dax/dax-glossary?wt.mc_id=DP-MVP-5004989 
+ 
+
+1. Before creating visualizations and DAX measures, try to understand the concept of DAX (Data Analysis Expressions), and the above two links created by Microsoft are very useful to start with understanding the concept of DAX. 
+
+2. At the beginning of this writing, I talked about what conversation I had with stakeholders who will see this report. In the conversation, we talked about 5 topics, and I would like to rewrite those like below ordering by how easy and smooth it is to provide insights. 
+ 
+
+- What proportion of games were secured by the white player, and how many concluded as draws? 
+- Which initial chess move was employed most frequently in games where black emerged victorious? Conversely, what was the prevalent opening move in games where white emerged as the winner?
+- Who is the user with the highest number of game wins? What percentage of these victories did the user achieve as the higher-rated player?
+- What percentage of games were won by the participant with the superior rating? Is there any variance in this statistic based on the color of pieces?
+- What is the initial move for Black that demonstrates the highest likelihood of winning after White's first move of D4?
+ 
+
+3. Let’s create visualizations and DAX measures based on the above request. The first request is, to simplify it further, we want to know how many games were won, lost, or drawn by white and black players.
+
+4. In order to consolidate DAX measures in an organized way, I create a blank table, and name it as “Key_Measures”. This table will contain only DAX measures. 
+![create measure table](/5-Power%20BI/assets/create%20measure%20table.jpg)
+ 
+
+5. On the blank canvas, insert a table visualization and drag the [winner] column from dim_game table. The final visualization may not be a table visualization. However, this helps to see and understand what information needs to be shown and created in the visualization. 
+
+6. Create a DAX measure that counts wins by black, white, or draws. Currently, the order in the table visualization is alphabetical, displaying Black, Draw, and then White. To correct the order and have it appeared as White, Black, and Draw, we need to create a new column in the same table in Power Query Editor that describes White = 1, Black = 2, and Draw = 3. And then, we can order [winner] column by the new column that we just created. In Power Query Editor, a new column can be created by just adding a step by clicking fx button in the formular bar or add M code after opening Advanced Editor. 
+![analysis01](/5-Power%20BI/assets/analysis01.jpg)
+![analysis01pwerqueryeditor](/5-Power%20BI/assets/analysis01PQeditor.jpg) 
+![analysis01powerqueryadvancededitor](/5-Power%20BI/assets/analysis01pqadvancededitor.jpg)
+
+```
+let 
+
+    Source = chess_games_source,   
+
+    // remove unneccessary columns 
+
+    #"Removed Other Columns" = Table.SelectColumns(Source,{"game_id", "rated", "turns", "victory_status", "winner", "time_increment", "white_id", "white_rating", "black_id", "black_rating", "opening_fullname", "opening_shortname"}),   
+
+    // use player_id_index column from dim_player table for creating a foreign key column for white players and black players 
+
+    #"Merged Queries" = Table.NestedJoin(#"Removed Other Columns", {"white_id"}, dim_player, {"player_id"}, "dim_player", JoinKind.LeftOuter), 
+
+    #"Expanded dim_player" = Table.ExpandTableColumn(#"Merged Queries", "dim_player", {"player_id_index"}, {"player_id_index"}), 
+
+    #"Renamed Columns" = Table.RenameColumns(#"Expanded dim_player",{{"player_id_index", "white_player_id_index"}}), 
+
+    #"Merged Queries1" = Table.NestedJoin(#"Renamed Columns", {"black_id"}, dim_player, {"player_id"}, "dim_player", JoinKind.LeftOuter), 
+
+    #"Expanded dim_player1" = Table.ExpandTableColumn(#"Merged Queries1", "dim_player", {"player_id_index"}, {"player_id_index"}), 
+
+    #"Renamed Columns1" = Table.RenameColumns(#"Expanded dim_player1",{{"player_id_index", "black_player_id_index"}}),      
+
+    #"Removed Other Columns1" = Table.SelectColumns(#"Renamed Columns1",{"game_id", "rated", "turns", "victory_status", "winner", "time_increment", "white_rating", "black_rating", "opening_fullname", "opening_shortname", "white_player_id_index", "black_player_id_index"}),      
+
+    #"Add winner sort order column" = Table.AddColumn(#"Removed Other Columns1",  
+
+   "winner sort order", each if [winner] = "White" then 1 else  
+
+   if [winner] = "Black" then 2 else  
+
+   if [winner] = "Draw" then 3 else  
+
+   "check again", Int64.Type) 
+
+in 
+
+    #"Add winner sort order column" 
+```
+
+7. Close and apply Power Query Editor and configure sort order.
+
+![sort column](/5-Power%20BI/assets/sort%20column.jpg) 
+
+8. Create DAX measure. As described in the below, the answer to the first request is,  
+
+- Total 20,058 games 
+- White wins 10,001 games 
+- Black wins 9,107 games 
+- Draw happens in 950 games 
+
+![analysis 01 result](/5-Power%20BI/assets/analysis01result.jpg)
+ 
+
+9. The second request is, if I rephrase it, what is the most first move played in the black winning game and in the white winning game? In order to answer this, the following DAX measures are written and those are used in New Card visualization. [The most winning first move by white] DAX measure is written with comments inside the formula, and it explains what the meaning of each variable is. All other measures that are used in this page are written in a very similar way with [The most winning first move by white] DAX measure. Do not be confused that the black players’ first move is always move_number = 2. The answer to the second request is, 
+
+- The move e4 is the most played winning first move of white players 
+- The move e5 is the most played winning first move of black players 
+- White players win 6371 games when the first move is e4 
+- Black players win 3101 games when the first move is e5 
+
+![analysis02](/5-Power%20BI/assets/analysis02.jpg)
+
+```
+The most winning first move by white = 
+
+VAR _whitewintable =  //Create a virtual table that shows white players win with showing the first move of each game.
+    FILTER (
+        SUMMARIZE (
+            FILTER ( moves_fct, moves_fct[move_number] = 1 ),
+            moves_fct[moves],
+            dim_game[game_id],
+            dim_game[winner]
+        ),
+        dim_game[winner] = "White"
+    )
+
+VAR _countfirstmove =   // Group every first move in the above table with adding counting column. 
+    GROUPBY (
+        _whitewintable,
+        moves_fct[moves],
+        "@count", SUMX ( CURRENTGROUP (), 1 )
+    )
+
+VAR _maxwin =   // Maximum counting number means the most played first move.
+    MAXX ( _countfirstmove, [@count] )
+
+VAR _mostwinningfirstmove =
+    FILTER ( _countfirstmove, [@count] = _maxwin )
+    
+RETURN
+    CONCATENATEX ( _mostwinningfirstmove, moves_fct[moves], ", " )
+```
+
+```
+The most winning first move by black = 
+
+VAR _blackwintable =    // black player's first move is always move number 2
+    FILTER (
+        SUMMARIZE (
+            FILTER ( moves_fct, moves_fct[move_number] = 2 ),
+            moves_fct[moves],
+            dim_game[game_id],
+            dim_game[winner]
+        ),
+        dim_game[winner] = "Black"
+    )
+VAR _countfirstmove =
+    GROUPBY (
+        _blackwintable,
+        moves_fct[moves],
+        "@count", SUMX ( CURRENTGROUP (), 1 )
+    )
+VAR _maxwin =
+    MAXX ( _countfirstmove, [@count] )
+VAR _mostwinningfirstmove =
+    FILTER ( _countfirstmove, [@count] = _maxwin )
+RETURN
+    CONCATENATEX ( _mostwinningfirstmove, moves_fct[moves], ", " )
+```
+
+```
+How many wins by this first move by white =
+
+VAR _whitewintable =
+    FILTER (
+        SUMMARIZE (
+            FILTER ( moves_fct, moves_fct[move_number] = 1 ),
+            moves_fct[moves],
+            dim_game[game_id],
+            dim_game[winner]
+        ),
+        dim_game[winner] = "White"
+    )
+VAR _countfirstmove =
+    GROUPBY (
+        _whitewintable,
+        moves_fct[moves],
+        "@count", SUMX ( CURRENTGROUP (), 1 )
+    )
+VAR _maxwin =
+    MAXX ( _countfirstmove, [@count] )
+RETURN
+    _maxwin
+```
+
+```
+How many wins by this first move by black = 
+
+VAR _blackwintable =
+    FILTER (
+        SUMMARIZE (
+            FILTER ( moves_fct, moves_fct[move_number] = 2 ),
+            moves_fct[moves],
+            dim_game[game_id],
+            dim_game[winner]
+        ),
+        dim_game[winner] = "Black"
+    )
+VAR _countfirstmove =
+    GROUPBY (
+        _blackwintable,
+        moves_fct[moves],
+        "@count", SUMX ( CURRENTGROUP (), 1 )
+    )
+VAR _maxwin =
+    MAXX ( _countfirstmove, [@count] )
+RETURN
+    _maxwin
+```
+
+10. The third request, rephrased for clarity, is to identify the player with the most wins and calculate their winning percentage against opponents with a higher rating. After creating a table visualization like below, when clicking the three dots located in the upper right side of the table visualization, you can sort by any DAX measure that is used in the visualization. Or you can simply click the measure name itself in the visualization. The answer to this question is, 
+
+- Player id = taranga wins 72 games. 
+- And out of the 72 games played, 36 were won against higher-rated opponents (50%). 
+
+![analysis03](/5-Power%20BI/assets/analysis03.jpg)
+
+```
+Winning count by player = 
+
+VAR _whiteplay =
+    COUNTROWS ( FILTER ( dim_game, dim_game[winner] = "White" ) )
+
+//activating inactive relationship in the datamodel by using USERELATIONSHIP DAX function    
+VAR _blackplay =    
+    CALCULATE (
+        COUNTROWS ( FILTER ( dim_game, dim_game[winner] = "Black" ) ),
+        USERELATIONSHIP ( dim_player[player_id_index], dim_game[black_player_id_index] )
+    )
+    
+RETURN
+    _whiteplay + _blackplay
+```
+
+```
+Win count when oponent is higher rated = 
+
+VAR _wincountbywhite =
+    COUNTROWS (
+        FILTER (
+            dim_game,
+            dim_game[winner] = "White"
+                && dim_game[white_rating] < dim_game[black_rating]
+        )
+    )
+
+//activating inactive relationship in the datamodel by using USERELATIONSHIP DAX function    
+VAR _wincountbyblack =    
+    CALCULATE (
+        COUNTROWS (
+            FILTER (
+                dim_game,
+                dim_game[winner] = "Black"
+                    && dim_game[black_rating] < dim_game[white_rating]
+            )
+        ),
+        USERELATIONSHIP ( dim_player[player_id_index], dim_game[black_player_id_index] )
+    )
+    
+RETURN
+    _wincountbywhite + _wincountbyblack
+```
+
+```
+Winning higher rated player percentage = 
+DIVIDE( [Win count when oponent is higher rated], [Winning count by player] )
+``` 
+
+11. The fourth request is to calculate how much the percentage of wins is by higher rated players. And the answer to this is,
+- 61.58%. 
+
+12. This can be described in a table visualization or in a card visualization like below. 
+
+![analysis04 table visualization](/5-Power%20BI/assets/analysis04tablevisual.jpg)
+![analysis04 card visualization](/5-Power%20BI/assets/analysis04cardvisual.jpg)
+
+```
+White higher rated win count = 
+
+COUNTROWS (
+    FILTER (
+        dim_game,
+        dim_game[white_rating] > dim_game[black_rating]
+    )
+)
+```
+
+```
+Black higher rated win count = 
+
+COUNTROWS (
+    FILTER (
+        dim_game,
+        dim_game[white_rating] < dim_game[black_rating]
+    )
+)
+```
+
+```
+Win by higher rated players ratio = 
+
+VAR _whitewin =
+    COUNTROWS (
+        FILTER (
+            dim_game,
+            dim_game[winner] = "White"
+                && dim_game[white_rating] > dim_game[black_rating]
+        )
+    )
+VAR _blackwin =
+    COUNTROWS (
+        FILTER (
+            dim_game,
+            dim_game[winner] = "Black"
+                && dim_game[white_rating] < dim_game[black_rating]
+        )
+    )
+VAR _allgamescount =
+    COUNTROWS ( dim_game )
+RETURN
+    DIVIDE ( _whitewin + _blackwin, _allgamescount )
+``` 
+
+13. The final question, expressed in a more straightforward manner, is, after White plays the first move D4, what is the most advantageous opening move for Black in terms of achieving the highest winning percentage?
+14. The thinking process is like below and this helps to create DAX measure in more intuitive way.
+- Begin by filtering the moves_fct table to include only instances where the first move is D4.
+- Utilize this criterion to identify games that were won by Black from the dim_game table.
+- To the resulting table, introduce a new column that calculates the move number as 2.
+- Group the table by move number = 2 and calculate the count.
+- Determine the highest count number among these counts.
+- Identify the move that corresponds to the highest count number, as it shares the same count value as the highest count number.
+
+![analysis05](/5-Power%20BI/assets/analysis05.jpg)
+
+```
+Black most winning move after white first move d4 = 
+
+VAR _blackwinafterDfour =
+    FILTER (
+        SUMMARIZE (
+            FILTER ( moves_fct, moves_fct[move_number] = 1 && moves_fct[moves] = "d4" ),
+            dim_game[game_id],
+            dim_game[winner]
+        ),
+        dim_game[winner] = "Black"
+    )
+
+VAR _addblackfirstmove =
+    ADDCOLUMNS (
+        _blackwinafterDfour,
+        "@blackfirstmove",
+            CALCULATE (
+                MAXX ( FILTER ( moves_fct, moves_fct[move_number] = 2 ), moves_fct[moves] )
+            )
+    )
+
+VAR _groupbyblackfirstmovecount =
+    GROUPBY (
+        _addblackfirstmove,
+        [@blackfirstmove],
+        "@count", SUMX ( CURRENTGROUP (), 1 )
+    )
+
+VAR _maxcount =
+    MAXX ( _groupbyblackfirstmovecount, [@count] )
+
+RETURN
+    MAXX (
+        FILTER ( _groupbyblackfirstmovecount, [@count] = _maxcount ),
+        [@blackfirstmove]
+    )
+```
+
