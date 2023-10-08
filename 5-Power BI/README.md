@@ -199,7 +199,7 @@ The source is given as a CSV file. I decide to store this source data in Fabric 
 
 14. This table is the same as “chess_games” table that is located above in the same folder. The steps that are operated in Dataflow Gen2 are not necessary in this case, however, if you do more table transforms steps in Dataflow Gen2, the result will be different. In this course, I decided to do more table transforms steps later in Power BI Desktop Power Query Editor. 
 
-15. Open Power BI Desktop and connect to pbiforbeginner Lakehouse.
+15. Open Power BI Desktop and connect to pbiforbeginner Lakehouse. When opening Power BI Desktop, login ID has to be the same as what I used when creating Lakehouse.
 
 ![pbi desktop connect to lakehouse](/5-Power%20BI/assets/pbi%20desktop%20connect%20to%20lakehouse.jpg)
 
@@ -207,6 +207,11 @@ The source is given as a CSV file. I decide to store this source data in Fabric 
 ![lakehouse select](/5-Power%20BI/assets/lakehouse%20select.jpg)
 
 ![lakehouse table import](/5-Power%20BI/assets/lakehouse%20table%20import.jpg)
+
+Note: If you do not want to connect to Lakehouse, but if you want to import the CSV file directly from your local computer, please follow the steps below. One thing to keep in mind is that local files sometimes does not assign column title automatically. In this case, you can assign column title in Power Query Editor.
+![import csv file](/5-Power%20BI/assets/PBI%20Desktop%20connect%20to%20CSV%20file.jpg)
+![use first row as headers](/5-Power%20BI/assets/PQEditor%20use%20first%20row%20as%20headers.jpg)
+
 
 16. “chess_games_source” table is imported into Power Query Editor. Because this is the source for dimension tables and a fact table, which are loaded later into the Power BI report to create a datamodel, [Enable load] is unchecked (the same meaning as disable load) and reference this source table to create dimension tables and a fact table. 
 
@@ -330,3 +335,6 @@ in
 ![datamodel view](/5-Power%20BI/assets/datamodel%20view.jpg)
 
 ![relationship manage view in pbi](/5-Power%20BI/assets/relationship%20manage%20view.jpg)
+
+
+[def]: /5-Power%20BI/assets/pq%20editor%20disable%20load.jpg
