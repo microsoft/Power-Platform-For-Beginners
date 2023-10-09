@@ -6,7 +6,16 @@
 <!-- - Ahmed -->
 
 #### What are the Key Differences?
-<!-- - Ahmed -->
+| Key | Canvas Apps | Model-Driven Apps |
+| ------------- | ------------- | ------------- |
+| Purpose and Design Approach  | They are designed for creating highly tailored apps with a custom user interface (UI). Developers start with a blank canvas and can design the UI exactly as they want, akin to designing a PowerPoint slide. | These are designed around your core business data (often from the Common Data Service, now part of Microsoft Dataverse) and processes. The UI is largely generated based on the underlying data model and the relationships between entities.
+| Data Source  | Can connect to multiple data sources, not just the Common Data Service. This includes SharePoint, SQL Server, and various other connectors provided by Power Platform.  | Primarily uses the Common Data Service (Microsoft Dataverse) as its data source. |
+| User Interface  | Offers pixel-perfect control over the UI. The designer can position, color, and set controls exactly how they want them to appear.  | The UI is automatically generated from the data model. While there's some customization available, it's more constrained than in Canvas Apps. |
+| Mobile Capabilities  | Built for both web and mobile. The layout and flow can be specifically designed for mobile scenarios. | Mobile capabilities are present but are more auto-generated based on the underlying data model.  |
+| Development Approach | More akin to traditional application design where you focus on the layout, controls, and look-and-feel of the application.  | Focuses more on defining the data model, business rules, and processes. The application's appearance is then generated based on these definitions.  |
+| Use Cases  | Ideal for tasks that require a specific UI, such as a company-specific form or a tool that integrates multiple data sources. | Best for applications centered around database entities and relationships, like CRM or ERP solutions where business processes and workflows are key.  |
+| Complexity and Learning Curve  |Easier for beginners to start with due to its visual nature, especially those familiar with Microsoft Office tools like PowerPoint.  | Might have a steeper learning curve as understanding the data model, entities, relationships, and business rules is crucial.  |
+
 
 #### Deciding Between Canvas and Model-Driven Apps: Use Cases and Guidelines
 <!-- - Ahmed -->
