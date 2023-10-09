@@ -5,7 +5,7 @@
 ### Model-Driven vs Canvas Apps
 #### Canvas Apps:
 Canvas Apps allow users to create custom applications starting with a blank canvas, akin to designing a PowerPoint slide. They provide a drag-and-drop interface to design the user interface (UI) pixel-perfectly and can connect to various data sources.
-![Canvas App](2-Power%20Apps%20Development/assets/MDA-Canvas-Canvas_App_ScreenShot.jpg)
+![Canvas App](/2-Power%20Apps%20Development/assets/MDA-Canvas-Canvas_App_ScreenShot.jpg)
 
 #### Model-Driven Apps:
 Model-driven apps are designed around core business data (typically from Microsoft Dataverse) and the processes associated with that data. The application's UI is largely auto-generated based on the underlying data model, including tables, fields, and their relationships. They are more focused on business processes and workflows, and the UI reflects the structure of the underlying data.
