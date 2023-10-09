@@ -341,7 +341,7 @@ in
 - dim_player[player_id_index] to dim_game[white_player_id_index]
 - dim_player[player_id_index] to dim_game[black_player_id_index]
 - dim_game[game_id] to moves_fct[game_id]
-- Inactive relationship is described as dotted line, and the inactive relationship can be activated by writing a proper DAX function later. By clicking “Manage relationships”, the detailed information of each relationship is shown.
+- Inactive relationship is described as dotted line, and the inactive relationship can be activated by writing a proper DAX function (for instance, "USERELATIONSHIP" DAX function) when it is needed. By clicking “Manage relationships”, the detailed information of each relationship is shown.
 
 ![datamodel view](/5-Power%20BI/assets/datamodel%20view.jpg)
 
@@ -436,7 +436,12 @@ in
 - Draw happens in 950 games 
 
 ![analysis 01 result](/5-Power%20BI/assets/analysis01result.jpg)
- 
+
+```
+Win count = 
+    DISTINCTCOUNT(dim_game[game_id])
+```
+* Link to learn DISTINCTCOUNT DAX function: https://learn.microsoft.com/en-us/dax/distinctcount-function-dax?wt.mc_id=DP-MVP-5004989
 
 9. The second request is, if I rephrase it, what is the most first move played in the black winning game and in the white winning game? In order to answer this, the following DAX measures are written and those are used in New Card visualization. [The most winning first move by white] DAX measure is written with comments inside the formula, and it explains what the meaning of each variable is. All other measures that are used in this page are written in a very similar way with [The most winning first move by white] DAX measure. Do not be confused that the black players’ first move is always move_number = 2. The answer to the second request is, 
 
@@ -477,6 +482,12 @@ VAR _mostwinningfirstmove =
 RETURN
     CONCATENATEX ( _mostwinningfirstmove, moves_fct[moves], ", " )
 ```
+* Link to learn FILTER DAX function: https://learn.microsoft.com/en-us/dax/filter-function-dax?wt.mc_id=DP-MVP-5004989
+* Link to learn SUMMARIZE DAX function: https://learn.microsoft.com/en-us/dax/summarize-function-dax?wt.mc_id=DP-MVP-5004989
+* Link to learn GROUPBY DAX function: https://learn.microsoft.com/en-us/dax/groupby-function-dax?wt.mc_id=DP-MVP-5004989
+* Link to learn MAXX DAX function: https://learn.microsoft.com/en-us/dax/maxx-function-dax?wt.mc_id=DP-MVP-5004989
+* Link to learn CONCATENATEX DAX function: https://learn.microsoft.com/en-us/dax/concatenatex-function-dax?wt.mc_id=DP-MVP-5004989
+
 
 ```
 The most winning first move by black = 
@@ -578,6 +589,10 @@ VAR _blackplay =
 RETURN
     _whiteplay + _blackplay
 ```
+* Link to learn COUNTROWS DAX function: https://learn.microsoft.com/en-us/dax/countrows-function-dax?wt.mc_id=DP-MVP-5004989
+* Link to learn USERELATIONSHIP DAX function: https://learn.microsoft.com/en-us/dax/userelationship-function-dax?wt.mc_id=DP-MVP-5004989
+* Link to learn CALCULATE DAX function: https://learn.microsoft.com/en-us/dax/calculate-function-dax?wt.mc_id=DP-MVP-5004989
+
 
 ```
 Win count when oponent is higher rated = 
@@ -612,11 +627,14 @@ RETURN
 Winning higher rated player percentage = 
 DIVIDE( [Win count when oponent is higher rated], [Winning count by player] )
 ``` 
+* Link to learn DIVIDE DAX function: https://learn.microsoft.com/en-us/dax/divide-function-dax?wt.mc_id=DP-MVP-5004989
+
+
 
 11. The fourth request is to calculate how much the percentage of wins is by higher rated players. And the answer to this is,
 - 61.58%. 
 
-12. This can be described in a table visualization or in a card visualization like below. 
+    This can be described in a table visualization or in a card visualization like below. 
 
 ![analysis04 table visualization](/5-Power%20BI/assets/analysis04tablevisual.jpg)
 ![analysis04 card visualization](/5-Power%20BI/assets/analysis04cardvisual.jpg)
@@ -668,8 +686,9 @@ RETURN
     DIVIDE ( _whitewin + _blackwin, _allgamescount )
 ``` 
 
-13. The final question, expressed in a more straightforward manner, is, after White plays the first move D4, what is the most advantageous opening move for Black in terms of achieving the highest winning percentage?
-14. The thinking process is like below and this helps to create DAX measure in more intuitive way.
+12. The final question, expressed in a more straightforward manner, is, after White plays the first move D4, what is the most advantageous opening move for Black in terms of achieving the highest winning percentage?
+    
+    The thinking process is like below and this helps to create DAX measure in more intuitive way.
 - Begin by filtering the moves_fct table to include only instances where the first move is D4.
 - Utilize this criterion to identify games that were won by Black from the dim_game table.
 - To the resulting table, introduce a new column that calculates the move number as 2.
@@ -717,4 +736,5 @@ RETURN
         [@blackfirstmove]
     )
 ```
+* Link to learn ADDCOLUMNS DAX function: https://learn.microsoft.com/en-us/dax/addcolumns-function-dax?wt.mc_id=DP-MVP-5004989
 

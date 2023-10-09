@@ -1,5 +1,5 @@
 {
-  "config": "{\"version\":\"5.48\",\"themeCollection\":{\"baseTheme\":{\"name\":\"CY23SU08\",\"version\":\"5.48\",\"type\":2}},\"activeSectionIndex\":4,\"defaultDrillFilterOtherVisuals\":true,\"linguisticSchemaSyncVersion\":2,\"settings\":{\"useNewFilterPaneExperience\":true,\"allowChangeFilterTypes\":true,\"useStylableVisualContainerHeader\":true,\"queryLimitOption\":6,\"useEnhancedTooltips\":true,\"exportDataMode\":1,\"useDefaultAggregateDisplayName\":true},\"objects\":{\"section\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Middle'\"}}}}}]}}",
+  "config": "{\"version\":\"5.48\",\"themeCollection\":{\"baseTheme\":{\"name\":\"CY23SU08\",\"version\":\"5.48\",\"type\":2}},\"activeSectionIndex\":0,\"defaultDrillFilterOtherVisuals\":true,\"linguisticSchemaSyncVersion\":2,\"settings\":{\"useNewFilterPaneExperience\":true,\"allowChangeFilterTypes\":true,\"useStylableVisualContainerHeader\":true,\"queryLimitOption\":6,\"useEnhancedTooltips\":true,\"exportDataMode\":1,\"useDefaultAggregateDisplayName\":true},\"objects\":{\"section\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Middle'\"}}}}}]}}",
   "layoutOptimization": 0,
   "resourcePackages": [
     {
@@ -57,13 +57,13 @@
           "z": 0.00
         },
         {
-          "config": "{\"name\":\"bfcc9c4cfa28f132cff9\",\"layouts\":[{\"id\":0,\"position\":{\"x\":112.22222222222221,\"y\":471.1111111111111,\"z\":1,\"width\":490,\"height\":180}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"Key_Measures.Win by higher rated players ratio\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"k\",\"Entity\":\"Key_Measures\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"k\"}},\"Property\":\"Win by higher rated players ratio\"},\"Name\":\"Key_Measures.Win by higher rated players ratio\",\"NativeReferenceName\":\"Win by higher rated players ratio\"}]},\"autoSelectVisualType\":true,\"drillFilterOtherVisuals\":true}}",
+          "config": "{\"name\":\"bfcc9c4cfa28f132cff9\",\"layouts\":[{\"id\":0,\"position\":{\"x\":112.22222222222221,\"y\":471.1111111111111,\"z\":1000,\"width\":490,\"height\":180,\"tabOrder\":1000}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"Key_Measures.Win by higher rated players ratio\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"k\",\"Entity\":\"Key_Measures\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"k\"}},\"Property\":\"Win by higher rated players ratio\"},\"Name\":\"Key_Measures.Win by higher rated players ratio\",\"NativeReferenceName\":\"Win by higher rated players ratio\"}]},\"autoSelectVisualType\":true,\"drillFilterOtherVisuals\":true}}",
           "filters": "[]",
           "height": 180.00,
           "width": 490.00,
           "x": 112.22,
           "y": 471.11,
-          "z": 1.00
+          "z": 1000.00
         }
       ],
       "width": 1280.00

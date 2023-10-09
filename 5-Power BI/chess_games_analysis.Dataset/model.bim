@@ -495,7 +495,7 @@
             "name": "Win count",
             "expression": [
               "",
-              "DISTINCTCOUNT(dim_game[game_id])"
+              "    DISTINCTCOUNT(dim_game[game_id])"
             ],
             "formatString": "0",
             "lineageTag": "2957849f-5892-4c28-9118-16af5cc78509"
