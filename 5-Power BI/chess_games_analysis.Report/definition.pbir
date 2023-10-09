@@ -1,0 +1,9 @@
+{
+  "version": "1.0",
+  "datasetReference": {
+    "byPath": {
+      "path": "../chess_games_analysis.Dataset"
+    },
+    "byConnection": null
+  }
+}
