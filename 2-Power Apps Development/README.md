@@ -27,7 +27,7 @@ The strength of Model-Driven Apps lies in their ability to automatically generat
 | Complexity and Learning Curve  |Easier for beginners to start with due to its visual nature, especially those familiar with Microsoft Office tools like PowerPoint.  | Might have a steeper learning curve as understanding the data model, tables, relationships, and business rules is crucial.  |
 
 
-#### Deciding Between Canvas and Model-Driven Apps: Use Cases and Guidelines
+#### Deciding Between Canvas and Model-Driven Apps: Use Cases
 | Use Case | Canvas Apps | Use Case | Model-Driven Apps |
 | ------------- | ------------- | ------------- | ------------- |
 | Field Service Tool | A utility company might use Canvas Apps to create a mobile tool for technicians in the field. The app could pull data from various sources, like weather forecasts, client databases, and equipment inventories, providing a customized interface for technicians to report statuses, request parts, and communicate with the main office. | Sales CRM | Companies can leverage Model-Driven Apps to manage leads, opportunities, and accounts. The app would automatically generate forms and views based on the sales data model, allowing sales teams to track and nurture potential clients efficiently. |
