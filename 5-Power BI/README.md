@@ -33,11 +33,11 @@
 
 - 2023/10/08 
 
-   Create DAX measures and visualizations to provide insights
+   Create DAX measures and visualizations to provide insights (Proof Of Concept).
 
 - 2023/10/15 
 
-   Fix and check the report. 
+   Create and design Power BI report on top of POC version. 
 
 - 2023/10/22 
 
@@ -45,40 +45,40 @@
 
 - 2023/10/29 
 
-   Fix and check the documentation. 
+   Fix and check documentation. 
 
  
 # 2023/09/17 
 
 ## Sample data: Online Chess Games 
 
-It is an open source that I get from Mavenanalytics.io 
+This open-source resource can be found on Mavenanalytics.io.
 
 Link to the website: https://mavenanalytics.io/data-playground?page=5&pageSize=5 
 
-Link to the file: https://1drv.ms/x/s!AvmCO4Wm--vEvDmDfSBEYGGHEMFI?e=gWy1Ig 
+Link to the file: https://maven-datasets.s3.amazonaws.com/Online+Chess+Games/Online+Chess+Games.zip
 
 
-## Purpose of this writing 
+## Unlocking the Power of Power BI: A Beginner's Guide 
 
-This course is designed to provide guidance systematically through the fundamentals of Power BI. Several key concepts, but only the basics, will be illustrated using the sample dataset, and by the end of the course, we will have constructed a Power BI report. You can actively participate in the tutorial by downloading the dataset from the link above. The datamodel and the process to create the analysis report that are described in this course is not an absolute and the only solution, but there might be several different ways to have the same result. The purpose of this course is to make Power BI starters have more fun in learning Power BI. If readers want to skip storing the source file or the source data in Fabric Lakehouse, the CSV file can be used from the your local computer and can be easily imported into Power BI Desktop.   
+In this comprehensive guide, we have meticulously structured a learning path for aspiring Power BI enthusiasts. We'll walk you through the foundational concepts, focusing solely on the essentials, while leveraging a sample dataset as a practical example. By the end of this course, you'll have crafted your very own Power BI report. Actively engage in the tutorial by downloading the dataset via the provided link.
+
+Please note that the data model and the process outlined in this course represent one of many approaches to achieving the same results. Our goal here is to inject an element of enjoyment into your Power BI learning journey, especially if you're just starting out. If you prefer not to store your source files or data in Fabric Lakehouse, you can effortlessly utilize the CSV file stored locally on your computer and seamlessly import it into Power BI Desktop.   
   
 
 ## What Is Power BI? 
 
-Power BI is a tool that enables you to establish connections with various data sources, visualize data through reports and dashboards, and subsequently distribute them to the individuals of your choice. 
- 
-Power BI consists of three primary components:  
+Discover the capabilities of Power BI, an indispensable tool that empowers you to establish seamless connections with diverse data sources, transform data into compelling reports and dashboards, and effortlessly share insights with your chosen audience.
 
-1. Power BI Desktop: This is a no-cost desktop application for creating and designing reports.  
+Unveiling Power BI's Key Components:
 
-2. Power BI Service: It's an online publishing service for viewing and sharing reports and dashboards.  
+1. Power BI Desktop: Your complimentary desktop companion, tailored for report creation and design.
+2. Power BI Service: The online hub for publishing, viewing, and distributing your reports and dashboards.
+3. Power BI Mobile Apps: Stay connected and informed while on the move, with easy access to your reports and dashboards.
 
-3. Power BI mobile apps: These apps facilitate the access and viewing of reports and dashboards while you're on the move. 
+Throughout this course, we will delve into the intricacies of configuring and connecting to your data source (Lakehouse). We'll guide you through the art of crafting and designing reports using Power BI Desktop. And, in a nutshell, we'll provide insights into sharing your creations via Power BI Service.
 
-In this course, I will focus on configuring and connecting to the source (Lakehouse), creating and designing a report in the Power BI Desktop, and very briefly about how to share it via Power BI Service. 
-
-You need to register and have Power BI Service ID/PW (https://app.powerbi.com) in order to move the CSV file from the local machine to Lakehouse as a source.  
+To harness the full potential of this course, make sure to register and obtain your Power BI Service credentials at https://app.powerbi.com. This will enable you to seamlessly transfer the CSV file from your local machine to Lakehouse, unleashing the true power of data analysis at your fingertips.  
   
 
 ## What Is the Purpose of Power BI? 
@@ -90,17 +90,15 @@ The utilization of Power BI varies according to individual roles, encompassing d
 
 ## Suggested Analyses by using the sample data:  
 
-What to show in the analysis report is communicated frequently and shared with end users as a poc (proof of concept) version before we start to create the Power BI report. 
+The contents of the analysis report are frequently communicated and presented to end-users in the form of a Proof of Concept (POC) version before commencing the development of the Power BI report.
 
-We, as a Power BI Report developer, have to share with end users about, 
+As Power BI report developers, our responsibility entails sharing the following crucial aspects with end-users:
 
-- What users want to see in the report 
+- The specific elements that users desire to be displayed in the report.
+- The essential information that users need to access within the report.
+- The valuable data and insights that users can derive from the report.
 
-- What users need to see in the report 
-
-- What values and insights users can get from the report 
-
-By using the sample data, I pretend and assume that I had conversations with users a few times about what we agreed to describe on the report, and those are, 
+To achieve this, I will utilize sample data and assume that I have engaged in multiple conversations with users to establish a consensus on the report's contents, which include: 
 
 1. What is Black's optimal opening move that yields the highest probability of success following White's initial move of D4 (the data has 20,051 games information)? 
 
@@ -116,17 +114,16 @@ By using the sample data, I pretend and assume that I had conversations with use
 
 # 2023/09/24 
 
-## Draw a datamodel  
+## Draw datamodel  
 
-After having conversation with stakeholders, the main insights that need be shown by the analysis are, 
+Following discussions with stakeholders, the primary insights to be conveyed through the analysis include:
 
-- Win or lose by players 
+- Determining wins or losses by players.
+- Identifying which subsequent moves lead to either a win or a loss in the game.
 
-- Which next moves makes the game Win or lose
+The dimension tables contain pertinent information about the Players and Games, while the fact table is populated with details about Moves.
 
-The dimension tables contain information about the Players and Games. And the fact table contains information about Moves. 
-
-The drawing of the datamodel looks like below figure. The below datamodel can be changed or amended based on what data is in the source, or based on how we proceed to create a proper analysis report. 
+The visualization of the data model is represented in the figure below. It's important to note that this data model can be modified or adjusted as needed, based on the data available in the source or the evolving requirements for creating a comprehensive analysis report. 
 
 ![Datamodel planning fix](/5-Power%20BI/assets/Datamodel%20plan%20fix.jpg) 
 
@@ -159,7 +156,7 @@ The source is given as a CSV file. I decide to store this source data in Fabric 
 
 ![View a table in Lakehouse](/5-Power%20BI/assets/View%20a%20table%20in%20Lakehouse.jpg)
 
-8. From the next step, the table in Lakehouse is used in Dataflow Gen2 to be transformed to have proper dimension table and fact table. This is a more practical way in some cases, but in this course, I will briefly show how to create Dataflow Gen2 and load it back to Lakehouse in order to let you slightly feel about what Dataflow Gen2 is. In this course, the majority of transformation will be done in Power BI Desktop Power Query Editor.  
+8. Starting from the next step, the table within the Lakehouse will be utilized within Dataflow Gen2 to undergo transformation and be structured into a suitable dimension table and fact table. While this approach can be more practical in certain situations, this course will provide a brief demonstration of creating Dataflow Gen2 and loading it back into the Lakehouse. This aims to give you a basic understanding of Dataflow Gen2. However, it's important to note that the primary focus of this course will be on conducting the majority of transformations within Power BI Desktop's Power Query Editor.  
 
 9. Create Dataflow Gen2.
 
@@ -178,7 +175,7 @@ The source is given as a CSV file. I decide to store this source data in Fabric 
 
 # 2023/10/01 
 
-## From this step, it is to load data back to Lakehouse, import it into Power BI Desktop, transform data in the Power Query Editor, load it to Power BI and create a datamodel in Power BI. 
+#### From this step, it is to load data back to Lakehouse, import it into Power BI Desktop, transform data in the Power Query Editor, load it to Power BI and create a datamodel in Power BI. 
 
 
 12. Select Data destination as Lakehouse. 
@@ -197,9 +194,9 @@ The source is given as a CSV file. I decide to store this source data in Fabric 
 
 ![Lakehouse contains new table from Dataflow Gen2](/5-Power%20BI/assets/Lakehouse%20contains%20new%20table%20from%20dataflow%20gen2.jpg)
 
-14. This table is the same as “chess_games” table that is located above in the same folder. The steps that are operated in Dataflow Gen2 are not necessary in this case, however, if you do more table transforms steps in Dataflow Gen2, the result will be different. In this course, I decided to do more table transforms steps later in Power BI Desktop Power Query Editor. 
+14. This table is identical to the "chess_games" table located above within the same folder. The procedures executed in Dataflow Gen2 are not required in this scenario. Nevertheless, it's worth noting that if you perform additional table transformation steps in Dataflow Gen2, the outcome will vary. For this course, I have chosen to conduct further table transformation steps later within Power BI Desktop's Power Query Editor. 
 
-15. Open Power BI Desktop and connect to pbiforbeginner Lakehouse. When opening Power BI Desktop, login ID has to be the same as what I used when creating Lakehouse.
+15. To access Power BI Desktop and connect to the pbiforbeginner Lakehouse, please ensure that the login ID used matches the one utilized during the creation of the Lakehouse.
 
 ![pbi desktop connect to lakehouse](/5-Power%20BI/assets/pbi%20desktop%20connect%20to%20lakehouse.jpg)
 
@@ -208,12 +205,13 @@ The source is given as a CSV file. I decide to store this source data in Fabric 
 
 ![lakehouse table import](/5-Power%20BI/assets/lakehouse%20table%20import.jpg)
 
-Note: If you do not want to connect to Lakehouse, but if you want to import the CSV file directly from your local computer, please follow the steps below. One thing to keep in mind is that local files sometimes does not assign column title automatically. In this case, you can assign column title in Power Query Editor.
+#### Note: If you prefer not to connect to the Lakehouse and instead wish to import the CSV file directly from your local computer, please follow the steps outlined below. It's important to be aware that local files may not always automatically assign column titles. In such instances, you can manually assign column titles within the Power Query Editor.
+
 ![import csv file](/5-Power%20BI/assets/PBI%20Desktop%20connect%20to%20CSV%20file.jpg)
 ![use first row as headers](/5-Power%20BI/assets/PQEditor%20use%20first%20row%20as%20headers.jpg)
 
 
-16. “chess_games_source” table is imported into Power Query Editor. Because this is the source for dimension tables and a fact table, which are loaded later into the Power BI report to create a datamodel, [Enable load] is unchecked (the same meaning as disable load) and reference this source table to create dimension tables and a fact table. 
+16. The "chess_games_source" table is imported into Power Query Editor. Since this table serves as the source for dimension tables and a fact table, which will be loaded into the Power BI report to construct a data model, the [Enable load] option is unchecked (equivalent to disabling load). Instead, we will create dimension tables and a fact table by referencing this source table.
 
 ![pq editor disable load](/5-Power%20BI/assets/pq%20editor%20disable%20load.jpg)
 
@@ -221,18 +219,18 @@ Note: If you do not want to connect to Lakehouse, but if you want to import the 
 
 ![pq editor dim table](/5-Power%20BI/assets/pq%20editor%20dim%20table.jpg)
 
-18. Follow the transformation steps in the query. M codes are described in “Advanced Editor” in detail. The brief explanation of this transformation is,  
+18. Proceed with the transformation steps outlined in the query. For a more detailed description of the M codes used, please refer to the "Advanced Editor." In summary, the purpose of this transformation is as follows:
 
-- Get black id column and white id column.
-- Append two columns, make it one column, and name it as player_id column.
-- Add index column to have id number
+- Retrieve the black id column and the white id column.
+- Merge these two columns into a single column named "player_id."
+- Introduce an index column to assign identification numbers.
 
 ![pq editor dim table final](/5-Power%20BI/assets/pq%20editor%20dim%20table%20final.jpg)
 
 
 ![dim table advanced editor](/5-Power%20BI/assets/pq%20editor%20dim%20table%20advanced%20editor.jpg)
 
--- Note: The below M code is with comments after "//" that describes what does each step mean. The whole M code can be copy-pasted into Advanced Editor in Power Query Editor.
+#### Note: The M code provided below is accompanied by comments following "//" that elucidate the purpose of each step. You can conveniently copy and paste the entire M code into the Advanced Editor within Power Query Editor.
 
 ```
 let
@@ -268,9 +266,9 @@ in
 
 ![pq editor dim table](/5-Power%20BI/assets/pq%20editor%20dim%20table%20table.jpg)
 
-20. Follow the transformation steps. M codes are described in “Advanced Editor” in detail. The description of this transformation is,
-- Remove unnecessary columns. For instance, the moves column is for the fact table, not for the dimension table.
-- Instead of showing white_id and black_id columns in this table, try to show white_player_id_index and black_player_id_index instead.
+20. Follow the transformation steps. The M codes are comprehensively explained within the "Advanced Editor." The purpose of this transformation is outlined as follows:
+- Eliminate extraneous columns, such as the moves column, which is designed for the fact table, rather than the dimension table.
+- Substitute the white_id and black_id columns in this table with white_player_id_index and black_player_id_index for enhanced clarity.
 
 ![advanced editor](/5-Power%20BI/assets/pq%20editor%20dim%20tabletable%20advaned%20editor.jpg)
 
@@ -300,9 +298,9 @@ in
 
 21. Reference the source table and create moves_fct table. 
 
-22. Follow the transformation steps. M codes are described in “Advanced Editor” in detail. The purpose of this transformation is to have,
-- Select a column that contains all moves per game, and split into one move per row in the same game_id.
-- Each move in each game_id has sequence number.
+22. Follow the transformation steps. Detailed descriptions of the M codes can be found in the "Advanced Editor." The primary objective of this transformation is as follows:
+- Select a column containing all moves per game and split them into individual rows within the same game_id.
+- Assign a sequential numbering to each move within each game_id.
 
 ![pq editor fct table](/5-Power%20BI/assets/pq%20editor%20fct%20table.jpg)
  
@@ -334,14 +332,14 @@ in
 ![load from pq to pbi](/5-Power%20BI/assets/load%20tables%20from%20pq%20to%20pbi.jpg)
 
  
-24. Create relationships between tables. This is following the figure of the datamodel that is shown in the beginning of the course (figure01).  
+24. Establish Table Relationships. Aligning with the Data Model Blueprint Presented at the Course Onset  
 
-25. Go to the model view, and drag one column from one table and connect it to the other column from another table. 
+25. Navigate to the Model View, and seamlessly link columns by dragging one from one table and connecting it to another from a separate table. 
 
 - dim_player[player_id_index] to dim_game[white_player_id_index]
 - dim_player[player_id_index] to dim_game[black_player_id_index]
 - dim_game[game_id] to moves_fct[game_id]
-- Inactive relationship is described as dotted line, and the inactive relationship can be activated by writing a proper DAX function (for instance, "USERELATIONSHIP" DAX function) when it is needed. By clicking “Manage relationships”, the detailed information of each relationship is shown.
+- An inactive relationship is depicted as a dotted line, and it can be activated by implementing an appropriate DAX function, such as the "USERELATIONSHIP" DAX function, when the need arises. To access detailed information about each relationship, you can click on "Manage relationships."
 
 ![datamodel view](/5-Power%20BI/assets/datamodel%20view.jpg)
 
@@ -350,36 +348,38 @@ in
 
 # 2023/10/08 
 
-## Create DAX measures and visualizations to provide insights. 
+#### Create DAX measures and visualizations to provide insights (Proof Of Concept). 
 
-There are two links from Microsoft useful to see and understand before starting this session. 
+Before commencing this session, it is advisable to review and comprehend two Microsoft links that offer valuable insights.
 
 Learn concept of DAX by video Link: https://learn.microsoft.com/en-us/dax/dax-learn-videos?wt.mc_id=DP-MVP-5004989 
 
 DAX Glossaries Link: https://learn.microsoft.com/en-us/dax/dax-glossary?wt.mc_id=DP-MVP-5004989 
  
 
-1. Before creating visualizations and DAX measures, try to understand the concept of DAX (Data Analysis Expressions), and the above two links created by Microsoft are very useful to start with understanding the concept of DAX. 
+1. Prior to embarking on the development of visualizations and DAX measures, it is imperative to grasp the fundamentals of DAX (Data Analysis Expressions). The two Microsoft links provided above offer valuable resources for initiating your understanding of DAX concepts. 
 
-2. At the beginning of this writing, I talked about what conversation I had with stakeholders who will see this report. In the conversation, we talked about 5 topics, and I would like to rewrite those like below ordering by how easy and smooth it is to provide insights. 
- 
+2. As mentioned earlier in this document, I previously discussed the topics of conversation with the stakeholders who will be reviewing this report. In our discussions, we explored five key subjects, which I would like to reiterate below, arranged in order of the ease and effectiveness with which insights can be derived first. 
+
 
 - What proportion of games were secured by the white player, and how many concluded as draws? 
 - Which initial chess move was employed most frequently in games where black emerged victorious? Conversely, what was the prevalent opening move in games where white emerged as the winner?
 - Who is the user with the highest number of game wins? What percentage of these victories did the user achieve as the higher-rated player?
 - What percentage of games were won by the participant with the superior rating? Is there any variance in this statistic based on the color of pieces?
 - What is the initial move for Black that demonstrates the highest likelihood of winning after White's first move of D4?
- 
 
-3. Let’s create visualizations and DAX measures based on the above request. The first request is, to simplify it further, we want to know how many games were won, lost, or drawn by white and black players.
+##### Note: During this session, we shall craft DAX measures and visualizations with the primary purpose of scrutinizing and substantiating data integrity, addressing pertinent inquiries, and validating responses. This phase constitutes an integral component of the initial proof of concept (POC) iteration. Subsequently, a Power BI report tailored for production will be meticulously conceived and developed, building upon the foundations laid during this preliminary POC phase, with the ultimate aim of sharing it effectively with stakeholders. 
 
-4. In order to consolidate DAX measures in an organized way, I create a blank table, and name it as “Key_Measures”. This table will contain only DAX measures. 
+3. Let's proceed to generate visualizations and DAX measures in response to the aforementioned request. To streamline the first request, our objective is to determine the total number of games won, lost, or drawn by both white and black players.
+
+4. To systematically consolidate DAX measures, I establish a blank table and designate it as "Key_Measures." This table will exclusively house DAX measures for improved organization and clarity.
 ![create measure table](/5-Power%20BI/assets/create%20measure%20table.jpg)
  
 
-5. On the blank canvas, insert a table visualization and drag the [winner] column from dim_game table. The final visualization may not be a table visualization. However, this helps to see and understand what information needs to be shown and created in the visualization. 
+5. On the empty canvas, add a table visualization and then drag the [winner] column from the dim_game table. Please note that the ultimate visualization may not remain a table; nevertheless, this step assists in visualizing and comprehending the required information that needs to be presented and crafted in the final visualization. 
 
-6. Create a DAX measure that counts wins by black, white, or draws. Currently, the order in the table visualization is alphabetical, displaying Black, Draw, and then White. To correct the order and have it appeared as White, Black, and Draw, we need to create a new column in the same table in Power Query Editor that describes White = 1, Black = 2, and Draw = 3. And then, we can order [winner] column by the new column that we just created. In Power Query Editor, a new column can be created by just adding a step by clicking fx button in the formular bar or add M code after opening Advanced Editor. 
+6. Create a DAX measure to tally wins by black, white, or draws. Currently, the order in the table visualization is alphabetical, displaying "Black," "Draw," and then "White." To correct this order and have it displayed as "White," "Black," and "Draw," we need to generate a new column within the same table using Power Query Editor. This new column will assign values such as White = 1, Black = 2, and Draw = 3. Subsequently, we can sort the [winner] column based on the newly created column. In Power Query Editor, you can create a new column by adding a step through the "fx" button in the formula bar or by incorporating M code within the Advanced Editor.
+
 ![analysis01](/5-Power%20BI/assets/analysis01.jpg)
 ![analysis01pwerqueryeditor](/5-Power%20BI/assets/analysis01PQeditor.jpg) 
 ![analysis01powerqueryadvancededitor](/5-Power%20BI/assets/analysis01pqadvancededitor.jpg)
@@ -428,7 +428,11 @@ in
 
 ![sort column](/5-Power%20BI/assets/sort%20column.jpg) 
 
-8. Create DAX measure. As described in the below, the answer to the first request is,  
+8. Create DAX measure. My approach to crafting a DAX measure to address this inquiry involves the following steps:
+- Extract the relevant column from the 'dim_game' table that can provide a summary based on 'white winner,' 'black winner,' and 'draw'.
+- For each of these winner categories, calculate a distinct count of the game IDs within that respective category.
+
+    As described in the below, the answer to the first request is,  
 
 - Total 20,058 games 
 - White wins 10,001 games 
@@ -443,12 +447,14 @@ Win count =
 ```
 * Link to learn DISTINCTCOUNT DAX function: https://learn.microsoft.com/en-us/dax/distinctcount-function-dax?wt.mc_id=DP-MVP-5004989
 
-9. The second request is, if I rephrase it, what is the most first move played in the black winning game and in the white winning game? In order to answer this, the following DAX measures are written and those are used in New Card visualization. [The most winning first move by white] DAX measure is written with comments inside the formula, and it explains what the meaning of each variable is. All other measures that are used in this page are written in a very similar way with [The most winning first move by white] DAX measure. Do not be confused that the black players’ first move is always move_number = 2. The answer to the second request is, 
+9. The second request can be rephrased as follows: "What is the first move most commonly played in games won by black and games won by white?" To address this question, the following DAX measures have been developed and are employed in the New Card visualization. The "The most winning first move by white" DAX measure includes comments within the formula to clarify the significance of each variable. In addition, the comments within the DAX measure also serve to elucidate the thought process I underwent while creating the measure. All other measures that are used in this Power BI page are written in a very similar way with [The most winning first move by white] DAX measure. 
 
-- The move e4 is the most played winning first move of white players 
-- The move e5 is the most played winning first move of black players 
-- White players win 6371 games when the first move is e4 
-- Black players win 3101 games when the first move is e5 
+    Please do not be misled by the fact that black players' first move is consistently recorded as move_number = 2. In response to the second request, the findings are as follows:
+
+- The move e4 stands out as the most frequently played winning first move by white players.
+- The move e5 emerges as the most commonly played winning first move by black players.
+- White players secure victory in 6371 games when their first move is e4.
+- Black players achieve victory in 3101 games when their first move is e5.
 
 ![analysis02](/5-Power%20BI/assets/analysis02.jpg)
 
@@ -566,7 +572,12 @@ RETURN
     _maxwin
 ```
 
-10. The third request, rephrased for clarity, is to identify the player with the most wins and calculate their winning percentage against opponents with a higher rating. After creating a table visualization like below, when clicking the three dots located in the upper right side of the table visualization, you can sort by any DAX measure that is used in the visualization. Or you can simply click the measure name itself in the visualization. The answer to this question is, 
+10. The third request, rephrased for clarity, is to identify the player with the most wins and calculate their winning percentage against opponents with a higher rating. The thought process for developing a solution entails the following steps:
+- Extract the 'player_id' column from the 'dim_player' table.
+- Calculate the counts of game IDs corresponding to 'white-win' and 'black-win' outcomes. Take into account the inactive relationship when calculating 'black-win.'
+- In the creation of virtual tables for 'white-win' and 'black-win' within a DAX measure, I could apply filters to only include matches against higher-rated opponents for a more precise analysis.
+
+    After creating a table visualization like below with DAX measures, when clicking the three dots located in the upper right side of the table visualization, you can sort by any DAX measure that is used in the visualization. Or you can simply click the measure name itself in the visualization. The answer to this question is, 
 
 - Player id = taranga wins 72 games. 
 - And out of the 72 games played, 36 were won against higher-rated opponents (50%). 
@@ -631,10 +642,7 @@ DIVIDE( [Win count when oponent is higher rated], [Winning count by player] )
 
 
 
-11. The fourth request is to calculate how much the percentage of wins is by higher rated players. And the answer to this is,
-- 61.58%. 
-
-    This can be described in a table visualization or in a card visualization like below. 
+11. The fourth request involves calculating the percentage of wins by higher-rated players, which amounts to 61.58%. This information can be presented through both a table visualization and a card visualization, as demonstrated below:
 
 ![analysis04 table visualization](/5-Power%20BI/assets/analysis04tablevisual.jpg)
 ![analysis04 card visualization](/5-Power%20BI/assets/analysis04cardvisual.jpg)
@@ -688,11 +696,11 @@ RETURN
 
 12. The final question, expressed in a more straightforward manner, is, after White plays the first move D4, what is the most advantageous opening move for Black in terms of achieving the highest winning percentage?
     
-    The thinking process is like below and this helps to create DAX measure in more intuitive way.
-- Begin by filtering the moves_fct table to include only instances where the first move is D4.
+    The thought process unfolds as follows, facilitating the creation of a more intuitive DAX measure:
+- Commence by filtering the 'moves_fct' table to include only instances where the first move is 'D4.
 - Utilize this criterion to identify games that were won by Black from the dim_game table.
 - To the resulting table, introduce a new column that calculates the move number as 2.
-- Group the table by move number = 2 and calculate the count.
+- Group the table by move number = 2 and calculate the count of games.
 - Determine the highest count number among these counts.
 - Identify the move that corresponds to the highest count number, as it shares the same count value as the highest count number.
 
@@ -738,3 +746,4 @@ RETURN
 ```
 * Link to learn ADDCOLUMNS DAX function: https://learn.microsoft.com/en-us/dax/addcolumns-function-dax?wt.mc_id=DP-MVP-5004989
 
+13. Until this juncture, I have developed DAX measures and visualizations within the Power BI Desktop file, serving as a proof of concept (POC) version. Moving forward, my focus shifts to crafting charts imbued with purposeful colors, thereby rendering a more intuitive and insightful experience.
