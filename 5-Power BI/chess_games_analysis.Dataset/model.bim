@@ -1,0 +1,802 @@
+{
+  "compatibilityLevel": 1567,
+  "model": {
+    "annotations": [
+      {
+        "name": "__PBI_TimeIntelligenceEnabled",
+        "value": "0"
+      },
+      {
+        "name": "PBIDesktopVersion",
+        "value": "2.121.903.0 (23.09)"
+      },
+      {
+        "name": "PBI_QueryOrder",
+        "value": "[\"chess_games_source\",\"dim_player\",\"dim_game\",\"moves_fct\",\"Key_Measures\"]"
+      },
+      {
+        "name": "PBI_ProTooling",
+        "value": "[\"DevMode\"]"
+      }
+    ],
+    "culture": "en-US",
+    "cultures": [
+      {
+        "name": "en-US",
+        "linguisticMetadata": {
+          "content": {
+            "DynamicImprovement": "HighConfidence",
+            "Language": "en-US",
+            "Version": "1.0.0"
+          },
+          "contentType": "json"
+        }
+      }
+    ],
+    "dataAccessOptions": {
+      "legacyRedirects": true,
+      "returnErrorValuesAsNull": true
+    },
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "expressions": [
+      {
+        "name": "chess_games_source",
+        "annotations": [
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "expression": [
+          "let",
+          "    Source = Sql.Database(\"77oajh3wezeejnmdlu54fth3om-73vumkwqpm3ufkgyymlfnxetxy.datawarehouse.pbidedicated.windows.net\", \"pbiforbeginner\"),",
+          "    dbo_chess_games_source = Source{[Schema=\"dbo\",Item=\"chess_games_source\"]}[Data]",
+          "in",
+          "    dbo_chess_games_source"
+        ],
+        "kind": "m",
+        "lineageTag": "4f1201cb-2900-48c4-b5cf-56ed78240513"
+      }
+    ],
+    "relationships": [
+      {
+        "name": "e1e1f842-e9b5-4217-8335-743947a81f2b",
+        "fromColumn": "white_player_id_index",
+        "fromTable": "dim_game",
+        "toColumn": "player_id_index",
+        "toTable": "dim_player"
+      },
+      {
+        "name": "a49b00d8-199d-4539-b2b4-443992e68971",
+        "fromColumn": "black_player_id_index",
+        "fromTable": "dim_game",
+        "isActive": false,
+        "toColumn": "player_id_index",
+        "toTable": "dim_player"
+      },
+      {
+        "name": "c112b6f9-c7cf-4221-9e53-69c3fb3c9d35",
+        "fromColumn": "game_id",
+        "fromTable": "moves_fct",
+        "toColumn": "game_id",
+        "toTable": "dim_game"
+      }
+    ],
+    "sourceQueryCulture": "en-US",
+    "tables": [
+      {
+        "name": "dim_player",
+        "annotations": [
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "player_id",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "b52bf627-906a-4498-88ee-ea955dbc04a0",
+            "sourceColumn": "player_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "player_id_index",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "cb88ab2d-5650-4335-9fe6-f9f21a598e70",
+            "sourceColumn": "player_id_index",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "1c279e45-40b8-4a1f-b444-a12c804e0690",
+        "partitions": [
+          {
+            "name": "dim_player",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = chess_games_source,",
+                "    // only select white id column",
+                "    #\"white id\" = Table.SelectColumns(Source,{\"white_id\"}),",
+                "    #\"rename it to player id (white)\" = Table.RenameColumns(#\"white id\",{{\"white_id\", \"player_id\"}}),",
+                "",
+                "    // only select black id column from the source, not from the previous step",
+                "    #\"black id\" = Table.SelectColumns(Source,{\"black_id\"}),",
+                "    #\"rename it to palyer id (black)\" = Table.RenameColumns(#\"black id\",{{\"black_id\", \"player_id\"}}),",
+                "",
+                "    // append the white id column and black id column",
+                "    #\"Appended Query\" = Table.Combine({#\"rename it to player id (white)\", #\"rename it to palyer id (black)\"}),",
+                "",
+                "    // remove duplicated ids",
+                "    #\"Removed Duplicates\" = Table.Distinct(#\"Appended Query\"),",
+                "    #\"Sorted Rows\" = Table.Sort(#\"Removed Duplicates\",{{\"player_id\", Order.Ascending}}),",
+                "",
+                "    // create index column as primary key column",
+                "    #\"Added Index\" = Table.AddIndexColumn(#\"Sorted Rows\", \"player_id_index\", 1, 1, Int64.Type)",
+                "in",
+                "    #\"Added Index\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "dim_game",
+        "annotations": [
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "game_id",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "a5cb0df6-fcec-4c3d-8e73-d2011b4bd5ed",
+            "sourceColumn": "game_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "rated",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "boolean",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
+            "lineageTag": "27503bd2-3116-459c-93e3-8d5da41dce07",
+            "sourceColumn": "rated",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "turns",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "817670d1-bcd5-4bec-b9c0-90c7141522f7",
+            "sourceColumn": "turns",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "victory_status",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "9bff8954-9923-4259-95c8-70b8f6d82437",
+            "sourceColumn": "victory_status",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "winner",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "SortByColumn"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "ac855e3d-89a5-4595-88e2-75c1caff882b",
+            "sortByColumn": "winner sort order",
+            "sourceColumn": "winner",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "time_increment",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "b018aa4b-b5e2-4634-b5d7-59fd108713ec",
+            "sourceColumn": "time_increment",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "white_rating",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "dad46ba7-9289-435a-a2df-98b246a7feb6",
+            "sourceColumn": "white_rating",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "black_rating",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "f58e285f-f335-44df-b816-32e94e4588a5",
+            "sourceColumn": "black_rating",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "opening_fullname",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "839f8da0-0696-4d3d-98cd-7b403e72a491",
+            "sourceColumn": "opening_fullname",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "opening_shortname",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "a17289ed-cf00-477b-81f8-bfbb34046d32",
+            "sourceColumn": "opening_shortname",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "white_player_id_index",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "fec6a91a-c179-4775-9f81-cc905aaea928",
+            "sourceColumn": "white_player_id_index",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "black_player_id_index",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "7b22c0be-c736-4986-bcb7-a1d0f6b40735",
+            "sourceColumn": "black_player_id_index",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "winner sort order",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "15e31222-2ff6-4619-ba40-296a60b79087",
+            "sourceColumn": "winner sort order",
+            "summarizeBy": "sum"
+          }
+        ],
+        "lineageTag": "55988856-4c61-4ba7-b082-1cd713ce573f",
+        "partitions": [
+          {
+            "name": "dim_game",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = chess_games_source,",
+                "",
+                "    // remove unneccessary columns",
+                "    #\"Removed Other Columns\" = Table.SelectColumns(Source,{\"game_id\", \"rated\", \"turns\", \"victory_status\", \"winner\", \"time_increment\", \"white_id\", \"white_rating\", \"black_id\", \"black_rating\", \"opening_fullname\", \"opening_shortname\"}),",
+                "",
+                "    // use player_id_index column from dim_player table for creating a foreign key column for white players and black players",
+                "    #\"Merged Queries\" = Table.NestedJoin(#\"Removed Other Columns\", {\"white_id\"}, dim_player, {\"player_id\"}, \"dim_player\", JoinKind.LeftOuter),",
+                "    #\"Expanded dim_player\" = Table.ExpandTableColumn(#\"Merged Queries\", \"dim_player\", {\"player_id_index\"}, {\"player_id_index\"}),",
+                "    #\"Renamed Columns\" = Table.RenameColumns(#\"Expanded dim_player\",{{\"player_id_index\", \"white_player_id_index\"}}),",
+                "    #\"Merged Queries1\" = Table.NestedJoin(#\"Renamed Columns\", {\"black_id\"}, dim_player, {\"player_id\"}, \"dim_player\", JoinKind.LeftOuter),",
+                "    #\"Expanded dim_player1\" = Table.ExpandTableColumn(#\"Merged Queries1\", \"dim_player\", {\"player_id_index\"}, {\"player_id_index\"}),",
+                "    #\"Renamed Columns1\" = Table.RenameColumns(#\"Expanded dim_player1\",{{\"player_id_index\", \"black_player_id_index\"}}),",
+                "    ",
+                "    #\"Removed Other Columns1\" = Table.SelectColumns(#\"Renamed Columns1\",{\"game_id\", \"rated\", \"turns\", \"victory_status\", \"winner\", \"time_increment\", \"white_rating\", \"black_rating\", \"opening_fullname\", \"opening_shortname\", \"white_player_id_index\", \"black_player_id_index\"}),",
+                "    ",
+                "    #\"Add winner sort order column\" = Table.AddColumn(#\"Removed Other Columns1\", ",
+                "        \"winner sort order\", each if [winner] = \"White\" then 1 else ",
+                "        if [winner] = \"Black\" then 2 else ",
+                "        if [winner] = \"Draw\" then 3 else ",
+                "        \"check again\", Int64.Type)",
+                "in",
+                "    #\"Add winner sort order column\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "moves_fct",
+        "annotations": [
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "game_id",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "a5924f2a-6620-438b-8c80-00592f50d53e",
+            "sourceColumn": "game_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "moves",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "de7666cf-eaee-48b5-b858-ccbb00f38509",
+            "sourceColumn": "moves",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "move_number",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "e6b43f40-8b67-44ad-a5a0-267d007adfa5",
+            "sourceColumn": "move_number",
+            "summarizeBy": "sum"
+          }
+        ],
+        "lineageTag": "c31a4a49-2bfa-4596-ba40-0175eb5ee1f0",
+        "partitions": [
+          {
+            "name": "moves_fct",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = chess_games_source,",
+                "",
+                "    // remove unneccessary columns",
+                "    #\"Removed Other Columns\" = Table.SelectColumns(Source,{\"game_id\", \"moves\"}),",
+                "",
+                "    // the moves column contains all moves with spaces that differenciate each move, so split it by space",
+                "    // split it vertically by game id",
+                "    #\"Split Column by Delimiter\" = Table.ExpandListColumn(Table.TransformColumns(#\"Removed Other Columns\", {{\"moves\", Splitter.SplitTextByDelimiter(\" \", QuoteStyle.Csv), let itemType = (type nullable text) meta [Serialized.Text = true] in type {itemType}}}), \"moves\"),",
+                "",
+                "    // create move number column in each game",
+                "    // group by each game id and add index column as a move number column",
+                "    #\"Grouped Rows\" = Table.Group(#\"Split Column by Delimiter\", {\"game_id\"}, {{\"moves\", each Table.AddIndexColumn( _, \"move_number\", 1, 1, Int64.Type)}}),",
+                "    #\"Expanded moves\" = Table.ExpandTableColumn(#\"Grouped Rows\", \"moves\", {\"moves\", \"move_number\"}, {\"moves\", \"move_number\"}),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Expanded moves\",{{\"moves\", type text}, {\"move_number\", Int64.Type}})",
+                "in",
+                "    #\"Changed Type\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Key_Measures",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "lineageTag": "d864110f-31a3-41fb-9312-8a2cb45729a4",
+        "measures": [
+          {
+            "name": "Win count",
+            "expression": [
+              "",
+              "    DISTINCTCOUNT(dim_game[game_id])"
+            ],
+            "formatString": "0",
+            "lineageTag": "2957849f-5892-4c28-9118-16af5cc78509"
+          },
+          {
+            "name": "The most winning first move by white",
+            "expression": [
+              "",
+              "VAR _whitewintable =  //Create a virtual table that shows white players win with showing the first move of each game.",
+              "    FILTER (",
+              "        SUMMARIZE (",
+              "            FILTER ( moves_fct, moves_fct[move_number] = 1 ),",
+              "            moves_fct[moves],",
+              "            dim_game[game_id],",
+              "            dim_game[winner]",
+              "        ),",
+              "        dim_game[winner] = \"White\"",
+              "    )",
+              "",
+              "VAR _countfirstmove =   // Group every first move in the above table with adding counting column. ",
+              "    GROUPBY (",
+              "        _whitewintable,",
+              "        moves_fct[moves],",
+              "        \"@count\", SUMX ( CURRENTGROUP (), 1 )",
+              "    )",
+              "",
+              "VAR _maxwin =   // Maximum counting number means the most played first move.",
+              "    MAXX ( _countfirstmove, [@count] )",
+              "",
+              "VAR _mostwinningfirstmove =",
+              "    FILTER ( _countfirstmove, [@count] = _maxwin )",
+              "    ",
+              "RETURN",
+              "    CONCATENATEX ( _mostwinningfirstmove, moves_fct[moves], \", \" )",
+              ""
+            ],
+            "lineageTag": "8f140ac1-1f96-484b-a42a-04fb82639bcc"
+          },
+          {
+            "name": "The most winning first move by black",
+            "expression": [
+              "",
+              "VAR _blackwintable =    // black player's first move is always move number 2",
+              "    FILTER (",
+              "        SUMMARIZE (",
+              "            FILTER ( moves_fct, moves_fct[move_number] = 2 ),",
+              "            moves_fct[moves],",
+              "            dim_game[game_id],",
+              "            dim_game[winner]",
+              "        ),",
+              "        dim_game[winner] = \"Black\"",
+              "    )",
+              "VAR _countfirstmove =",
+              "    GROUPBY (",
+              "        _blackwintable,",
+              "        moves_fct[moves],",
+              "        \"@count\", SUMX ( CURRENTGROUP (), 1 )",
+              "    )",
+              "VAR _maxwin =",
+              "    MAXX ( _countfirstmove, [@count] )",
+              "VAR _mostwinningfirstmove =",
+              "    FILTER ( _countfirstmove, [@count] = _maxwin )",
+              "RETURN",
+              "    CONCATENATEX ( _mostwinningfirstmove, moves_fct[moves], \", \" )"
+            ],
+            "lineageTag": "7527ff3b-3ab3-49e1-a008-71d348a52aa2"
+          },
+          {
+            "name": "How many wins by this first move by white",
+            "expression": [
+              "",
+              "VAR _whitewintable =",
+              "    FILTER (",
+              "        SUMMARIZE (",
+              "            FILTER ( moves_fct, moves_fct[move_number] = 1 ),",
+              "            moves_fct[moves],",
+              "            dim_game[game_id],",
+              "            dim_game[winner]",
+              "        ),",
+              "        dim_game[winner] = \"White\"",
+              "    )",
+              "VAR _countfirstmove =",
+              "    GROUPBY (",
+              "        _whitewintable,",
+              "        moves_fct[moves],",
+              "        \"@count\", SUMX ( CURRENTGROUP (), 1 )",
+              "    )",
+              "VAR _maxwin =",
+              "    MAXX ( _countfirstmove, [@count] )",
+              "RETURN",
+              "    _maxwin",
+              ""
+            ],
+            "formatString": "0",
+            "lineageTag": "206b56a3-c3a0-48b5-86f4-96123c960f82"
+          },
+          {
+            "name": "How many wins by this first move by black",
+            "expression": [
+              "",
+              "VAR _blackwintable =",
+              "    FILTER (",
+              "        SUMMARIZE (",
+              "            FILTER ( moves_fct, moves_fct[move_number] = 2 ),",
+              "            moves_fct[moves],",
+              "            dim_game[game_id],",
+              "            dim_game[winner]",
+              "        ),",
+              "        dim_game[winner] = \"Black\"",
+              "    )",
+              "VAR _countfirstmove =",
+              "    GROUPBY (",
+              "        _blackwintable,",
+              "        moves_fct[moves],",
+              "        \"@count\", SUMX ( CURRENTGROUP (), 1 )",
+              "    )",
+              "VAR _maxwin =",
+              "    MAXX ( _countfirstmove, [@count] )",
+              "RETURN",
+              "    _maxwin"
+            ],
+            "formatString": "0",
+            "lineageTag": "147b3fe4-c968-44d3-a95d-77ebfadcd536"
+          },
+          {
+            "name": "Winning count by player",
+            "expression": [
+              "",
+              "VAR _whiteplay =",
+              "    COUNTROWS ( FILTER ( dim_game, dim_game[winner] = \"White\" ) )",
+              "",
+              "//activating inactive relationship in the datamodel by using USERELATIONSHIP DAX function    ",
+              "VAR _blackplay =    ",
+              "    CALCULATE (",
+              "        COUNTROWS ( FILTER ( dim_game, dim_game[winner] = \"Black\" ) ),",
+              "        USERELATIONSHIP ( dim_player[player_id_index], dim_game[black_player_id_index] )",
+              "    )",
+              "    ",
+              "RETURN",
+              "    _whiteplay + _blackplay",
+              ""
+            ],
+            "formatString": "0",
+            "lineageTag": "9201ed44-be17-49cd-a681-f87d51827478"
+          },
+          {
+            "name": "Win count when oponent is higher rated",
+            "expression": [
+              "",
+              "VAR _wincountbywhite =",
+              "    COUNTROWS (",
+              "        FILTER (",
+              "            dim_game,",
+              "            dim_game[winner] = \"White\"",
+              "                && dim_game[white_rating] < dim_game[black_rating]",
+              "        )",
+              "    )",
+              "",
+              "//activating inactive relationship in the datamodel by using USERELATIONSHIP DAX function    ",
+              "VAR _wincountbyblack =    ",
+              "    CALCULATE (",
+              "        COUNTROWS (",
+              "            FILTER (",
+              "                dim_game,",
+              "                dim_game[winner] = \"Black\"",
+              "                    && dim_game[black_rating] < dim_game[white_rating]",
+              "            )",
+              "        ),",
+              "        USERELATIONSHIP ( dim_player[player_id_index], dim_game[black_player_id_index] )",
+              "    )",
+              "    ",
+              "RETURN",
+              "    _wincountbywhite + _wincountbyblack",
+              ""
+            ],
+            "formatString": "0",
+            "lineageTag": "88623aa3-0750-4606-a93f-0b459f82f07c"
+          },
+          {
+            "name": "Winning higher rated player percentage",
+            "expression": [
+              "",
+              "DIVIDE( [Win count when oponent is higher rated], [Winning count by player] )"
+            ],
+            "formatString": "0.00%;-0.00%;0.00%",
+            "lineageTag": "3c1107e1-b13f-442e-8893-b4796ca3507c"
+          },
+          {
+            "name": "White higher rated win count",
+            "expression": [
+              "",
+              "COUNTROWS (",
+              "    FILTER (",
+              "        dim_game,",
+              "        dim_game[white_rating] > dim_game[black_rating]",
+              "    )",
+              ")",
+              ""
+            ],
+            "formatString": "0",
+            "lineageTag": "191ef89c-0ec5-4c02-a4cf-649938fa5c23"
+          },
+          {
+            "name": "Black higher rated win count",
+            "expression": [
+              "",
+              "COUNTROWS (",
+              "    FILTER (",
+              "        dim_game,",
+              "        dim_game[white_rating] < dim_game[black_rating]",
+              "    )",
+              ")"
+            ],
+            "formatString": "0",
+            "lineageTag": "84fe26ef-3a98-492b-8f97-e4d8e048bd9a"
+          },
+          {
+            "name": "Win by higher rated players ratio",
+            "expression": [
+              "",
+              "VAR _whitewin =",
+              "    COUNTROWS (",
+              "        FILTER (",
+              "            dim_game,",
+              "            dim_game[winner] = \"White\"",
+              "                && dim_game[white_rating] > dim_game[black_rating]",
+              "        )",
+              "    )",
+              "VAR _blackwin =",
+              "    COUNTROWS (",
+              "        FILTER (",
+              "            dim_game,",
+              "            dim_game[winner] = \"Black\"",
+              "                && dim_game[white_rating] < dim_game[black_rating]",
+              "        )",
+              "    )",
+              "VAR _allgamescount =",
+              "    COUNTROWS ( dim_game )",
+              "RETURN",
+              "    DIVIDE ( _whitewin + _blackwin, _allgamescount )",
+              ""
+            ],
+            "formatString": "0.00%;-0.00%;0.00%",
+            "lineageTag": "50814227-991e-4916-bd00-5786b34f2312"
+          },
+          {
+            "name": "Black most winning move after white first move d4",
+            "expression": [
+              "",
+              "VAR _blackwinafterDfour =",
+              "    FILTER (",
+              "        SUMMARIZE (",
+              "            FILTER ( moves_fct, moves_fct[move_number] = 1 && moves_fct[moves] = \"d4\" ),",
+              "            dim_game[game_id],",
+              "            dim_game[winner]",
+              "        ),",
+              "        dim_game[winner] = \"Black\"",
+              "    )",
+              "VAR _addblackfirstmove =",
+              "    ADDCOLUMNS (",
+              "        _blackwinafterDfour,",
+              "        \"@blackfirstmove\",",
+              "            CALCULATE (",
+              "                MAXX ( FILTER ( moves_fct, moves_fct[move_number] = 2 ), moves_fct[moves] )",
+              "            )",
+              "    )",
+              "VAR _groupbyblackfirstmovecount =",
+              "    GROUPBY (",
+              "        _addblackfirstmove,",
+              "        [@blackfirstmove],",
+              "        \"@count\", SUMX ( CURRENTGROUP (), 1 )",
+              "    )",
+              "VAR _maxcount =",
+              "    MAXX ( _groupbyblackfirstmovecount, [@count] )",
+              "RETURN",
+              "    MAXX (",
+              "        FILTER ( _groupbyblackfirstmovecount, [@count] = _maxcount ),",
+              "        [@blackfirstmove]",
+              "    )",
+              "    "
+            ],
+            "lineageTag": "e9b57d8b-176f-44e5-ab04-4fbd09e8a2b0"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Key_Measures",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText(\"i44FAA==\", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),",
+                "    #\"Removed Columns\" = Table.RemoveColumns(Source,{\"Column1\"})",
+                "in",
+                "    #\"Removed Columns\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

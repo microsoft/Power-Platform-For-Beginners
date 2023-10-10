@@ -1,0 +1,135 @@
+{
+  "config": "{\"version\":\"5.48\",\"themeCollection\":{\"baseTheme\":{\"name\":\"CY23SU08\",\"version\":\"5.48\",\"type\":2}},\"activeSectionIndex\":0,\"defaultDrillFilterOtherVisuals\":true,\"linguisticSchemaSyncVersion\":2,\"settings\":{\"useNewFilterPaneExperience\":true,\"allowChangeFilterTypes\":true,\"useStylableVisualContainerHeader\":true,\"queryLimitOption\":6,\"useEnhancedTooltips\":true,\"exportDataMode\":1,\"useDefaultAggregateDisplayName\":true},\"objects\":{\"section\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Middle'\"}}}}}]}}",
+  "layoutOptimization": 0,
+  "resourcePackages": [
+    {
+      "resourcePackage": {
+        "disabled": false,
+        "items": [
+          {
+            "name": "CY23SU08",
+            "path": "BaseThemes/CY23SU08.json",
+            "type": 202
+          }
+        ],
+        "name": "SharedResources",
+        "type": 2
+      }
+    }
+  ],
+  "sections": [
+    {
+      "config": "{}",
+      "displayName": "request 1",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "ReportSection",
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"adb92c952f39a99541d4\",\"layouts\":[{\"id\":0,\"position\":{\"x\":624.4444444444445,\"y\":68.88888888888889,\"z\":0,\"width\":280,\"height\":280,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"tableEx\",\"projections\":{\"Values\":[{\"queryRef\":\"dim_game.winner\"},{\"queryRef\":\"Key_Measures.Win count\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"dim_game\",\"Type\":0},{\"Name\":\"k\",\"Entity\":\"Key_Measures\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"winner\"},\"Name\":\"dim_game.winner\",\"NativeReferenceName\":\"winner\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"k\"}},\"Property\":\"Win count\"},\"Name\":\"Key_Measures.Win count\",\"NativeReferenceName\":\"Win count\"}]},\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 280.00,
+          "width": 280.00,
+          "x": 624.44,
+          "y": 68.89,
+          "z": 0.00
+        }
+      ],
+      "width": 1280.00
+    },
+    {
+      "config": "{}",
+      "displayName": "request 4",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "ReportSection6931a4c70b7a3ae9f27c",
+      "ordinal": 3,
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"a7822a77aa2c19d6f8d8\",\"layouts\":[{\"id\":0,\"position\":{\"x\":130,\"y\":252.22222222222223,\"z\":0,\"width\":490,\"height\":180,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"tableEx\",\"projections\":{\"Values\":[{\"queryRef\":\"dim_game.winner\"},{\"queryRef\":\"Key_Measures.White higher rated win count\"},{\"queryRef\":\"Key_Measures.Black higher rated win count\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"dim_game\",\"Type\":0},{\"Name\":\"k\",\"Entity\":\"Key_Measures\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"winner\"},\"Name\":\"dim_game.winner\",\"NativeReferenceName\":\"winner\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"k\"}},\"Property\":\"White higher rated win count\"},\"Name\":\"Key_Measures.White higher rated win count\",\"NativeReferenceName\":\"White higher rated win count\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"k\"}},\"Property\":\"Black higher rated win count\"},\"Name\":\"Key_Measures.Black higher rated win count\",\"NativeReferenceName\":\"Black higher rated win count\"}]},\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 180.00,
+          "width": 490.00,
+          "x": 130.00,
+          "y": 252.22,
+          "z": 0.00
+        },
+        {
+          "config": "{\"name\":\"bfcc9c4cfa28f132cff9\",\"layouts\":[{\"id\":0,\"position\":{\"x\":112.22222222222221,\"y\":471.1111111111111,\"z\":1000,\"width\":490,\"height\":180,\"tabOrder\":1000}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"Key_Measures.Win by higher rated players ratio\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"k\",\"Entity\":\"Key_Measures\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"k\"}},\"Property\":\"Win by higher rated players ratio\"},\"Name\":\"Key_Measures.Win by higher rated players ratio\",\"NativeReferenceName\":\"Win by higher rated players ratio\"}]},\"autoSelectVisualType\":true,\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 180.00,
+          "width": 490.00,
+          "x": 112.22,
+          "y": 471.11,
+          "z": 1000.00
+        }
+      ],
+      "width": 1280.00
+    },
+    {
+      "config": "{}",
+      "displayName": "request 2",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "ReportSectiona3cfeda365ceb93d66dd",
+      "ordinal": 1,
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"54f2a99c53828fcb6303\",\"layouts\":[{\"id\":0,\"position\":{\"x\":305.55555555555554,\"y\":20,\"z\":2,\"width\":703.3333333333334,\"height\":412.22222222222223}}],\"singleVisual\":{\"visualType\":\"cardVisual\",\"projections\":{\"Data\":[{\"queryRef\":\"Key_Measures.The most winning first move by white\"},{\"queryRef\":\"Key_Measures.The most winning first move by black\"},{\"queryRef\":\"Key_Measures.How many wins by this first move by white\"},{\"queryRef\":\"Key_Measures.How many wins by this first move by black\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"k\",\"Entity\":\"Key_Measures\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"k\"}},\"Property\":\"The most winning first move by white\"},\"Name\":\"Key_Measures.The most winning first move by white\",\"NativeReferenceName\":\"The most winning first move by white\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"k\"}},\"Property\":\"The most winning first move by black\"},\"Name\":\"Key_Measures.The most winning first move by black\",\"NativeReferenceName\":\"The most winning first move by black\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"k\"}},\"Property\":\"How many wins by this first move by white\"},\"Name\":\"Key_Measures.How many wins by this first move by white\",\"NativeReferenceName\":\"How many wins by this first move by white\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"k\"}},\"Property\":\"How many wins by this first move by black\"},\"Name\":\"Key_Measures.How many wins by this first move by black\",\"NativeReferenceName\":\"How many wins by this first move by black\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"k\"}},\"Property\":\"The most winning first move by white\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"value\":[{\"properties\":{\"labelDisplayUnits\":{\"expr\":{\"Literal\":{\"Value\":\"1D\"}}}},\"selector\":{\"metadata\":\"Key_Measures.How many wins by this first move by white\"}},{\"properties\":{\"labelDisplayUnits\":{\"expr\":{\"Literal\":{\"Value\":\"1D\"}}}},\"selector\":{\"metadata\":\"Key_Measures.How many wins by this first move by black\"}}],\"label\":[{\"properties\":{\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"12D\"}}},\"textWrap\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}},\"selector\":{\"metadata\":\"Key_Measures.How many wins by this first move by black\"}},{\"properties\":{\"textWrap\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}},\"selector\":{\"id\":\"default\"}}]}}}",
+          "filters": "[]",
+          "height": 412.22,
+          "width": 703.33,
+          "x": 305.56,
+          "y": 20.00,
+          "z": 2.00
+        }
+      ],
+      "width": 1280.00
+    },
+    {
+      "config": "{}",
+      "displayName": "request5",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "ReportSectiond4502c05134526da83ab",
+      "ordinal": 4,
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"dd4617cc92ee9a59ef14\",\"layouts\":[{\"id\":0,\"position\":{\"x\":640,\"y\":158.88888888888889,\"z\":0,\"width\":300,\"height\":300}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"Key_Measures.Black most winning move after white first move d4\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"k\",\"Entity\":\"Key_Measures\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"k\"}},\"Property\":\"Black most winning move after white first move d4\"},\"Name\":\"Key_Measures.Black most winning move after white first move d4\",\"NativeReferenceName\":\"Black most winning move after white first move d4\"}]},\"autoSelectVisualType\":true,\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 300.00,
+          "width": 300.00,
+          "x": 640.00,
+          "y": 158.89,
+          "z": 0.00
+        }
+      ],
+      "width": 1280.00
+    },
+    {
+      "config": "{}",
+      "displayName": "request 3",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "ReportSectiond7abae80e30c063f3ccb",
+      "ordinal": 2,
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"4f0815b27e010c1808f5\",\"layouts\":[{\"id\":0,\"position\":{\"x\":342.22222222222223,\"y\":35.55555555555556,\"z\":0,\"width\":641.1111111111111,\"height\":575.5555555555555,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"tableEx\",\"projections\":{\"Values\":[{\"queryRef\":\"dim_player.player_id\"},{\"queryRef\":\"Key_Measures.Win count by playing white\"},{\"queryRef\":\"Key_Measures.Win count by playing white when oponent is higher rated\"},{\"queryRef\":\"Key_Measures.Winning higher rated player percentage\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"dim_player\",\"Type\":0},{\"Name\":\"k\",\"Entity\":\"Key_Measures\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"player_id\"},\"Name\":\"dim_player.player_id\",\"NativeReferenceName\":\"player_id\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"k\"}},\"Property\":\"Winning count by player\"},\"Name\":\"Key_Measures.Win count by playing white\",\"NativeReferenceName\":\"Win count by playing white\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"k\"}},\"Property\":\"Win count when oponent is higher rated\"},\"Name\":\"Key_Measures.Win count by playing white when oponent is higher rated\",\"NativeReferenceName\":\"Win count by playing white when oponent is higher rated\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"k\"}},\"Property\":\"Winning higher rated player percentage\"},\"Name\":\"Key_Measures.Winning higher rated player percentage\",\"NativeReferenceName\":\"Winning higher rated player percentage\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"k\"}},\"Property\":\"Winning count by player\"}}}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"columnWidth\":[{\"properties\":{\"value\":{\"expr\":{\"Literal\":{\"Value\":\"108.77778147928151D\"}}}},\"selector\":{\"metadata\":\"Key_Measures.Win count by playing white\"}},{\"properties\":{\"value\":{\"expr\":{\"Literal\":{\"Value\":\"190.14278572845905D\"}}}},\"selector\":{\"metadata\":\"Key_Measures.Win count by playing white when oponent is higher rated\"}},{\"properties\":{\"value\":{\"expr\":{\"Literal\":{\"Value\":\"142.6666709396788D\"}}}},\"selector\":{\"metadata\":\"Key_Measures.Winning higher rated player percentage\"}}],\"total\":[{\"properties\":{\"totals\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 575.56,
+          "width": 641.11,
+          "x": 342.22,
+          "y": 35.56,
+          "z": 0.00
+        }
+      ],
+      "width": 1280.00
+    }
+  ]
+}
