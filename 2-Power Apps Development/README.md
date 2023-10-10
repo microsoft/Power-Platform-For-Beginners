@@ -7,13 +7,15 @@
 Canvas Apps enables users to design and develop custom applications tailored to their business needs regardless of their technical expertise. One of the significant draws of Canvas Apps is its ability to connect with various data sources, including Microsoft's own Dynamics 365, SharePoint, SQL Server, and many others, ensuring that apps can seamlessly integrate with a user's existing infrastructure. The drag-and-drop functionality and Excel-like low code language ([Power Fx](https://learn.microsoft.com/en-us/power-platform/power-fx/overview)), combined with a myriad of pre-built templates, ensures that even individuals without a background in coding can create functional and aesthetically pleasing applications.
 The flexible nature of Canvas Apps facilitates the creation of applications that work across various platforms, including web browsers, tablets, and smartphones. Customizability extends to functionality and appearance, meaning that businesses can develop applications that perform the required tasks and align perfectly with their brand aesthetic.
 
-![Canvas App](/2-Power%20Apps%20Development/assets/expense-report-powerapp.png) ![Canvas App](/2-Power%20Apps%20Development/assets/MDA-vs-Canvas-fundraiser-app.png)
+![Canvas App](/2-Power%20Apps%20Development/assets/expense-report-powerapp.png) 
+![Canvas App](/2-Power%20Apps%20Development/assets/MDA-vs-Canvas-fundraiser-app.png)
 
 #### Model-Driven Apps:
 Unlike Canvas Apps, which are focus on the app's user interface, Model-Driven Apps begin with the data model. These apps revolve around core data (often within the Dynamics 365 environment) and processes, utilizing the Dataverse to shape the app's behavior and flow. The design is primarily driven by the underlying data structure, components, and relationships, enabling a more standardized yet customizable approach to application creation.
 The strength of Model-Driven Apps lies in their ability to automatically generate a responsive UI based on the data model, making them highly adaptive across different devices like tablets, phones, or computers. This approach is especially beneficial for businesses that require complex, data-intensive applications but wish to reduce the time spent on UI design and focus on functionality and business logic.
 
 ![Canvas App](/2-Power%20Apps%20Development/assets/model-app-sample.png)
+![Canvas App](/2-Power%20Apps%20Development/assets/MDA-vs-Canvas-main-form-dialog.gif)
 
 #### What are the Key Differences?
 | Key | Canvas Apps | Model-Driven Apps |
