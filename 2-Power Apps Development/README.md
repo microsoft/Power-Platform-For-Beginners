@@ -28,7 +28,12 @@ The strength of Model-Driven Apps lies in their ability to automatically generat
 
 
 #### Deciding Between Canvas and Model-Driven Apps: Use Cases and Guidelines
-<!-- - Ahmed -->
+| Use Case | Canvas Apps | Use Case | Model-Driven Apps |
+| Field Service Tool | A utility company might use Canvas Apps to create a mobile tool for technicians in the field. The app could pull data from various sources, like weather forecasts, client databases, and equipment inventories, providing a customized interface for technicians to report statuses, request parts, and communicate with the main office. | Sales CRM | Companies can leverage Model-Driven Apps to manage leads, opportunities, and accounts. The app would automatically generate forms and views based on the sales data model, allowing sales teams to track and nurture potential clients efficiently. |
+| Event Registration | For an organization hosting events, a Canvas App can provide a tailored registration experience, integrating with a seating chart, dietary preferences database, and payment gateway. | Case Management | For customer support departments, a Model-Driven App could be used to manage incoming cases, assign them to agents, track resolution timelines, and maintain a knowledge base. |
+| Retail Inventory Checker | Retail stores can use Canvas Apps to develop a tablet application for staff to quickly check product availability, integrating with both their stock database and an online product catalog. | Vendor Management | Organizations can track all interactions, contracts, and procurement with vendors in a centralized system, with automatic workflows to handle approval processes. |
+| Feedback Collection | A restaurant or cafe could have a kiosk or tablet with a Canvas App for customers to provide feedback, rate their experience, or join a loyalty program. | Regulatory Compliance | In sectors like finance or healthcare, companies could use Model-Driven Apps to ensure adherence to regulations, track any discrepancies, and manage audits. |
+| Employee Onboarding | Companies might develop an app tailored to the new employee experience, integrating with training videos, HR policies, and interactive quizzes. | Project Management | While managing large projects, companies can use Model-Driven Apps to keep track of timelines, deliverables, stakeholders, and budgets, leveraging the power of data relationships and views. |
 
 ### How Power Apps are usually part of bigger solutions
 <!-- - Rebekka -->
