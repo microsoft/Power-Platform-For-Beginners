@@ -2,6 +2,15 @@
 
 ## Overview Power Apps
 ### Low-code Business Applications Development
+Low-code business application development refers to creating business applications with minimal coding using visual development environments. Low-code platforms aim to accelerate application development and delivery by empowering "citizen developers" - those without formal programming skills but with domain or business expertise.
+Microsoft's Power Platform is a prime example of a low-code development platform. It offers tools to create custom business applications, automate workflows, and analyze data without the need for deep coding knowledge.
+
+#### Benefits of using a low-code platform, Microsoft Power Platform, include:
+* Rapid application development and deployment.
+* Reducing the gap between IT and business units.
+* Empowering a more comprehensive range of users to develop solutions.
+* Cost savings as organizations can develop many solutions in-house.
+
 ### Model-Driven vs Canvas Apps
 #### Canvas Apps:
 Canvas Apps enables users to design and develop custom applications tailored to their business needs regardless of their technical expertise. One of the significant draws of Canvas Apps is its ability to connect with various data sources, including Microsoft's own Dynamics 365, SharePoint, SQL Server, and many others, ensuring that apps can seamlessly integrate with a user's existing infrastructure. The drag-and-drop functionality and Excel-like low code language ([Power Fx](https://learn.microsoft.com/en-us/power-platform/power-fx/overview)), combined with a myriad of pre-built templates, ensures that individuals without a background in coding can create functional and efficient business applications.
@@ -18,7 +27,7 @@ The strength of Model-Driven Apps lies in their ability to automatically generat
 
 #### What are the Key Differences?
 | Key | Canvas Apps | Model-Driven Apps |
-| ------------- | ------------- | ------------- |
+| :--- | :--- | :--- |
 | Purpose and Design Approach  | They are designed for creating highly tailored apps with a custom user interface (UI). Developers start with a blank canvas and can design the UI exactly as they want, akin to designing a PowerPoint slide. | These are designed around your core business data and processes. The UI is largely generated based on the underlying data model and the relationships between tables.
 | Data Source  | Can connect to multiple data sources, not just the Dataverse. This includes SharePoint, SQL Server, and various other connectors provided by Power Platform.  | Primarily uses the Dataverse  as its data source. |
 | User Interface  | Offers pixel-perfect control over the UI. The designer can position, color, and set controls exactly how they want them to appear.  | The UI is automatically generated from the data model. While there's some customization available, it's more constrained than in Canvas Apps. |
@@ -30,7 +39,7 @@ The strength of Model-Driven Apps lies in their ability to automatically generat
 
 #### Deciding Between Canvas and Model-Driven Apps: Use Cases
 | Use Case | Canvas Apps | Use Case | Model-Driven Apps |
-| ------------- | ------------- | ------------- | ------------- |
+| :--- | :--- | :--- | :--- |
 | Field Service Tool | A utility company might use Canvas Apps to create a mobile tool for technicians in the field. The app could pull data from various sources, like weather forecasts, client databases, and equipment inventories, providing a customized interface for technicians to report statuses, request parts, and communicate with the main office. | Sales CRM | Companies can leverage Model-Driven Apps to manage leads, opportunities, and accounts. The app would automatically generate forms and views based on the sales data model, allowing sales teams to track and nurture potential clients efficiently. |
 | Event Registration | For an organization hosting events, a Canvas App can provide a tailored registration experience, integrating with a seating chart, dietary preferences database, and payment gateway. | Case Management | For customer support departments, a Model-Driven App could be used to manage incoming cases, assign them to agents, track resolution timelines, and maintain a knowledge base. |
 | Retail Inventory Checker | Retail stores can use Canvas Apps to develop a tablet application for staff to quickly check product availability, integrating with both their stock database and an online product catalog. | Vendor Management | Organizations can track all interactions, contracts, and procurement with vendors in a centralized system, with automatic workflows to handle approval processes. |
