@@ -14,7 +14,6 @@ The flexible nature of Canvas Apps facilitates the creation of applications that
 Unlike Canvas Apps, which are focus on the app's user interface, Model-Driven Apps begin with the data model. These apps revolve around core data (often within the Dynamics 365 environment) and processes, utilizing the Dataverse to shape the app's behavior and flow. The design is primarily driven by the underlying data structure, components, and relationships, enabling a more standardized yet customizable approach to application creation.
 The strength of Model-Driven Apps lies in their ability to automatically generate a responsive UI based on the data model, making them highly adaptive across different devices like tablets, phones, or computers. This approach is especially beneficial for businesses that require complex, data-intensive applications but wish to reduce the time spent on UI design and focus on functionality and business logic.
 
-![Canvas App](/2-Power%20Apps%20Development/assets/model-app-sample.png)
 ![Canvas App](/2-Power%20Apps%20Development/assets/MDA-vs-Canvas-main-form-dialog.gif)
 
 #### What are the Key Differences?
