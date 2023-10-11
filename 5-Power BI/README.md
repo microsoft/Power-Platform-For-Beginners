@@ -52,7 +52,9 @@
 ## 2. Unlocking the power of Power BI
 ## 3. Datamodel
 ## 4. Open Power BI Desktop
-## 5. DAX measures and Visualizations
+## 5. DAX measures and Visualizations (Proof Of Concept)
+## 6. DAX measures and Visualizations (Production)
+## 7. Publishing and Sharing Power BI report
 
 
  
@@ -141,7 +143,10 @@ The visualization of the data model is represented in the figure below. It's imp
 
 ### Store the source in Lakehouse  
 
-The source is given as a CSV file. I decide to store this source data in Fabric Lakehouse, and I plan to use Dataflow Gen2 to transform the source table and load it back to Lakehouse. 
+The source is given as a CSV file. I decide to store this source data in Fabric Lakehouse, and I plan to use Dataflow Gen2 to transform the source table and load it back to Lakehouse.
+
+* Link to learn Fabric lakehouse: <https://learn.microsoft.com/en-us/fabric/data-engineering/lakehouse-overview?wt.mc_id=DP-MVP-5004989>
+
 
 (1) Create a workspace in app.powerbi.com 
 (2) Name the new workspace “PBI_For_Beginner”.
@@ -185,7 +190,7 @@ The source is given as a CSV file. I decide to store this source data in Fabric 
 
 # 2023/10/01 
 
-#### Note: From this step, it is to load data back to Lakehouse, import it into Power BI Desktop, transform data in the Power Query Editor, load it to Power BI and create a datamodel in Power BI. 
+<span style="color:green">*Note: From this step, it is to load data back to Lakehouse, import it into Power BI Desktop, transform data in the Power Query Editor, load it to Power BI and create a datamodel in Power BI.*</span> 
 
 
 (12) Select Data destination as Lakehouse. 
@@ -217,7 +222,7 @@ The source is given as a CSV file. I decide to store this source data in Fabric 
 
 ![lakehouse table import](/5-Power%20BI/assets/lakehouse%20table%20import.jpg)
 
-#### Note: If you prefer not to connect to the Lakehouse and instead wish to import the CSV file directly from your local computer, please follow the steps outlined below. It's important to be aware that local files may not always automatically assign column titles. In such instances, you can manually assign column titles within the Power Query Editor.
+<span style="color:green">*Note: If you prefer not to connect to the Lakehouse and instead wish to import the CSV file directly from your local computer, please follow the steps outlined below. It's important to be aware that local files may not always automatically assign column titles. In such instances, you can manually assign column titles within the Power Query Editor.*</span>
 
 ![import csv file](/5-Power%20BI/assets/PBI%20Desktop%20connect%20to%20CSV%20file.jpg)
 ![use first row as headers](/5-Power%20BI/assets/PQEditor%20use%20first%20row%20as%20headers.jpg)
@@ -242,7 +247,7 @@ The source is given as a CSV file. I decide to store this source data in Fabric 
 
 ![dim table advanced editor](/5-Power%20BI/assets/pq%20editor%20dim%20table%20advanced%20editor.jpg)
 
-#### Note: The M code provided below is accompanied by comments following "//" that elucidate the purpose of each step. You can conveniently copy and paste the entire M code into the Advanced Editor within Power Query Editor.
+<span style="color:green">*Note: The M code provided below is accompanied by comments following "//" that elucidate the purpose of each step. You can conveniently copy and paste the entire M code into the Advanced Editor within Power Query Editor.*</span>
 
 ```M
 let
@@ -373,7 +378,7 @@ in
 
 
 # 2023/10/08 
-## 5. DAX measures and Visualizations
+## 5. DAX measures and Visualizations (Proof Of Concept)
 
 ### Create DAX measures and visualizations to provide insights (Proof Of Concept). 
 
@@ -394,7 +399,7 @@ DAX Glossaries Link: <https://learn.microsoft.com/en-us/dax/dax-glossary?wt.mc_i
 - What percentage of games were won by the participant with the superior rating? Is there any variance in this statistic based on the color of pieces?
 - What is the initial move for Black that demonstrates the highest likelihood of winning after White's first move of D4?
 
-##### Note: During this session, we shall craft DAX measures and visualizations with the primary purpose of scrutinizing and substantiating data integrity, addressing pertinent inquiries, and validating responses. This phase constitutes an integral component of the initial proof of concept (POC) iteration. Subsequently, a Power BI report tailored for production will be meticulously conceived and developed, building upon the foundations laid during this preliminary POC phase, with the ultimate aim of sharing it effectively with stakeholders. 
+- Note: During this session, we shall craft DAX measures and visualizations with the primary purpose of scrutinizing and substantiating data integrity, addressing pertinent inquiries, and validating responses. This phase constitutes an integral component of the initial proof of concept (POC) iteration. Subsequently, a Power BI report tailored for production will be meticulously conceived and developed, building upon the foundations laid during this preliminary POC phase, with the ultimate aim of sharing it effectively with stakeholders. 
 
 (3) Let's proceed to generate visualizations and DAX measures in response to the aforementioned request. To streamline the first request, our objective is to determine the total number of games won, lost, or drawn by both white and black players.
 
@@ -730,9 +735,7 @@ RETURN
     DIVIDE ( _whitewin + _blackwin, _allgamescount )
 ``` 
 
-(12) The final question, expressed in a more straightforward manner, is, after White plays the first move D4, what is the most advantageous opening move for Black in terms of achieving the highest winning percentage?
-    
-    The thought process unfolds as follows, facilitating the creation of a more intuitive DAX measure:
+(12) The final question, expressed in a more straightforward manner, is, after White plays the first move D4, what is the most advantageous opening move for Black in terms of achieving the highest winning percentage? The thought process unfolds as follows, facilitating the creation of a more intuitive DAX measure:
 - Commence by filtering the 'moves_fct' table to include only instances where the first move is 'D4.
 - Utilize this criterion to identify games that were won by Black from the dim_game table.
 - To the resulting table, introduce a new column that calculates the move number as 2.
@@ -785,3 +788,452 @@ RETURN
 * Link to learn ADDCOLUMNS DAX function: <https://learn.microsoft.com/en-us/dax/addcolumns-function-dax?wt.mc_id=DP-MVP-5004989>
 
 (13) Until this juncture, I have developed DAX measures and visualizations within the Power BI Desktop file, serving as a proof of concept (POC) version. Moving forward, my focus shifts to crafting charts imbued with purposeful colors, thereby rendering a more intuitive and insightful experience.
+
+
+# 2023/10/10
+
+## 6. DAX measures and Visualizations (Production)
+### Create and design Power BI report on top of POC version.
+
+In the previous session, I diligently verified the functionality of the data model to ensure its accuracy in displaying the relevant information. In this current session, I am poised to elevate the presentation of valuable insights by employing various visualization techniques. These include not only the table and card visualizations but also more dynamic and informative options such as bar charts, column charts, and others.
+
+The line chart, while typically a powerful tool for illustrating trends over time, may not be suitable for this report due to the absence of date/time dimensions in the dataset.
+
+The first objective is to ascertain the cumulative number of games won, lost, or drawn by both white and black players. To convey this information in a more intuitive manner, I have opted to employ a bar chart. To enhance the clarity of this visualization, I have incorporated the win count and percentage within labels attached to each bar. This is accomplished through the utilization of the Custom Label feature, complemented by the creation of DAX measures as outlined below:
+
+![win count by winner bar chart](/5-Power%20BI/assets/Win%20count%20by%20winner%20bar%20chart.jpg)
+
+The additinoal DAX measures utilized on this page is composed as follows.
+
+```dax
+Win count percentage = 
+VAR _allgames =
+    CALCULATE (
+        [Win count],
+        REMOVEFILTERS ( dim_game[winner], dim_game[winner sort order] )
+    )
+VAR _wincount = [Win count]
+RETURN
+    DIVIDE ( _wincount, _allgames )
+```
+* Link to learn REMOVEFILTERS DAX function: <https://learn.microsoft.com/en-us/dax/removefilters-function-dax?wt.mc_id=DP-MVP-5004989>
+
+```dax
+Win count by winner label = 
+FORMAT ( [Win count], "#,#0" ) & " | "
+    & FORMAT ( [Win count percentage], "#0.00%" )
+```
+* Link to learn FORMAT DAX function: <https://learn.microsoft.com/en-us/dax/format-function-dax?wt.mc_id=DP-MVP-5004989>
+
+
+The second inquiry pertains to identifying the most frequently employed first moves in games that were victorious for both black and white players. To present this information effectively, I have opted for a table visualization as the most suitable medium. To achieve this, it is imperative to include the [winner] column from the dim_game table in the table visualization. To facilitate this integration, I have slightly adjusted the formulation of the DAX measures, as detailed below:
+
+![most winning first move](/5-Power%20BI/assets/most%20winning%20first%20move.jpg)
+
+The additinoal DAX measures utilized on this page is composed as follows.
+
+```dax
+The most winning first move = 
+VAR _whitewintable =
+    //Create a virtual table that shows the first move of each winning game.
+    SUMMARIZE (
+        FILTER ( moves_fct, moves_fct[move_number] = 1 ),
+        moves_fct[moves],
+        dim_game[game_id]
+    )
+VAR _whitecountfirstmove =
+    // Group every first move in the above table with adding counting column. 
+    GROUPBY (
+        _whitewintable,
+        moves_fct[moves],
+        "@count", SUMX ( CURRENTGROUP (), 1 )
+    )
+VAR _whitemaxwin =
+    // Maximum counting number means the most played first move.
+    MAXX (
+        _whitecountfirstmove,
+        [@count]
+    )
+VAR _whitemostwinningfirstmove =
+    FILTER ( _whitecountfirstmove, [@count] = _whitemaxwin )
+VAR _blackwintable =
+    SUMMARIZE (
+        FILTER ( moves_fct, moves_fct[move_number] = 2 ),
+        moves_fct[moves],
+        dim_game[game_id]
+    )
+VAR _blackcountfirstmove =
+    GROUPBY (
+        _blackwintable,
+        moves_fct[moves],
+        "@count", SUMX ( CURRENTGROUP (), 1 )
+    )
+VAR _blackmaxwin =
+    MAXX ( _blackcountfirstmove, [@count] )
+VAR _blackmostwinningfirstmove =
+    FILTER ( _blackcountfirstmove, [@count] = _blackmaxwin )
+RETURN
+    SWITCH (
+        SELECTEDVALUE ( dim_game[winner] ),
+        "White", CONCATENATEX ( _whitemostwinningfirstmove, moves_fct[moves], ", " ),
+        "Black", CONCATENATEX ( _blackmostwinningfirstmove, moves_fct[moves], ", " )
+    )
+```
+* Link to learn SWITCH DAX function: <https://learn.microsoft.com/en-us/dax/switch-function-dax?wt.mc_id=DP-MVP-5004989>
+* Link to learn SELECTEDVALUE DAX function: <https://learn.microsoft.com/en-us/dax/selectedvalue-function?wt.mc_id=DP-MVP-5004989>
+
+```dax
+How many wins by this first move = 
+VAR _whitewintable =
+    //Create a virtual table that shows the first move of each winning game.
+    SUMMARIZE (
+        FILTER ( moves_fct, moves_fct[move_number] = 1 ),
+        moves_fct[moves],
+        dim_game[game_id]
+    )
+VAR _whitecountfirstmove =
+    // Group every first move in the above table with adding counting column. 
+    GROUPBY (
+        _whitewintable,
+        moves_fct[moves],
+        "@count", SUMX ( CURRENTGROUP (), 1 )
+    )
+VAR _whitemaxwin =
+    // Maximum counting number means the most played first move.
+    MAXX (
+        _whitecountfirstmove,
+        [@count]
+    )
+VAR _blackwintable =
+    SUMMARIZE (
+        FILTER ( moves_fct, moves_fct[move_number] = 2 ),
+        moves_fct[moves],
+        dim_game[game_id]
+    )
+VAR _blackcountfirstmove =
+    GROUPBY (
+        _blackwintable,
+        moves_fct[moves],
+        "@count", SUMX ( CURRENTGROUP (), 1 )
+    )
+VAR _blackmaxwin =
+    MAXX ( _blackcountfirstmove, [@count] )
+RETURN
+    SWITCH (
+        SELECTEDVALUE ( dim_game[winner] ),
+        "White", _whitemaxwin,
+        "Black", _blackmaxwin
+    )
+```
+
+The third inquiry focuses on identifying the player with the highest number of wins and computing their winning percentage when competing against opponents with superior ratings. To present these findings effectively, I have chosen to employ a stacked bar chart. To provide valuable insights, I have designed the chart to showcase the top 10 winning players, along with their respective win counts against lower-rated opponents. I've also created an additional measure to display this supplementary information.
+
+Regarding the data labels, while the chart effectively represents the win count against higher-rated opponents, I've opted not to directly display the win count against lower-rated opponents. Instead, I've chosen to depict the ratio of the win count against higher-rated opponents. This approach allows for the presentation of all pertinent and critical information, including the win count against higher-rated opponents, the ratio, the total win count, and, of course, the name of the player with the most wins, alongside the names of the other top 10 winning players.
+
+![top10 winning players](/5-Power%20BI/assets/top10%20winning%20players.jpg)
+
+The additinoal DAX measures utilized on this page is composed as follows.
+
+```dax
+Win count when oponent is lower rated = 
+    [Winning count by player] - [Win count when oponent is higher rated]
+```
+
+The fourth inquiry centers around calculating the percentage of wins achieved by higher-rated players. In this instance, I have chosen to present this data using a bar chart, similar to the approach I employed when addressing the first question. Additionally, I have integrated a card visualization that I previously crafted.
+
+To generate this visual representation, I have slightly adjusted the formulation of the DAX measure. Notably, it is designed to solely display the win count when the victor holds a higher rating. You may observe that the total number of games (20,058) does not align precisely with the sum of each row. This discrepancy arises because the DAX measure employs a condition of "greater than" or "less than," and does not encompass the "equal to" condition. However, it is imperative to note that the decision to exclude winning counts against equally rated opponents was made deliberately, as it aligns with the objective of calculating the percentage of wins by higher-rated players. This decision should always be communicated and made in collaboration with the business owner or relevant stakeholders.
+
+Regarding the display of data labels, I have chosen to maintain the same approach (Custom label) as I employed when addressing the first question. This consistency ensures clarity and coherence in the visualization.
+
+
+![higher rate win count](/5-Power%20BI/assets/higher%20rated%20win%20count.jpg)
+
+The additinoal DAX measures utilized on this page is composed as follows.
+
+```dax
+Higher rated win count =
+SWITCH (
+    SELECTEDVALUE ( dim_game[winner] ),
+    "White",
+        COUNTROWS (
+            FILTER ( dim_game, dim_game[white_rating] > dim_game[black_rating] )
+        ),
+    "Black",
+        COUNTROWS (
+            FILTER ( dim_game, dim_game[white_rating] < dim_game[black_rating] )
+        ),
+    COUNTROWS ( dim_game )
+)
+```
+
+```dax
+Higher rated win count ratio =
+VAR _allgames =
+    CALCULATE (
+        COUNTROWS ( dim_game ),
+        REMOVEFILTERS ( dim_game[winner], dim_game[winner sort order] )
+    )
+VAR _higherratedwincount = [Higher rated win count]
+RETURN
+    DIVIDE ( _higherratedwincount, _allgames )
+```
+
+```dax
+Higher rated win label =
+FORMAT ( [Higher rated win count], "#,#0" ) & " | "
+    & FORMAT ( [Higher rated win count ratio], "#0.00%" )
+```
+
+The final inquiry pertains to identifying the initial move for Black that boasts the highest probability of securing victory following White's first move of D4. While crafting the Proof of Concept (POC) version, I ascertained that when White initiates with D4, the most advantageous response for Black is D5. In pursuit of providing even more valuable insights to end users stakeholders, I took a step further to determine Black's most winning move following any of White's opening moves.
+
+To accomplish this, I opted to construct a table visualization, showcasing only the first move in each game, and subsequently, to analyze and discern the optimal subsequent move for Black. This analysis encompasses the frequency of the black's first move occurrence and its corresponding win ratio. Let there be no confusion; it's essential to remember that the move designated as number 1 represents White's initial play in the context of a chess game, whereas move number 2 signifies Black's opening move.
+
+![black best first move](/5-Power%20BI/assets/black%20best%20first%20move.jpg)
+
+The additinoal DAX measures utilized on this page is composed as follows.
+
+```dax
+Black most winning move after white first move = 
+VAR _blackwinafterwhitefirstmove =
+    //get game ids that black wins
+    SUMMARIZE (
+        FILTER (
+            SUMMARIZE ( moves_fct, dim_game[game_id], dim_game[winner] ),
+            dim_game[winner] = "Black"
+        ),
+        dim_game[game_id]
+    )
+VAR _blackfirstmoveofthegame =
+    FILTER (
+        ALL ( moves_fct ),
+        moves_fct[game_id]
+            IN _blackwinafterwhitefirstmove
+                && moves_fct[move_number] = 2
+    )
+VAR _groupbyblackfirstmovecount =
+    GROUPBY (
+        _blackfirstmoveofthegame,
+        moves_fct[moves],
+        "@count", SUMX ( CURRENTGROUP (), 1 )
+    )
+VAR _maxcount =
+    MAXX ( _groupbyblackfirstmovecount, [@count] )
+RETURN
+    MAXX (
+        FILTER ( _groupbyblackfirstmovecount, [@count] = _maxcount ),
+        moves_fct[moves]
+    )
+```
+* Link to learn ALL DAX function: <https://learn.microsoft.com/en-us/dax/all-function-dax?wt.mc_id=DP-MVP-5004989>
+
+```dax
+winning count after white first move = 
+VAR _blackwinafterwhitefirstmove =
+    //get game ids that black wins
+    SUMMARIZE (
+        FILTER (
+            SUMMARIZE ( moves_fct, dim_game[game_id], dim_game[winner] ),
+            dim_game[winner] = "Black"
+        ),
+        dim_game[game_id]
+    )
+VAR _blackfirstmoveofthegame =
+    FILTER (
+        ALL ( moves_fct ),
+        moves_fct[game_id]
+            IN _blackwinafterwhitefirstmove
+                && moves_fct[move_number] = 2
+    )
+VAR _groupbyblackfirstmovecount =
+    GROUPBY (
+        _blackfirstmoveofthegame,
+        moves_fct[moves],
+        "@count", SUMX ( CURRENTGROUP (), 1 )
+    )
+VAR _maxcount =
+    MAXX ( _groupbyblackfirstmovecount, [@count] )
+RETURN
+    _maxcount
+```
+
+```dax
+winning ratio after white first move = 
+VAR _blackwinafterwhitefirstmove =
+    //get game ids that black wins
+    SUMMARIZE (
+        FILTER (
+            SUMMARIZE ( moves_fct, dim_game[game_id], dim_game[winner] ),
+            dim_game[winner] = "Black"
+        ),
+        dim_game[game_id]
+    )
+VAR _gamescount =
+    COUNTROWS ( SUMMARIZE ( moves_fct, dim_game[game_id] ) )
+VAR _blackfirstmoveofthegame =
+    FILTER (
+        ALL ( moves_fct ),
+        moves_fct[game_id]
+            IN _blackwinafterwhitefirstmove
+                && moves_fct[move_number] = 2
+    )
+VAR _groupbyblackfirstmovecount =
+    GROUPBY (
+        _blackfirstmoveofthegame,
+        moves_fct[moves],
+        "@count", SUMX ( CURRENTGROUP (), 1 )
+    )
+VAR _maxcount =
+    MAXX ( _groupbyblackfirstmovecount, [@count] )
+RETURN
+    DIVIDE ( _maxcount, _gamescount )
+```
+
+While constructing a table visualization to pinpoint the initial move by Black that exemplifies the most successful winning strategy, I also delved further to determine the subsequent White move that maximizes the chances of victory. The results of this table visualization are presented below.
+
+![white move number 3 most winning move](/5-Power%20BI/assets/white%20most%20winning%20move%20(move%203).jpg)
+
+The additinoal DAX measures utilized on this page is composed as follows.
+
+```dax
+White most winning move after black first move = 
+VAR _blackfirstmove = [Black most winning move after white first move]
+VAR _moveonegameid =
+    VALUES ( moves_fct[game_id] )
+VAR _movetwogameid =  //find out what are move = 2 game id that shows black's first move (previous result) and white-win
+    SUMMARIZE (
+        FILTER (
+            SUMMARIZE (
+                FILTER (
+                    ALL ( moves_fct ),
+                    moves_fct[game_id]
+                        IN _moveonegameid
+                            && moves_fct[move_number] = 2
+                            && moves_fct[moves] = _blackfirstmove
+                ),
+                dim_game[game_id],
+                dim_game[winner]
+            ),
+            dim_game[winner] = "White"
+        ),
+        dim_game[game_id]
+    )
+VAR _whitesecondtmoveofthegame =
+    //white second move is move number 3
+    FILTER (
+        ALL ( moves_fct ),
+        moves_fct[game_id]
+            IN _movetwogameid
+                && moves_fct[move_number] = 3
+    )
+VAR _groupbywhitesecondmovecount =
+    GROUPBY (
+        _whitesecondtmoveofthegame,
+        moves_fct[moves],
+        "@count", SUMX ( CURRENTGROUP (), 1 )
+    )
+VAR _maxcount =
+    MAXX ( _groupbywhitesecondmovecount, [@count] )
+RETURN
+    MAXX (
+        FILTER ( _groupbywhitesecondmovecount, [@count] = _maxcount ),
+        moves_fct[moves]
+    )
+```
+* Link to learn VALUES DAX function: <https://learn.microsoft.com/en-us/dax/values-function-dax?wt.mc_id=DP-MVP-5004989>
+
+```dax
+winning count after black first move = 
+VAR _blackfirstmove = [Black most winning move after white first move]
+VAR _moveonegameid =
+    VALUES ( moves_fct[game_id] )
+VAR _movetwogameid =  //find out what are move = 2 game id that shows black's first move (previous result) and white-win
+    SUMMARIZE (
+        FILTER (
+            SUMMARIZE (
+                FILTER (
+                    ALL ( moves_fct ),
+                    moves_fct[game_id]
+                        IN _moveonegameid
+                            && moves_fct[move_number] = 2
+                            && moves_fct[moves] = _blackfirstmove
+                ),
+                dim_game[game_id],
+                dim_game[winner]
+            ),
+            dim_game[winner] = "White"
+        ),
+        dim_game[game_id]
+    )
+VAR _whitesecondtmoveofthegame =
+    //white second move is move number 3
+    FILTER (
+        ALL ( moves_fct ),
+        moves_fct[game_id]
+            IN _movetwogameid
+                && moves_fct[move_number] = 3
+    )
+VAR _groupbywhitesecondmovecount =
+    GROUPBY (
+        _whitesecondtmoveofthegame,
+        moves_fct[moves],
+        "@count", SUMX ( CURRENTGROUP (), 1 )
+    )
+VAR _maxcount =
+    MAXX ( _groupbywhitesecondmovecount, [@count] )
+RETURN
+    _maxcount
+```
+
+```dax
+winning ratio after black first move = 
+VAR _blackfirstmove = [Black most winning move after white first move]
+VAR _moveonegameid =
+    VALUES ( moves_fct[game_id] )
+VAR _movetwogameidall =
+    SUMMARIZE (
+        FILTER (
+            ALL ( moves_fct ),
+            moves_fct[game_id]
+                IN _moveonegameid
+                    && moves_fct[move_number] = 2
+                    && moves_fct[moves] = _blackfirstmove
+        ),
+        dim_game[game_id],
+        dim_game[winner]
+    )
+VAR _movetwogamecount =
+    COUNTROWS ( _movetwogameidall )
+VAR _movetwogameid =
+    //find out what are move = 2 game id that shows black's first move (previous result) and white-win
+    SUMMARIZE (
+        FILTER ( _movetwogameidall, dim_game[winner] = "White" ),
+        dim_game[game_id]
+    )
+VAR _whitesecondtmoveofthegame =
+    //white second move is move number 3
+    FILTER (
+        ALL ( moves_fct ),
+        moves_fct[game_id]
+            IN _movetwogameid
+                && moves_fct[move_number] = 3
+    )
+VAR _groupbywhitesecondmovecount =
+    GROUPBY (
+        _whitesecondtmoveofthegame,
+        moves_fct[moves],
+        "@count", SUMX ( CURRENTGROUP (), 1 )
+    )
+VAR _maxcount =
+    MAXX ( _groupbywhitesecondmovecount, [@count] )
+RETURN
+    DIVIDE ( _maxcount, _movetwogamecount )
+```
+
+To facilitate the productionization of the Power BI report, I opted to conceal all the pages I had previously crafted for data and data model validation. Instead, I created a single page that systematically incorporates all visualizations, thereby presenting stories and insights. Additionally, it is feasible to retain this Power BI file as a proof of concept (POC) version and initiate the development of a new one intended for production use. It's worth noting that the design of the report page falls outside the purview of this course, but ample resources are available for reference.
+
+![power bi report product](/5-Power%20BI/assets/pbi%20report%20production.jpg)
+
+
+# 2023/10/11
+
+## 7. Publishing and Sharing Power BI report
