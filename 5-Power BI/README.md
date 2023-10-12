@@ -48,19 +48,20 @@
    Fix and check documentation. 
 
 # Contents
-### 1. Sample data
-### 2. Unlocking the power of Power BI
-### 3. Datamodel
-### 4. Open Power BI Desktop
-### 5. DAX measures and Visualizations (Proof Of Concept)
-### 6. DAX measures and Visualizations (Production)
-### 7. Publishing and Sharing Power BI report
-### 8. Closing
+
+### [1. Sample data](#chapter1)
+### [2. Unlocking the power of Power BI](#chapter2)
+### [3. Datamodel](#chapter3)
+### [4. Open Power BI Desktop](#chapter4)
+### [5. DAX measures and Visualizations (Proof Of Concept)](#chapter5)
+### [6. DAX measures and Visualizations (Production)](#chapter6)
+### [7. Publishing and Sharing Power BI report](#chapter7)
+### [8. Closing](#chapter8)
 
 
 # 2023/09/17 
 
-## 1. Sample data: Online Chess Games 
+## <a name="chapter1"></a>1. Sample data: Online Chess Games 
 
 This open-source resource can be found on Mavenanalytics.io.
 
@@ -69,7 +70,7 @@ Link to the website: <https://mavenanalytics.io/data-playground?page=5&pageSize=
 Link to the file: <https://maven-datasets.s3.amazonaws.com/Online+Chess+Games/Online+Chess+Games.zip>
 
 
-## 2. Unlocking the power of Power BI: A Beginner's Guide 
+## <a name="chapter2"></a>2. Unlocking the power of Power BI: A Beginner's Guide 
 
 In this comprehensive guide, I have meticulously structured a learning path for aspiring Power BI enthusiasts. I'll walk you through the foundational concepts, focusing solely on the essentials, while leveraging a sample dataset as a practical example. By the end of this course, you'll have crafted your very own Power BI report. Actively engage in the tutorial by downloading the dataset via the provided link.
 
@@ -127,7 +128,7 @@ To achieve this, I will utilize sample data and assume that I have engaged in mu
 
 
 # 2023/09/24 
-## 3. Datamodel
+## <a name="chapter3"></a>3. Datamodel 
 ### Draw datamodel  
 
 Following discussions with stakeholders, the primary insights to be conveyed through the analysis include:
@@ -213,7 +214,7 @@ The source is given as a CSV file. I decide to store this source data in Fabric 
 
 (14) This table is identical to the "chess_games" table located above within the same folder. The procedures executed in Dataflow Gen2 are not required in this scenario. Nevertheless, it's worth noting that if you perform additional table transformation steps in Dataflow Gen2, the outcome will vary. For this course, I have chosen to conduct further table transformation steps later within Power BI Desktop's Power Query Editor. 
 
-## 4. Open Power BI Desktop
+## <a name="chapter4"></a>4. Open Power BI Desktop 
 
 (1) To use Power BI Desktop and connect to the pbiforbeginner Lakehouse, make sure you're using the same login ID that was used when the Lakehouse was created.
 
@@ -323,7 +324,11 @@ in
 * Link to learn Table.NestedJoin M code: <https://learn.microsoft.com/en-us/powerquery-m/table-nestedjoin?wt.mc_id=DP-MVP-5004989>
 * Link to learn Table.RenameColumns M code: <https://learn.microsoft.com/en-us/powerquery-m/table-renamecolumns?wt.mc_id=DP-MVP-5004989>
 
- 
+<span style="color:green">*Note: Combining two columns from separate tables (Merge operation) and extracting the desired column can be easily accomplished through the user-friendly interface by following the steps below.*</span>
+
+![power query merge ui](/5-Power%20BI/assets/power%20query%20merge%20UI.jpg)
+![pwer query expand column](/5-Power%20BI/assets/power%20query%20expand%20column.jpg)
+
 
 (7) Reference the source table and create moves_fct table. 
 
@@ -360,6 +365,10 @@ in
 * Link to learn Table.TransformColumnTypes M code: <https://learn.microsoft.com/nl-nl/powerquery-m/table-transformcolumntypes?wt.mc_id=DP-MVP-5004989>
 
 
+<span style="color:green">*Note: Splitting a column into rows can be effortlessly accomplished using the Power Query Editor's user-friendly interface. After selecting the column you wish to split into rows, simply follow the steps below.*</span>
+
+![pq split into row](/5-Power%20BI/assets/power%20query%20split%20into%20row.jpg)
+
 (9) Close and apply to Power BI Desktop 
 
 ![load from pq to pbi](/5-Power%20BI/assets/load%20tables%20from%20pq%20to%20pbi.jpg)
@@ -380,7 +389,7 @@ in
 
 
 # 2023/10/08 
-## 5. DAX measures and Visualizations (Proof Of Concept)
+## <a name="chapter5"></a>5. DAX measures and Visualizations (Proof Of Concept) 
 
 ### Create DAX measures and visualizations to provide insights (Proof Of Concept). 
 
@@ -484,9 +493,7 @@ Win count =
 ```
 * Link to learn DISTINCTCOUNT DAX function: <https://learn.microsoft.com/en-us/dax/distinctcount-function-dax?wt.mc_id=DP-MVP-5004989>
 
-(9) The second request can be rephrased as follows: "What is the first move most commonly played in games won by black and games won by white?" To address this question, the following DAX measures have been developed and are employed in the New Card visualization. The "The most winning first move by white" DAX measure includes comments within the formula to clarify the significance of each variable. In addition, the comments within the DAX measure also serve to elucidate the thought process I underwent while creating the measure. All other measures that are used in this Power BI page are written in a very similar way with [The most winning first move by white] DAX measure. 
-
-    Please do not be misled by the fact that black players' first move is consistently recorded as move_number = 2. In response to the second request, the findings are as follows:
+(9) The second request can be rephrased as follows: "What is the first move most commonly played in games won by black and games won by white?" To address this question, the following DAX measures have been developed and are employed in the New Card visualization. The "The most winning first move by white" DAX measure includes comments within the formula to clarify the significance of each variable. In addition, the comments within the DAX measure also serve to elucidate the thought process I underwent while creating the measure. All other measures that are used in this Power BI page are written in a very similar way with [The most winning first move by white] DAX measure. Please do not be misled by the fact that black players' first move is consistently recorded as move_number = 2. In response to the second request, the findings are as follows:
 
 - The move e4 stands out as the most frequently played winning first move by white players.
 - The move e5 emerges as the most commonly played winning first move by black players.
@@ -794,14 +801,15 @@ RETURN
 
 # 2023/10/10
 
-## 6. DAX measures and Visualizations (Production)
+## <a name="chapter6"></a>6. DAX measures and Visualizations (Production) 
+
 ### Create and design Power BI report on top of POC version.
 
 In the previous session, I diligently verified the functionality of the data model to ensure its accuracy in displaying the relevant information. In this current session, I am poised to elevate the presentation of valuable insights by employing various visualization techniques. These include not only the table and card visualizations but also more dynamic and informative options such as bar charts, column charts, and others.
 
 The line chart, while typically a powerful tool for illustrating trends over time, may not be suitable for this report due to the absence of date/time dimensions in the dataset.
 
-The first objective is to ascertain the cumulative number of games won, lost, or drawn by both white and black players. To convey this information in a more intuitive manner, I have opted to employ a bar chart. To enhance the clarity of this visualization, I have incorporated the win count and percentage within labels attached to each bar. This is accomplished through the utilization of the Custom Label feature, complemented by the creation of DAX measures as outlined below:
+(1) The first objective is to ascertain the cumulative number of games won, lost, or drawn by both white and black players. To convey this information in a more intuitive manner, I have opted to employ a bar chart. To enhance the clarity of this visualization, I have incorporated the win count and percentage within labels attached to each bar. This is accomplished through the utilization of the Custom Label feature, complemented by the creation of DAX measures as outlined below:
 
 ![win count by winner bar chart](/5-Power%20BI/assets/Win%20count%20by%20winner%20bar%20chart.jpg)
 
@@ -828,7 +836,7 @@ FORMAT ( [Win count], "#,#0" ) & " | "
 * Link to learn FORMAT DAX function: <https://learn.microsoft.com/en-us/dax/format-function-dax?wt.mc_id=DP-MVP-5004989>
 
 
-The second inquiry pertains to identifying the most frequently employed first moves in games that were victorious for both black and white players. To present this information effectively, I have opted for a table visualization as the most suitable medium. To achieve this, it is imperative to include the [winner] column from the dim_game table in the table visualization. To facilitate this integration, I have slightly adjusted the formulation of the DAX measures, as detailed below:
+(2) The second inquiry pertains to identifying the most frequently employed first moves in games that were victorious for both black and white players. To present this information effectively, I have opted for a table visualization as the most suitable medium. To achieve this, it is imperative to include the [winner] column from the dim_game table in the table visualization. To facilitate this integration, I have slightly adjusted the formulation of the DAX measures, as detailed below:
 
 ![most winning first move](/5-Power%20BI/assets/most%20winning%20first%20move.jpg)
 
@@ -928,7 +936,7 @@ RETURN
     )
 ```
 
-The third inquiry focuses on identifying the player with the highest number of wins and computing their winning percentage when competing against opponents with superior ratings. To present these findings effectively, I have chosen to employ a stacked bar chart. To provide valuable insights, I have designed the chart to showcase the top 10 winning players, along with their respective win counts against lower-rated opponents. I've also created an additional measure to display this supplementary information.
+(3) The third inquiry focuses on identifying the player with the highest number of wins and computing their winning percentage when competing against opponents with superior ratings. To present these findings effectively, I have chosen to employ a stacked bar chart. To provide valuable insights, I have designed the chart to showcase the top 10 winning players, along with their respective win counts against lower-rated opponents. I've also created an additional measure to display this supplementary information.
 
 Regarding the data labels, while the chart effectively represents the win count against higher-rated opponents, I've opted not to directly display the win count against lower-rated opponents. Instead, I've chosen to depict the ratio of the win count against higher-rated opponents. This approach allows for the presentation of all pertinent and critical information, including the win count against higher-rated opponents, the ratio, the total win count, and, of course, the name of the player with the most wins, alongside the names of the other top 10 winning players.
 
@@ -941,7 +949,7 @@ Win count when oponent is lower rated =
     [Winning count by player] - [Win count when oponent is higher rated]
 ```
 
-The fourth inquiry centers around calculating the percentage of wins achieved by higher-rated players. In this instance, I have chosen to present this data using a bar chart, similar to the approach I employed when addressing the first question. Additionally, I have integrated a card visualization that I previously crafted.
+(4) The fourth inquiry centers around calculating the percentage of wins achieved by higher-rated players. In this instance, I have chosen to present this data using a bar chart, similar to the approach I employed when addressing the first question. Additionally, I have integrated a card visualization that I previously crafted.
 
 To generate this visual representation, I have slightly adjusted the formulation of the DAX measure. Notably, it is designed to solely display the win count when the victor holds a higher rating. You may observe that the total number of games (20,058) does not align precisely with the sum of each row. This discrepancy arises because the DAX measure employs a condition of "greater than" or "less than," and does not encompass the "equal to" condition. However, it is imperative to note that the decision to exclude winning counts against equally rated opponents was made deliberately, as it aligns with the objective of calculating the percentage of wins by higher-rated players. This decision should always be communicated and made in collaboration with the business owner or relevant stakeholders.
 
@@ -986,7 +994,7 @@ FORMAT ( [Higher rated win count], "#,#0" ) & " | "
     & FORMAT ( [Higher rated win count ratio], "#0.00%" )
 ```
 
-The final inquiry pertains to identifying the initial move for Black that boasts the highest probability of securing victory following White's first move of D4. While crafting the Proof of Concept (POC) version, I ascertained that when White initiates with D4, the most advantageous response for Black is D5. In pursuit of providing even more valuable insights to end users stakeholders, I took a step further to determine Black's most winning move following any of White's opening moves.
+(5) The final inquiry pertains to identifying the initial move for Black that boasts the highest probability of securing victory following White's first move of D4. While crafting the Proof of Concept (POC) version, I ascertained that when White initiates with D4, the most advantageous response for Black is D5. In pursuit of providing even more valuable insights to end users stakeholders, I took a step further to determine Black's most winning move following any of White's opening moves.
 
 To accomplish this, I opted to construct a table visualization, showcasing only the first move in each game, and subsequently, to analyze and discern the optimal subsequent move for Black. This analysis encompasses the frequency of the black's first move occurrence and its corresponding win ratio. Let there be no confusion; it's essential to remember that the move designated as number 1 represents White's initial play in the context of a chess game, whereas move number 2 signifies Black's opening move.
 
@@ -1231,14 +1239,15 @@ RETURN
     DIVIDE ( _maxcount, _movetwogamecount )
 ```
 
-To facilitate the productionization of the Power BI report, I opted to conceal all the pages I had previously crafted for data and data model validation. Instead, I created a single page that systematically incorporates all visualizations, thereby presenting stories and insights. Additionally, it is feasible to retain this Power BI file as a proof of concept (POC) version and initiate the development of a new one intended for production use. It's worth noting that designing of the report page falls outside the purview of this course, but ample resources are available for reference and those are easily found on web.
+(6) To facilitate the productionization of the Power BI report, I opted to conceal all the pages I had previously crafted for data and data model validation. Instead, I created a single page that systematically incorporates all visualizations, thereby presenting stories and insights. Additionally, it is feasible to retain this Power BI file as a proof of concept (POC) version and initiate the development of a new one intended for production use. It's worth noting that designing of the report page falls outside the purview of this course, but ample resources are available for reference and those are easily found on web.
 
 ![power bi report product](/5-Power%20BI/assets/pbi%20report%20production.jpg)
 
+<span style="color:green">*Note: The DAX measures I've crafted above may not necessarily represent the most optimal performance and some of them might appear rather intricate to navigate and understand. However, it's essential to delve into each line of the formula to comprehend the specific outcome I intend to achieve. The primary goal is to ensure that the results meet the requirements of the report viewers. Subsequently, I can explore ways to improve the DAX measures for better performance, if necessary.*</span>
 
 # 2023/10/11
 
-## 7. Publishing and Sharing Power BI report
+## <a name="chapter7"></a>7. Publishing and Sharing Power BI report 
 
 ### Create a workspace within the Power BI Service at <https://app.powerbi.com> and distribute the Power BI report
 
@@ -1248,24 +1257,35 @@ Upon completion of the Power BI report authoring, it's time to embark on the pro
 
 Here's a concise outline of the steps to publish and share Power BI report. These steps will help streamline the process of publishing and sharing the Power BI report effectively.
 
-1. Navigate to <https://app.powerbi.com> and initiate the creation of a workspace.
+(1) Navigate to <https://app.powerbi.com> and initiate the creation of a workspace.
+
 ![create workspace](/5-Power%20BI/assets/create%20workspace.jpg)
+
 * Link to learn Power BI service per user and capacity based licenses: <https://learn.microsoft.com/en-us/power-bi/fundamentals/service-features-license-type?wt.mc_id=DP-MVP-5004989>
 
-2. Save the Power BI desktop file and proceed to publish it directly into the designated workspace.
+(2) Save the Power BI desktop file and proceed to publish it directly into the designated workspace.
 
-3. Access the respective workspace housing your report.
+(3) Access the respective workspace housing your report.
+
 ![publish to workspace](/5-Power%20BI/assets/publish%20to%20workspace.jpg)
 
-4. Verify that the report has been published accurately, ensuring it is accessible as intended.
+(4) Verify that the report has been published accurately, ensuring it is accessible as intended.
+
 ![pbi report in workspace](/5-Power%20BI/assets/pbi%20report%20in%20worksapce.jpg)
 
-5. If necessary, configure the dataset refresh settings to suit your specific requirements.
+(5) If necessary, configure the dataset refresh settings to suit your specific requirements.
+
 ![configure refresh dataset](/5-Power%20BI/assets/configure%20refresh%20dataset.jpg)
 
+(6) After deciding who should have access to this Power BI report, I can grant them access to the workspace. As the creator and administrator of the workspace, I have the authority to assign people to all different roles. Typically, I assign individuals as viewers, and this choice ensures that, for instance, the Row-Level Security (RLS) configuration functions correctly.
+
+![manage access to workspace](/5-Power%20BI/assets/manage%20access%20to%20workspace.jpg)
+
+* Link to learn Roles in workspace in Power BI: <https://learn.microsoft.com/en-us/power-bi/collaborate-share/service-roles-new-workspaces?wt.mc_id=DP-MVP-5004989> 
 
 
-## 8. Closing
+
+## <a name="chapter8"></a>8. Closing 
 
 In the pursuit of mastering Power BI, I embarked on an engaging journey of discovery, choosing the intriguing domain of Chess Game data as the canvas to analyze and visualize invaluable insights. 
 
@@ -1283,4 +1303,4 @@ As I conclude this learning experience, it is important to remember that the kno
 
 Thank you for joining me on this adventure, and best of luck in your data-driven endeavors.
 
-<span style="color:green">*Author: Jihwan Kim / Microsoft MVP*</span>
+<span style="color:green">*Author: Jihwan Kim | Microsoft MVP | Link to profile: <https://mvp.microsoft.com/en-US/mvp/profile/385eb34e-c755-ed11-9561-000d3a197333>*</span>
