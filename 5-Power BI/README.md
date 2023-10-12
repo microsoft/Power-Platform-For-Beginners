@@ -48,16 +48,16 @@
    Fix and check documentation. 
 
 # Contents
-## 1. Sample data
-## 2. Unlocking the power of Power BI
-## 3. Datamodel
-## 4. Open Power BI Desktop
-## 5. DAX measures and Visualizations (Proof Of Concept)
-## 6. DAX measures and Visualizations (Production)
-## 7. Publishing and Sharing Power BI report
+### 1. Sample data
+### 2. Unlocking the power of Power BI
+### 3. Datamodel
+### 4. Open Power BI Desktop
+### 5. DAX measures and Visualizations (Proof Of Concept)
+### 6. DAX measures and Visualizations (Production)
+### 7. Publishing and Sharing Power BI report
+### 8. Closing
 
 
- 
 # 2023/09/17 
 
 ## 1. Sample data: Online Chess Games 
@@ -71,9 +71,11 @@ Link to the file: <https://maven-datasets.s3.amazonaws.com/Online+Chess+Games/On
 
 ## 2. Unlocking the power of Power BI: A Beginner's Guide 
 
-In this comprehensive guide, we have meticulously structured a learning path for aspiring Power BI enthusiasts. We'll walk you through the foundational concepts, focusing solely on the essentials, while leveraging a sample dataset as a practical example. By the end of this course, you'll have crafted your very own Power BI report. Actively engage in the tutorial by downloading the dataset via the provided link.
+In this comprehensive guide, I have meticulously structured a learning path for aspiring Power BI enthusiasts. I'll walk you through the foundational concepts, focusing solely on the essentials, while leveraging a sample dataset as a practical example. By the end of this course, you'll have crafted your very own Power BI report. Actively engage in the tutorial by downloading the dataset via the provided link.
 
-Please note that the data model and the process outlined in this course represent one of many approaches to achieving the same results. Our goal here is to inject an element of enjoyment into your Power BI learning journey, especially if you're just starting out. If you prefer not to store your source files or data in Fabric Lakehouse, you can effortlessly utilize the CSV file stored locally on your computer and seamlessly import it into Power BI Desktop.   
+Please note that the data model and the process outlined in this course represent one of many approaches to achieving the same results. Our goal here is to inject an element of enjoyment into your Power BI learning journey, especially if you're just starting out.
+
+In this course, my chosen approach is to store the source data in Fabric Lakehouse. Nevertheless, if you have a different preference and wish not to house your source files or data within the Fabric Lakehouse environment, you have the option to effortlessly access the CSV file stored locally on your computer and seamlessly import it into Power BI Desktop. 
   
 
 ### What Is Power BI? 
@@ -88,9 +90,9 @@ Unveiling Power BI's Key Components:
 
 (3) Power BI Mobile Apps: Stay connected and informed while on the move, with easy access to your reports and dashboards.
 
-Throughout this course, we will delve into the intricacies of configuring and connecting to your data source (Lakehouse). We'll guide you through the art of crafting and designing reports using Power BI Desktop. And, in a nutshell, we'll provide insights into sharing your creations via Power BI Service.
+Throughout this course, I will delve into the intricacies of configuring and connecting to the data source (Lakehouse). I'll guide you through the art of crafting and designing reports using Power BI Desktop. And, in a nutshell, I'll provide insights into sharing Power BI products via Power BI Service.
 
-To harness the full potential of this course, make sure to register and obtain your Power BI Service credentials at <https://app.powerbi.com>. This will enable you to seamlessly transfer the CSV file from your local machine to Lakehouse, unleashing the true power of data analysis at your fingertips.  
+To harness the full potential of this course, make sure to register and obtain your Power BI Service credentials at <https://app.powerbi.com>. This will enable you to seamlessly transfer the CSV file from your local machine to Lakehouse, unleashing the power of data analysis at your fingertips.  
   
 
 ### What Is the Purpose of Power BI? 
@@ -1229,7 +1231,7 @@ RETURN
     DIVIDE ( _maxcount, _movetwogamecount )
 ```
 
-To facilitate the productionization of the Power BI report, I opted to conceal all the pages I had previously crafted for data and data model validation. Instead, I created a single page that systematically incorporates all visualizations, thereby presenting stories and insights. Additionally, it is feasible to retain this Power BI file as a proof of concept (POC) version and initiate the development of a new one intended for production use. It's worth noting that the design of the report page falls outside the purview of this course, but ample resources are available for reference.
+To facilitate the productionization of the Power BI report, I opted to conceal all the pages I had previously crafted for data and data model validation. Instead, I created a single page that systematically incorporates all visualizations, thereby presenting stories and insights. Additionally, it is feasible to retain this Power BI file as a proof of concept (POC) version and initiate the development of a new one intended for production use. It's worth noting that designing of the report page falls outside the purview of this course, but ample resources are available for reference and those are easily found on web.
 
 ![power bi report product](/5-Power%20BI/assets/pbi%20report%20production.jpg)
 
@@ -1237,3 +1239,48 @@ To facilitate the productionization of the Power BI report, I opted to conceal a
 # 2023/10/11
 
 ## 7. Publishing and Sharing Power BI report
+
+### Create a workspace within the Power BI Service at <https://app.powerbi.com> and distribute the Power BI report
+
+Upon completion of the Power BI report authoring, it's time to embark on the process of publication and dissemination to relevant stakeholders. For details regarding the requisite Power BI licensing for both Power BI developer and the audience to facilitate seamless sharing and report access, please refer to the provided link below.
+
+* Link to learn Licensing the Power BI service: <https://learn.microsoft.com/en-us/power-bi/enterprise/service-admin-licensing-organization?wt.mc_id=DP-MVP-5004989>
+
+Here's a concise outline of the steps to publish and share Power BI report. These steps will help streamline the process of publishing and sharing the Power BI report effectively.
+
+1. Navigate to <https://app.powerbi.com> and initiate the creation of a workspace.
+![create workspace](/5-Power%20BI/assets/create%20workspace.jpg)
+* Link to learn Power BI service per user and capacity based licenses: <https://learn.microsoft.com/en-us/power-bi/fundamentals/service-features-license-type?wt.mc_id=DP-MVP-5004989>
+
+2. Save the Power BI desktop file and proceed to publish it directly into the designated workspace.
+
+3. Access the respective workspace housing your report.
+![publish to workspace](/5-Power%20BI/assets/publish%20to%20workspace.jpg)
+
+4. Verify that the report has been published accurately, ensuring it is accessible as intended.
+![pbi report in workspace](/5-Power%20BI/assets/pbi%20report%20in%20worksapce.jpg)
+
+5. If necessary, configure the dataset refresh settings to suit your specific requirements.
+![configure refresh dataset](/5-Power%20BI/assets/configure%20refresh%20dataset.jpg)
+
+
+
+## 8. Closing
+
+In the pursuit of mastering Power BI, I embarked on an engaging journey of discovery, choosing the intriguing domain of Chess Game data as the canvas to analyze and visualize invaluable insights. 
+
+Throughout this course, we've delved into the following key aspects:
+
+1. **Sample Data:** Setting the stage with the foundation of our analysis.
+2. **Unlocking the Power of Power BI:** Unraveling the capabilities and potential of this robust tool.
+3. **Data Modeling:** Crafting a structured and efficient data model.
+4. **Opening Power BI Desktop:** Initiating our journey in the Power BI ecosystem.
+5. **DAX Measures and Visualizations (Proof of Concept):** Experimenting with the power of Data Analysis Expressions and visualizations to lay the groundwork.
+6. **DAX Measures and Visualizations (Production):** Elevating our analysis to production-ready status.
+7. **Publishing and Sharing the Power BI Report:** The final step, where we disseminate our insights to stakeholders, ensuring that our data-driven narratives are shared and utilized for informed decision-making.
+
+As I conclude this learning experience, it is important to remember that the knowledge and skills acquired in this course are not merely a conclusion but a beginning. Power BI is a dynamic tool that continues to evolve, and our ability to harness its capabilities will grow with it. Embrace the ever-expanding world of data visualization, and use your newfound expertise to bring meaningful insights to life, driving transformative decisions and innovation. The journey of data exploration is an ongoing one, and I encourage you to keep exploring, learning, and creating with Power BI. 
+
+Thank you for joining me on this adventure, and best of luck in your data-driven endeavors.
+
+<span style="color:green">*Author: Jihwan Kim / Microsoft MVP*</span>
