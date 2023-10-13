@@ -6,69 +6,40 @@
    - Implementing data modeling and calculations.
    - Sharing and collaborating on Power BI content.
 
+<br />
+<br />
 
 # Power BI for Beginner – Chess Game Analysis 
 
-   - Written by Jihwan Kim / Microsoft MVP 
+   - Written by Jihwan Kim | Microsoft MVP 
 
- 
+<br />
+<br />
 
-# Timeline / Plans 
+## Contents
 
-- 2023/09/17 
+#### [1. Sample data](#chapter1)
+#### [2. Unlocking the power of Power BI](#chapter2)
+#### [3. Datamodel](#chapter3)
+#### [4. Open Power BI Desktop](#chapter4)
+#### [5. DAX measures and Visualizations (Proof Of Concept)](#chapter5)
+#### [6. DAX measures and Visualizations (Production)](#chapter6)
+#### [7. Publishing and Sharing Power BI report](#chapter7)
+#### [8. Closing](#chapter8)
 
-   Decide what type of data to use, and what analysis may help end users to have valuable insights. 
-
-   Share about what Power BI is briefly. 
-
-   Share plans. 
-
-- 2023/9/24 
-
-   Describe how to draw Datamodel (fact tables, dimension tables), and explain how to import data into the Power BI Power Query Editor. 
-
-- 2023/10/01 
-
-   Load it to Lakehouse, import it into Power BI Desktop, transform data in the Power Query Editor, and create a datamodel (Import mode). 
-
-- 2023/10/08 
-
-   Create DAX measures and visualizations to provide insights (Proof Of Concept).
-
-- 2023/10/15 
-
-   Create and design Power BI report on top of POC version. 
-
-- 2023/10/22 
-
-   Personal trip. 
-
-- 2023/10/29 
-
-   Fix and check documentation. 
-
-# Contents
-
-### [1. Sample data](#chapter1)
-### [2. Unlocking the power of Power BI](#chapter2)
-### [3. Datamodel](#chapter3)
-### [4. Open Power BI Desktop](#chapter4)
-### [5. DAX measures and Visualizations (Proof Of Concept)](#chapter5)
-### [6. DAX measures and Visualizations (Production)](#chapter6)
-### [7. Publishing and Sharing Power BI report](#chapter7)
-### [8. Closing](#chapter8)
-
-
-# 2023/09/17 
+<br />
+<br />
 
 ## <a name="chapter1"></a>1. Sample data: Online Chess Games 
 
 This open-source resource can be found on Mavenanalytics.io.
 
-Link to the website: <https://mavenanalytics.io/data-playground?page=5&pageSize=5> 
+Link to the website: [Link](https://mavenanalytics.io/data-playground?page=5&pageSize=5)
 
-Link to the file: <https://maven-datasets.s3.amazonaws.com/Online+Chess+Games/Online+Chess+Games.zip>
+Link to the file: [Link](https://maven-datasets.s3.amazonaws.com/Online+Chess+Games/Online+Chess+Games.zip)
 
+<br />
+<br />
 
 ## <a name="chapter2"></a>2. Unlocking the power of Power BI: A Beginner's Guide 
 
@@ -125,9 +96,9 @@ To achieve this, I will utilize sample data and assume that I have engaged in mu
 
 (5) Who is the user with the highest number of game wins? What percentage of these victories did the user achieve as the higher-rated player?
 
+<br />
+<br />
 
-
-# 2023/09/24 
 ## <a name="chapter3"></a>3. Datamodel 
 ### Draw datamodel  
 
@@ -148,7 +119,7 @@ The visualization of the data model is represented in the figure below. It's imp
 
 The source is given as a CSV file. I decide to store this source data in Fabric Lakehouse, and I plan to use Dataflow Gen2 to transform the source table and load it back to Lakehouse.
 
-* Link to learn Fabric lakehouse: <https://learn.microsoft.com/en-us/fabric/data-engineering/lakehouse-overview?wt.mc_id=DP-MVP-5004989>
+* Link to learn Fabric lakehouse: [Link](https://learn.microsoft.com/en-us/fabric/data-engineering/lakehouse-overview?wt.mc_id=DP-MVP-5004989)
 
 
 (1) Create a workspace in app.powerbi.com 
@@ -159,6 +130,8 @@ The source is given as a CSV file. I decide to store this source data in Fabric 
 (3) Create Lakehouse, and name it as “pbiforbeginner”. 
 
 ![Create Lakehouse](/5-Power%20BI/assets/Create%20Lakehouse.jpg)
+
+* Link to learn and explore the Microsoft Fabric Lakehouse: [Link](https://learn.microsoft.com/en-us/training/modules/get-started-lakehouses/2-fabric-lakehouse?wt.mc_id=DP-MVP-5004989)
 
 (4) Upload the CSV file.
 
@@ -180,6 +153,8 @@ The source is given as a CSV file. I decide to store this source data in Fabric 
 
 ![Create Dataflow Gen2](/5-Power%20BI/assets/Create%20Dataflow%20Gen2.jpg)
 
+* Link to learn and understand Dataflow Gen2 in Microsoft Fabric: [Link](https://learn.microsoft.com/en-us/training/modules/use-dataflow-gen-2-fabric/2-dataflows-gen-2?wt.mc_id=DP-MVP-5004989)
+
 (10) Connect to Lakehouse (pbiforbeginner).
 
 ![Connect to Lakehouse](/5-Power%20BI/assets/Dataflow%20Gen2%20connect%20to%20Lakehouse%20step%201.jpg)
@@ -191,7 +166,6 @@ The source is given as a CSV file. I decide to store this source data in Fabric 
 ![Dataflow Gen2 save](/5-Power%20BI/assets/Dataflow%20Gen2%20save.jpg)
 
 
-# 2023/10/01 
 
 <span style="color:green">*Note: From this step, it is to load data back to Lakehouse, import it into Power BI Desktop, transform data in the Power Query Editor, load it to Power BI and create a datamodel in Power BI.*</span> 
 
@@ -213,6 +187,9 @@ The source is given as a CSV file. I decide to store this source data in Fabric 
 ![Lakehouse contains new table from Dataflow Gen2](/5-Power%20BI/assets/Lakehouse%20contains%20new%20table%20from%20dataflow%20gen2.jpg)
 
 (14) This table is identical to the "chess_games" table located above within the same folder. The procedures executed in Dataflow Gen2 are not required in this scenario. Nevertheless, it's worth noting that if you perform additional table transformation steps in Dataflow Gen2, the outcome will vary. For this course, I have chosen to conduct further table transformation steps later within Power BI Desktop's Power Query Editor. 
+
+<br />
+<br />
 
 ## <a name="chapter4"></a>4. Open Power BI Desktop 
 
@@ -281,11 +258,11 @@ let
 in
     #"Added Index"
 ```
-* Link to learn Table.SelectColumns M code: <https://learn.microsoft.com/en-us/powerquery-m/table-selectcolumns?wt.mc_id=DP-MVP-5004989>
-* Link to learn Table.Combine M code: <https://learn.microsoft.com/en-us/powerquery-m/table-combine?wt.mc_id=DP-MVP-5004989>
-* Link to learn Table.Distinct M code: <https://learn.microsoft.com/en-us/powerquery-m/table-distinct?wt.mc_id=DP-MVP-5004989>
-* Link to learn Table.Sort M code: <https://learn.microsoft.com/en-us/powerquery-m/table-sort?wt.mc_id=DP-MVP-5004989>
-* Link to learn Table.AddIndexColumn M code: <https://learn.microsoft.com/en-us/powerquery-m/table-addindexcolumn?wt.mc_id=DP-MVP-5004989>
+* Link to learn Table.SelectColumns M code: [Link](https://learn.microsoft.com/en-us/powerquery-m/table-selectcolumns?wt.mc_id=DP-MVP-5004989)
+* Link to learn Table.Combine M code: [Link](https://learn.microsoft.com/en-us/powerquery-m/table-combine?wt.mc_id=DP-MVP-5004989)
+* Link to learn Table.Distinct M code: [Link](https://learn.microsoft.com/en-us/powerquery-m/table-distinct?wt.mc_id=DP-MVP-5004989)
+* Link to learn Table.Sort M code: [Link](https://learn.microsoft.com/en-us/powerquery-m/table-sort?wt.mc_id=DP-MVP-5004989)
+* Link to learn Table.AddIndexColumn M code: [Link](https://learn.microsoft.com/en-us/powerquery-m/table-addindexcolumn?wt.mc_id=DP-MVP-5004989)
 
 
 (5) Reference the source table and create dim_game table.
@@ -320,9 +297,9 @@ let
 in
     #"Removed Other Columns1" 
 ```
-* Link to learn Table.SelectColumns M code: <https://learn.microsoft.com/en-us/powerquery-m/table-selectcolumns?wt.mc_id=DP-MVP-5004989>
-* Link to learn Table.NestedJoin M code: <https://learn.microsoft.com/en-us/powerquery-m/table-nestedjoin?wt.mc_id=DP-MVP-5004989>
-* Link to learn Table.RenameColumns M code: <https://learn.microsoft.com/en-us/powerquery-m/table-renamecolumns?wt.mc_id=DP-MVP-5004989>
+* Link to learn Table.SelectColumns M code: [Link](https://learn.microsoft.com/en-us/powerquery-m/table-selectcolumns?wt.mc_id=DP-MVP-5004989)
+* Link to learn Table.NestedJoin M code: [Link](https://learn.microsoft.com/en-us/powerquery-m/table-nestedjoin?wt.mc_id=DP-MVP-5004989)
+* Link to learn Table.RenameColumns M code: [Link](https://learn.microsoft.com/en-us/powerquery-m/table-renamecolumns?wt.mc_id=DP-MVP-5004989)
 
 <span style="color:green">*Note: Combining two columns from separate tables (Merge operation) and extracting the desired column can be easily accomplished through the user-friendly interface by following the steps below.*</span>
 
@@ -360,9 +337,9 @@ let
 in
     #"Changed Type"
 ```
-* Link to learn Table.ExpandListColumn M code: <https://learn.microsoft.com/en-us/powerquery-m/table-expandlistcolumn?wt.mc_id=DP-MVP-5004989>
-* Link to learn Table.Group M code: <https://learn.microsoft.com/en-us/powerquery-m/table-group?wt.mc_id=DP-MVP-5004989>
-* Link to learn Table.TransformColumnTypes M code: <https://learn.microsoft.com/nl-nl/powerquery-m/table-transformcolumntypes?wt.mc_id=DP-MVP-5004989>
+* Link to learn Table.ExpandListColumn M code: [Link](https://learn.microsoft.com/en-us/powerquery-m/table-expandlistcolumn?wt.mc_id=DP-MVP-5004989)
+* Link to learn Table.Group M code: [Link](https://learn.microsoft.com/en-us/powerquery-m/table-group?wt.mc_id=DP-MVP-5004989)
+* Link to learn Table.TransformColumnTypes M code: [Link](https://learn.microsoft.com/nl-nl/powerquery-m/table-transformcolumntypes?wt.mc_id=DP-MVP-5004989)
 
 
 <span style="color:green">*Note: Splitting a column into rows can be effortlessly accomplished using the Power Query Editor's user-friendly interface. After selecting the column you wish to split into rows, simply follow the steps below.*</span>
@@ -388,16 +365,18 @@ in
 ![relationship manage view in pbi](/5-Power%20BI/assets/relationship%20manage%20view.jpg)
 
 
-# 2023/10/08 
+<br />
+<br />
+
 ## <a name="chapter5"></a>5. DAX measures and Visualizations (Proof Of Concept) 
 
-### Create DAX measures and visualizations to provide insights (Proof Of Concept). 
+### Create DAX measures and visualizations to validate data. 
 
 Before commencing this session, it is advisable to review and comprehend two Microsoft links that offer valuable insights.
 
-Learn concept of DAX by video Link: <https://learn.microsoft.com/en-us/dax/dax-learn-videos?wt.mc_id=DP-MVP-5004989> 
+Learn concept of DAX by video Link: [Link](https://learn.microsoft.com/en-us/dax/dax-learn-videos?wt.mc_id=DP-MVP-5004989) 
 
-DAX Glossaries Link: <https://learn.microsoft.com/en-us/dax/dax-glossary?wt.mc_id=DP-MVP-5004989> 
+DAX Glossaries Link: [Link](https://learn.microsoft.com/en-us/dax/dax-glossary?wt.mc_id=DP-MVP-5004989)
  
 
 (1) Prior to embarking on the development of visualizations and DAX measures, it is imperative to grasp the fundamentals of DAX (Data Analysis Expressions). The two Microsoft links provided above offer valuable resources for initiating your understanding of DAX concepts. 
@@ -465,7 +444,7 @@ in
 
     #"Add winner sort order column" 
 ```
-* Link to learn Table.AddColumn M code: <https://learn.microsoft.com/nl-nl/powerquery-m/table-addcolumn?wt.mc_id=DP-MVP-5004989>
+* Link to learn Table.AddColumn M code: [Link](https://learn.microsoft.com/nl-nl/powerquery-m/table-addcolumn?wt.mc_id=DP-MVP-5004989)
 
 (7) Close and apply Power Query Editor and configure sort order.
 
@@ -491,7 +470,7 @@ The DAX measure utilized on this page is composed as follows.
 Win count = 
     DISTINCTCOUNT(dim_game[game_id])
 ```
-* Link to learn DISTINCTCOUNT DAX function: <https://learn.microsoft.com/en-us/dax/distinctcount-function-dax?wt.mc_id=DP-MVP-5004989>
+* Link to learn DISTINCTCOUNT DAX function: [Link](https://learn.microsoft.com/en-us/dax/distinctcount-function-dax?wt.mc_id=DP-MVP-5004989)
 
 (9) The second request can be rephrased as follows: "What is the first move most commonly played in games won by black and games won by white?" To address this question, the following DAX measures have been developed and are employed in the New Card visualization. The "The most winning first move by white" DAX measure includes comments within the formula to clarify the significance of each variable. In addition, the comments within the DAX measure also serve to elucidate the thought process I underwent while creating the measure. All other measures that are used in this Power BI page are written in a very similar way with [The most winning first move by white] DAX measure. Please do not be misled by the fact that black players' first move is consistently recorded as move_number = 2. In response to the second request, the findings are as follows:
 
@@ -534,11 +513,11 @@ VAR _mostwinningfirstmove =
 RETURN
     CONCATENATEX ( _mostwinningfirstmove, moves_fct[moves], ", " )
 ```
-* Link to learn FILTER DAX function: <https://learn.microsoft.com/en-us/dax/filter-function-dax?wt.mc_id=DP-MVP-5004989>
-* Link to learn SUMMARIZE DAX function: <https://learn.microsoft.com/en-us/dax/summarize-function-dax?wt.mc_id=DP-MVP-5004989>
-* Link to learn GROUPBY DAX function: <https://learn.microsoft.com/en-us/dax/groupby-function-dax?wt.mc_id=DP-MVP-5004989>
-* Link to learn MAXX DAX function: <https://learn.microsoft.com/en-us/dax/maxx-function-dax?wt.mc_id=DP-MVP-5004989>
-* Link to learn CONCATENATEX DAX function: <https://learn.microsoft.com/en-us/dax/concatenatex-function-dax?wt.mc_id=DP-MVP-5004989>
+* Link to learn FILTER DAX function: [Link](https://learn.microsoft.com/en-us/dax/filter-function-dax?wt.mc_id=DP-MVP-5004989)
+* Link to learn SUMMARIZE DAX function: [Link](https://learn.microsoft.com/en-us/dax/summarize-function-dax?wt.mc_id=DP-MVP-5004989)
+* Link to learn GROUPBY DAX function: [Link](https://learn.microsoft.com/en-us/dax/groupby-function-dax?wt.mc_id=DP-MVP-5004989)
+* Link to learn MAXX DAX function: [Link](https://learn.microsoft.com/en-us/dax/maxx-function-dax?wt.mc_id=DP-MVP-5004989>)
+* Link to learn CONCATENATEX DAX function: [Link](https://learn.microsoft.com/en-us/dax/concatenatex-function-dax?wt.mc_id=DP-MVP-5004989)
 
 
 ```dax
@@ -648,9 +627,9 @@ VAR _blackplay =
 RETURN
     _whiteplay + _blackplay
 ```
-* Link to learn COUNTROWS DAX function: <https://learn.microsoft.com/en-us/dax/countrows-function-dax?wt.mc_id=DP-MVP-5004989>
-* Link to learn USERELATIONSHIP DAX function: <https://learn.microsoft.com/en-us/dax/userelationship-function-dax?wt.mc_id=DP-MVP-5004989>
-* Link to learn CALCULATE DAX function: <https://learn.microsoft.com/en-us/dax/calculate-function-dax?wt.mc_id=DP-MVP-5004989>
+* Link to learn COUNTROWS DAX function: [Link](https://learn.microsoft.com/en-us/dax/countrows-function-dax?wt.mc_id=DP-MVP-5004989)
+* Link to learn USERELATIONSHIP DAX function: [Link](https://learn.microsoft.com/en-us/dax/userelationship-function-dax?wt.mc_id=DP-MVP-5004989)
+* Link to learn CALCULATE DAX function: [Link](https://learn.microsoft.com/en-us/dax/calculate-function-dax?wt.mc_id=DP-MVP-5004989)
 
 
 ```dax
@@ -686,7 +665,7 @@ RETURN
 Winning higher rated player percentage = 
     DIVIDE( [Win count when oponent is higher rated], [Winning count by player] )
 ``` 
-* Link to learn DIVIDE DAX function: <https://learn.microsoft.com/en-us/dax/divide-function-dax?wt.mc_id=DP-MVP-5004989>
+* Link to learn DIVIDE DAX function: [Link](https://learn.microsoft.com/en-us/dax/divide-function-dax?wt.mc_id=DP-MVP-5004989)
 
 
 
@@ -794,16 +773,16 @@ RETURN
         [@blackfirstmove]
     )
 ```
-* Link to learn ADDCOLUMNS DAX function: <https://learn.microsoft.com/en-us/dax/addcolumns-function-dax?wt.mc_id=DP-MVP-5004989>
+* Link to learn ADDCOLUMNS DAX function: [Link](https://learn.microsoft.com/en-us/dax/addcolumns-function-dax?wt.mc_id=DP-MVP-5004989)
 
 (13) Until this juncture, I have developed DAX measures and visualizations within the Power BI Desktop file, serving as a proof of concept (POC) version. Moving forward, my focus shifts to crafting charts imbued with purposeful colors, thereby rendering a more intuitive and insightful experience.
 
-
-# 2023/10/10
+<br />
+<br />
 
 ## <a name="chapter6"></a>6. DAX measures and Visualizations (Production) 
 
-### Create and design Power BI report on top of POC version.
+### Create DAX measures & visualizations, and design Power BI report to provide insights.
 
 In the previous session, I diligently verified the functionality of the data model to ensure its accuracy in displaying the relevant information. In this current session, I am poised to elevate the presentation of valuable insights by employing various visualization techniques. These include not only the table and card visualizations but also more dynamic and informative options such as bar charts, column charts, and others.
 
@@ -826,14 +805,14 @@ VAR _wincount = [Win count]
 RETURN
     DIVIDE ( _wincount, _allgames )
 ```
-* Link to learn REMOVEFILTERS DAX function: <https://learn.microsoft.com/en-us/dax/removefilters-function-dax?wt.mc_id=DP-MVP-5004989>
+* Link to learn REMOVEFILTERS DAX function: [Link](https://learn.microsoft.com/en-us/dax/removefilters-function-dax?wt.mc_id=DP-MVP-5004989)
 
 ```dax
 Win count by winner label = 
 FORMAT ( [Win count], "#,#0" ) & " | "
     & FORMAT ( [Win count percentage], "#0.00%" )
 ```
-* Link to learn FORMAT DAX function: <https://learn.microsoft.com/en-us/dax/format-function-dax?wt.mc_id=DP-MVP-5004989>
+* Link to learn FORMAT DAX function: [Link](https://learn.microsoft.com/en-us/dax/format-function-dax?wt.mc_id=DP-MVP-5004989)
 
 
 (2) The second inquiry pertains to identifying the most frequently employed first moves in games that were victorious for both black and white players. To present this information effectively, I have opted for a table visualization as the most suitable medium. To achieve this, it is imperative to include the [winner] column from the dim_game table in the table visualization. To facilitate this integration, I have slightly adjusted the formulation of the DAX measures, as detailed below:
@@ -889,8 +868,8 @@ RETURN
         "Black", CONCATENATEX ( _blackmostwinningfirstmove, moves_fct[moves], ", " )
     )
 ```
-* Link to learn SWITCH DAX function: <https://learn.microsoft.com/en-us/dax/switch-function-dax?wt.mc_id=DP-MVP-5004989>
-* Link to learn SELECTEDVALUE DAX function: <https://learn.microsoft.com/en-us/dax/selectedvalue-function?wt.mc_id=DP-MVP-5004989>
+* Link to learn SWITCH DAX function: [Link](https://learn.microsoft.com/en-us/dax/switch-function-dax?wt.mc_id=DP-MVP-5004989)
+* Link to learn SELECTEDVALUE DAX function: [Link](https://learn.microsoft.com/en-us/dax/selectedvalue-function?wt.mc_id=DP-MVP-5004989)
 
 ```dax
 How many wins by this first move = 
@@ -1034,10 +1013,10 @@ RETURN
         moves_fct[moves]
     )
 ```
-* Link to learn ALL DAX function: <https://learn.microsoft.com/en-us/dax/all-function-dax?wt.mc_id=DP-MVP-5004989>
+* Link to learn ALL DAX function: [Link](https://learn.microsoft.com/en-us/dax/all-function-dax?wt.mc_id=DP-MVP-5004989)
 
 ```dax
-winning count after white first move = 
+Winning count after white first move = 
 VAR _blackwinafterwhitefirstmove =
     //get game ids that black wins
     SUMMARIZE (
@@ -1149,10 +1128,10 @@ RETURN
         moves_fct[moves]
     )
 ```
-* Link to learn VALUES DAX function: <https://learn.microsoft.com/en-us/dax/values-function-dax?wt.mc_id=DP-MVP-5004989>
+* Link to learn VALUES DAX function: [Link](https://learn.microsoft.com/en-us/dax/values-function-dax?wt.mc_id=DP-MVP-5004989)
 
 ```dax
-winning count after black first move = 
+Winning count after black first move = 
 VAR _blackfirstmove = [Black most winning move after white first move]
 VAR _moveonegameid =
     VALUES ( moves_fct[game_id] )
@@ -1195,7 +1174,7 @@ RETURN
 ```
 
 ```dax
-winning ratio after black first move = 
+Winning ratio after black first move = 
 VAR _blackfirstmove = [Black most winning move after white first move]
 VAR _moveonegameid =
     VALUES ( moves_fct[game_id] )
@@ -1245,15 +1224,16 @@ RETURN
 
 <span style="color:green">*Note: The DAX measures I've crafted above may not necessarily represent the most optimal performance and some of them might appear rather intricate to navigate and understand. However, it's essential to delve into each line of the formula to comprehend the specific outcome I intend to achieve. The primary goal is to ensure that the results meet the requirements of the report viewers. Subsequently, I can explore ways to improve the DAX measures for better performance, if necessary.*</span>
 
-# 2023/10/11
+<br />
+<br />
 
 ## <a name="chapter7"></a>7. Publishing and Sharing Power BI report 
 
-### Create a workspace within the Power BI Service at <https://app.powerbi.com> and distribute the Power BI report
+### Create a workspace within the Power BI Service (<https://app.powerbi.com>) and distribute the Power BI report
 
 Upon completion of the Power BI report authoring, it's time to embark on the process of publication and dissemination to relevant stakeholders. For details regarding the requisite Power BI licensing for both Power BI developer and the audience to facilitate seamless sharing and report access, please refer to the provided link below.
 
-* Link to learn Licensing the Power BI service: <https://learn.microsoft.com/en-us/power-bi/enterprise/service-admin-licensing-organization?wt.mc_id=DP-MVP-5004989>
+* Link to learn Licensing the Power BI service: [Link](https://learn.microsoft.com/en-us/power-bi/enterprise/service-admin-licensing-organization?wt.mc_id=DP-MVP-5004989)
 
 Here's a concise outline of the steps to publish and share Power BI report. These steps will help streamline the process of publishing and sharing the Power BI report effectively.
 
@@ -1261,7 +1241,7 @@ Here's a concise outline of the steps to publish and share Power BI report. Thes
 
 ![create workspace](/5-Power%20BI/assets/create%20workspace.jpg)
 
-* Link to learn Power BI service per user and capacity based licenses: <https://learn.microsoft.com/en-us/power-bi/fundamentals/service-features-license-type?wt.mc_id=DP-MVP-5004989>
+* Link to learn Power BI service per user and capacity based licenses: [Link](https://learn.microsoft.com/en-us/power-bi/fundamentals/service-features-license-type?wt.mc_id=DP-MVP-5004989)
 
 (2) Save the Power BI desktop file and proceed to publish it directly into the designated workspace.
 
@@ -1281,9 +1261,11 @@ Here's a concise outline of the steps to publish and share Power BI report. Thes
 
 ![manage access to workspace](/5-Power%20BI/assets/manage%20access%20to%20workspace.jpg)
 
-* Link to learn Roles in workspace in Power BI: <https://learn.microsoft.com/en-us/power-bi/collaborate-share/service-roles-new-workspaces?wt.mc_id=DP-MVP-5004989> 
+* Link to learn Roles in workspace in Power BI: [Link](https://learn.microsoft.com/en-us/power-bi/collaborate-share/service-roles-new-workspaces?wt.mc_id=DP-MVP-5004989)
 
 
+<br />
+<br />
 
 ## <a name="chapter8"></a>8. Closing 
 
@@ -1303,4 +1285,7 @@ As I conclude this learning experience, it is important to remember that the kno
 
 Thank you for joining me on this adventure, and best of luck in your data-driven endeavors.
 
-<span style="color:green">*Author: Jihwan Kim | Microsoft MVP | Link to profile: <https://mvp.microsoft.com/en-US/mvp/profile/385eb34e-c755-ed11-9561-000d3a197333>*</span>
+<br />
+<br />
+
+<span style="color:green">Author: Jihwan Kim | Microsoft MVP | Link to profile: [Link](https://mvp.microsoft.com/en-US/mvp/profile/385eb34e-c755-ed11-9561-000d3a197333)</span>
