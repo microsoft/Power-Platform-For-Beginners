@@ -1,0 +1,15 @@
+{
+  "name": "Custom",
+  "visualStyles": {
+    "*": {
+      "*": {
+        "border": [
+          {
+            "show": true,
+            "radius": 5
+          }
+        ]
+      }
+    }
+  }
+}
