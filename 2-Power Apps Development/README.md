@@ -69,7 +69,21 @@ The strength of Model-Driven Apps lies in their ability to automatically generat
 - Rebekka -->
 
 #### Adding data to your App
-<!-- - Angelo -->
+Working with data in Power Apps is straightforward. Essentially, you need to select a data source from the available [connectors](https://learn.microsoft.com/en-us/connectors/connector-reference/connector-reference-powerapps-connectors), connect to it, and then you can begin working with your data. You have the flexibility to start with various sources such as Excel files, SharePoint lists, Dataverse, SQL databases, and more.
+
+After adding the connector, it will display the tables or lists (referred to as entities) that you can include in your application, all set for your use.
+
+How to add connector?
+
+1. Click on "Data"
+2. Click on "Add Data"
+3. Search connector you need (ES: SharePoint)
+4. Configure connection (if needed)
+5. Select Site
+6. Select List to use
+
+You can use this step by step guide: [add data to existing app](https://learn.microsoft.com/en-us/power-apps/maker/canvas-apps/connections/connection-sharepoint-online#add-data-to-an-existing-app)
+
 
 ##### Build an app using Excel
 <!-- - Angelo -->
