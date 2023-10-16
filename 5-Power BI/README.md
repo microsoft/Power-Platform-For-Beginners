@@ -122,20 +122,27 @@ The source is given as a CSV file. I decide to store this source data in Fabric 
 * Link to learn Fabric lakehouse: [Link](https://learn.microsoft.com/en-us/fabric/data-engineering/lakehouse-overview?wt.mc_id=DP-MVP-5004989)
 
 
-(1) Create a workspace in app.powerbi.com 
+(1) Create a workspace in app.powerbi.com
+
 (2) Name the new workspace “PBI_For_Beginner”.
 
 ![Create Fabric workspace](/5-Power%20BI/assets/Create%20Fabric%20workspace.jpg)
 
-(3) Create Lakehouse, and name it as “pbiforbeginner”. 
+<br />
+
+(3) Create Lakehouse, and name it as “pbiforbeginner”.
 
 ![Create Lakehouse](/5-Power%20BI/assets/Create%20Lakehouse.jpg)
 
 * Link to learn and explore the Microsoft Fabric Lakehouse: [Link](https://learn.microsoft.com/en-us/training/modules/get-started-lakehouses/2-fabric-lakehouse?wt.mc_id=DP-MVP-5004989)
 
+<br />
+
 (4) Upload the CSV file.
 
 ![Upload CSV to Lakehouse](/5-Power%20BI/assets/Upload%20CSV%20to%20Lakehouse.jpg)
+
+<br />
 
 (5) Now, the file is in the Lakehouse.  
 
@@ -143,11 +150,17 @@ The source is given as a CSV file. I decide to store this source data in Fabric 
 
 ![Make CSV to Table in Lakehouse](/5-Power%20BI/assets/Make%20CSV%20to%20Table%20in%20Lakehouse.jpg)
 
+<br />
+
 (7) Once it is loaded, the source in the Lakehouse looks like below.  
 
 ![View a table in Lakehouse](/5-Power%20BI/assets/View%20a%20table%20in%20Lakehouse.jpg)
 
+<br />
+
 (8) Starting from the next step, the table within the Lakehouse will be utilized within Dataflow Gen2 to undergo transformation and be structured into a suitable dimension table and fact table. While this approach can be more practical in certain situations, this course will provide a brief demonstration of creating Dataflow Gen2 and loading it back into the Lakehouse. This aims to give you a basic understanding of Dataflow Gen2. However, it's important to note that the primary focus of this course will be on conducting the majority of transformations within Power BI Desktop's Power Query Editor.  
+
+<br />
 
 (9) Create Dataflow Gen2.
 
@@ -155,11 +168,15 @@ The source is given as a CSV file. I decide to store this source data in Fabric 
 
 * Link to learn and understand Dataflow Gen2 in Microsoft Fabric: [Link](https://learn.microsoft.com/en-us/training/modules/use-dataflow-gen-2-fabric/2-dataflows-gen-2?wt.mc_id=DP-MVP-5004989)
 
+<br />
+
 (10) Connect to Lakehouse (pbiforbeginner).
 
 ![Connect to Lakehouse](/5-Power%20BI/assets/Dataflow%20Gen2%20connect%20to%20Lakehouse%20step%201.jpg)
 
 ![Connect to Lakehouse](/5-Power%20BI/assets/Dataflow%20Gen2%20connect%20to%20Lakehouse%20step%202.jpg)
+
+<br />
 
 (11) Rename Dataflow Gen2 as “Chess_Games” and publish it later to save it up to this step.
 
@@ -169,6 +186,7 @@ The source is given as a CSV file. I decide to store this source data in Fabric 
 
 <span style="color:green">*Note: From this step, it is to load data back to Lakehouse, import it into Power BI Desktop, transform data in the Power Query Editor, load it to Power BI and create a datamodel in Power BI.*</span> 
 
+<br />
 
 (12) Select Data destination as Lakehouse. 
 
@@ -182,9 +200,13 @@ The source is given as a CSV file. I decide to store this source data in Fabric 
 
 ![Dataflow Gen2 publish](/5-Power%20BI/assets/Dataflow%20Gen2%20publish.jpg)
 
+<br />
+
 (13) Once the loading of “Chess_Games” Dataflow Gen2 is done, go to “pbiforbeginner” Lakehouse to check whether the “chess_games_source” is added.
 
 ![Lakehouse contains new table from Dataflow Gen2](/5-Power%20BI/assets/Lakehouse%20contains%20new%20table%20from%20dataflow%20gen2.jpg)
+
+<br />
 
 (14) This table is identical to the "chess_games" table located above within the same folder. The procedures executed in Dataflow Gen2 are not required in this scenario. Nevertheless, it's worth noting that if you perform additional table transformation steps in Dataflow Gen2, the outcome will vary. For this course, I have chosen to conduct further table transformation steps later within Power BI Desktop's Power Query Editor. 
 
@@ -207,14 +229,19 @@ The source is given as a CSV file. I decide to store this source data in Fabric 
 ![import csv file](/5-Power%20BI/assets/PBI%20Desktop%20connect%20to%20CSV%20file.jpg)
 ![use first row as headers](/5-Power%20BI/assets/PQEditor%20use%20first%20row%20as%20headers.jpg)
 
+<br />
 
 (2) The "chess_games_source" table is imported into Power Query Editor. Since this table serves as the source for dimension tables and a fact table, which will be loaded into the Power BI report to construct a data model, the [Enable load] option is unchecked (equivalent to disabling load). Instead, we will create dimension tables and a fact table by referencing this source table.
 
 ![pq editor disable load](/5-Power%20BI/assets/pq%20editor%20disable%20load.jpg)
 
+<br />
+
 (3) Create dim_player table. 
 
 ![pq editor dim table](/5-Power%20BI/assets/pq%20editor%20dim%20table.jpg)
+
+<br />
 
 (4) Proceed with the transformation steps outlined in the query. For a more detailed description of the M codes used, please refer to the "Advanced Editor." In summary, the purpose of this transformation is as follows:
 
@@ -264,10 +291,13 @@ in
 * Link to learn Table.Sort M code: [Link](https://learn.microsoft.com/en-us/powerquery-m/table-sort?wt.mc_id=DP-MVP-5004989)
 * Link to learn Table.AddIndexColumn M code: [Link](https://learn.microsoft.com/en-us/powerquery-m/table-addindexcolumn?wt.mc_id=DP-MVP-5004989)
 
+<br />
 
 (5) Reference the source table and create dim_game table.
 
 ![pq editor dim table](/5-Power%20BI/assets/pq%20editor%20dim%20table%20table.jpg)
+
+<br />
 
 (6) Follow the transformation steps. The M codes are comprehensively explained within the "Advanced Editor." The purpose of this transformation is outlined as follows:
 - Eliminate extraneous columns, such as the moves column, which is designed for the fact table, rather than the dimension table.
@@ -306,8 +336,11 @@ in
 ![power query merge ui](/5-Power%20BI/assets/power%20query%20merge%20UI.jpg)
 ![pwer query expand column](/5-Power%20BI/assets/power%20query%20expand%20column.jpg)
 
+<br />
 
 (7) Reference the source table and create moves_fct table. 
+
+<br />
 
 (8) Follow the transformation steps. Detailed descriptions of the M codes can be found in the "Advanced Editor." The primary objective of this transformation is as follows:
 - Select a column containing all moves per game and split them into individual rows within the same game_id.
@@ -346,12 +379,17 @@ in
 
 ![pq split into row](/5-Power%20BI/assets/power%20query%20split%20into%20row.jpg)
 
+<br />
+
 (9) Close and apply to Power BI Desktop 
 
 ![load from pq to pbi](/5-Power%20BI/assets/load%20tables%20from%20pq%20to%20pbi.jpg)
 
- 
+<br />
+
 (10) Establish Table Relationships. Aligning with the Data Model Blueprint Presented at the Course Onset  
+
+<br />
 
 (11) Navigate to the Model View, and seamlessly link columns by dragging one from one table and connecting it to another from a separate table. 
 
@@ -396,8 +434,11 @@ DAX Glossaries Link: [Link](https://learn.microsoft.com/en-us/dax/dax-glossary?w
 (4) To systematically consolidate DAX measures, I establish a blank table and designate it as "Key_Measures." This table will exclusively house DAX measures for improved organization and clarity.
 ![create measure table](/5-Power%20BI/assets/create%20measure%20table.jpg)
  
+<br />
 
 (5) On the empty canvas, add a table visualization and then drag the [winner] column from the dim_game table. Please note that the ultimate visualization may not remain a table; nevertheless, this step assists in visualizing and comprehending the required information that needs to be presented and crafted in the final visualization. 
+
+<br />
 
 (6) Create a DAX measure to tally wins by black, white, or draws. Currently, the order in the table visualization is alphabetical, displaying "Black," "Draw," and then "White." To correct this order and have it displayed as "White," "Black," and "Draw," we need to generate a new column within the same table using Power Query Editor. This new column will assign values such as White = 1, Black = 2, and Draw = 3. Subsequently, we can sort the [winner] column based on the newly created column. In Power Query Editor, you can create a new column by adding a step through the "fx" button in the formula bar or by incorporating M code within the Advanced Editor.
 
@@ -445,6 +486,8 @@ in
     #"Add winner sort order column" 
 ```
 * Link to learn Table.AddColumn M code: [Link](https://learn.microsoft.com/nl-nl/powerquery-m/table-addcolumn?wt.mc_id=DP-MVP-5004989)
+
+<br />
 
 (7) Close and apply Power Query Editor and configure sort order.
 
@@ -667,7 +710,7 @@ Winning higher rated player percentage =
 ``` 
 * Link to learn DIVIDE DAX function: [Link](https://learn.microsoft.com/en-us/dax/divide-function-dax?wt.mc_id=DP-MVP-5004989)
 
-
+<br />
 
 (11) The fourth request involves calculating the percentage of wins by higher-rated players, which amounts to 61.58%. This information can be presented through both a table visualization and a card visualization, as demonstrated below:
 
@@ -722,6 +765,8 @@ VAR _allgamescount =
 RETURN
     DIVIDE ( _whitewin + _blackwin, _allgamescount )
 ``` 
+
+<br />
 
 (12) The final question, expressed in a more straightforward manner, is, after White plays the first move D4, what is the most advantageous opening move for Black in terms of achieving the highest winning percentage? The thought process unfolds as follows, facilitating the creation of a more intuitive DAX measure:
 - Commence by filtering the 'moves_fct' table to include only instances where the first move is 'D4.
@@ -915,6 +960,8 @@ RETURN
     )
 ```
 
+<br />
+
 (3) The third inquiry focuses on identifying the player with the highest number of wins and computing their winning percentage when competing against opponents with superior ratings. To present these findings effectively, I have chosen to employ a stacked bar chart. To provide valuable insights, I have designed the chart to showcase the top 10 winning players, along with their respective win counts against lower-rated opponents. I've also created an additional measure to display this supplementary information.
 
 Regarding the data labels, while the chart effectively represents the win count against higher-rated opponents, I've opted not to directly display the win count against lower-rated opponents. Instead, I've chosen to depict the ratio of the win count against higher-rated opponents. This approach allows for the presentation of all pertinent and critical information, including the win count against higher-rated opponents, the ratio, the total win count, and, of course, the name of the player with the most wins, alongside the names of the other top 10 winning players.
@@ -927,6 +974,8 @@ The additinoal DAX measures utilized on this page is composed as follows.
 Win count when oponent is lower rated = 
     [Winning count by player] - [Win count when oponent is higher rated]
 ```
+
+<br />
 
 (4) The fourth inquiry centers around calculating the percentage of wins achieved by higher-rated players. In this instance, I have chosen to present this data using a bar chart, similar to the approach I employed when addressing the first question. Additionally, I have integrated a card visualization that I previously crafted.
 
@@ -972,6 +1021,8 @@ Higher rated win label =
 FORMAT ( [Higher rated win count], "#,#0" ) & " | "
     & FORMAT ( [Higher rated win count ratio], "#0.00%" )
 ```
+
+<br />
 
 (5) The final inquiry pertains to identifying the initial move for Black that boasts the highest probability of securing victory following White's first move of D4. While crafting the Proof of Concept (POC) version, I ascertained that when White initiates with D4, the most advantageous response for Black is D5. In pursuit of providing even more valuable insights to end users stakeholders, I took a step further to determine Black's most winning move following any of White's opening moves.
 
@@ -1045,6 +1096,8 @@ RETURN
     _maxcount
 ```
 
+<br />
+
 ```dax
 winning ratio after white first move = 
 VAR _blackwinafterwhitefirstmove =
@@ -1076,6 +1129,8 @@ VAR _maxcount =
 RETURN
     DIVIDE ( _maxcount, _gamescount )
 ```
+
+<br />
 
 While constructing a table visualization to pinpoint the initial move by Black that exemplifies the most successful winning strategy, I also delved further to determine the subsequent White move that maximizes the chances of victory. The results of this table visualization are presented below.
 
@@ -1130,6 +1185,8 @@ RETURN
 ```
 * Link to learn VALUES DAX function: [Link](https://learn.microsoft.com/en-us/dax/values-function-dax?wt.mc_id=DP-MVP-5004989)
 
+<br />
+
 ```dax
 Winning count after black first move = 
 VAR _blackfirstmove = [Black most winning move after white first move]
@@ -1172,6 +1229,8 @@ VAR _maxcount =
 RETURN
     _maxcount
 ```
+
+<br />
 
 ```dax
 Winning ratio after black first move = 
@@ -1218,6 +1277,8 @@ RETURN
     DIVIDE ( _maxcount, _movetwogamecount )
 ```
 
+<br />
+
 (6) To facilitate the productionization of the Power BI report, I opted to conceal all the pages I had previously crafted for data and data model validation. Instead, I created a single page that systematically incorporates all visualizations, thereby presenting stories and insights. Additionally, it is feasible to retain this Power BI file as a proof of concept (POC) version and initiate the development of a new one intended for production use. It's worth noting that designing of the report page falls outside the purview of this course, but ample resources are available for reference and those are easily found on web.
 
 ![power bi report product](/5-Power%20BI/assets/pbi%20report%20production.jpg)
@@ -1243,19 +1304,29 @@ Here's a concise outline of the steps to publish and share Power BI report. Thes
 
 * Link to learn Power BI service per user and capacity based licenses: [Link](https://learn.microsoft.com/en-us/power-bi/fundamentals/service-features-license-type?wt.mc_id=DP-MVP-5004989)
 
+<br />
+
 (2) Save the Power BI desktop file and proceed to publish it directly into the designated workspace.
+
+<br />
 
 (3) Access the respective workspace housing your report.
 
 ![publish to workspace](/5-Power%20BI/assets/publish%20to%20workspace.jpg)
 
+<br />
+
 (4) Verify that the report has been published accurately, ensuring it is accessible as intended.
 
 ![pbi report in workspace](/5-Power%20BI/assets/pbi%20report%20in%20worksapce.jpg)
 
+<br />
+
 (5) If necessary, configure the dataset refresh settings to suit your specific requirements.
 
 ![configure refresh dataset](/5-Power%20BI/assets/configure%20refresh%20dataset.jpg)
+
+<br />
 
 (6) After deciding who should have access to this Power BI report, I can grant them access to the workspace. As the creator and administrator of the workspace, I have the authority to assign people to all different roles. Typically, I assign individuals as viewers, and this choice ensures that, for instance, the Row-Level Security (RLS) configuration functions correctly.
 
