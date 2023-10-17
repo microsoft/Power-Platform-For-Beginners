@@ -233,7 +233,11 @@ The source is given as a CSV file. I decide to store this source data in Fabric 
 
 (2) The "chess_games_source" table is imported into Power Query Editor. Since this table serves as the source for dimension tables and a fact table, which will be loaded into the Power BI report to construct a data model, the [Enable load] option is unchecked (equivalent to disabling load). Instead, we will create dimension tables and a fact table by referencing this source table.
 
+<span style="color:green">*Note: In Power Query Editor within Power BI, the fundamental distinction between "Copy" and "Reference" tables lies in their behavior when creating a new table. When you "Copy" a table, it duplicates the entire table's data, resulting in a completely separate table with its own set of data. This means that any changes made to the copied table will not affect the original. On the other hand, when you "Reference" a table, you create a new table that simply points back to the original data source. This means that the referenced table shares the same data as the source, and any transformations or modifications applied to the source will automatically reflect in the referenced table. "Reference" tables are useful when you want to work with the same data in different ways without duplicating it, maintaining data consistency across multiple queries.*</span>
+
 ![pq editor disable load](/5-Power%20BI/assets/pq%20editor%20disable%20load.jpg)
+
+* Link to learn Referencing Power Query queries: [Link](https://learn.microsoft.com/en-us/power-bi/guidance/power-query-referenced-queries?wt.mc_id=DP-MVP-5004989)
 
 <br />
 
@@ -432,6 +436,7 @@ DAX Glossaries Link: [Link](https://learn.microsoft.com/en-us/dax/dax-glossary?w
 (3) Let's proceed to generate visualizations and DAX measures in response to the aforementioned request. To streamline the first request, our objective is to determine the total number of games won, lost, or drawn by both white and black players.
 
 (4) To systematically consolidate DAX measures, I establish a blank table and designate it as "Key_Measures." This table will exclusively house DAX measures for improved organization and clarity.
+
 ![create measure table](/5-Power%20BI/assets/create%20measure%20table.jpg)
  
 <br />
@@ -493,6 +498,8 @@ in
 
 ![sort column](/5-Power%20BI/assets/sort%20column.jpg) 
 
+<br />
+
 (8) Create DAX measure. My approach to crafting a DAX measure to address this inquiry involves the following steps:
 - Extract the relevant column from the 'dim_game' table that can provide a summary based on 'white winner,' 'black winner,' and 'draw'.
 - For each of these winner categories, calculate a distinct count of the game IDs within that respective category.
@@ -514,6 +521,8 @@ Win count =
     DISTINCTCOUNT(dim_game[game_id])
 ```
 * Link to learn DISTINCTCOUNT DAX function: [Link](https://learn.microsoft.com/en-us/dax/distinctcount-function-dax?wt.mc_id=DP-MVP-5004989)
+
+<br />
 
 (9) The second request can be rephrased as follows: "What is the first move most commonly played in games won by black and games won by white?" To address this question, the following DAX measures have been developed and are employed in the New Card visualization. The "The most winning first move by white" DAX measure includes comments within the formula to clarify the significance of each variable. In addition, the comments within the DAX measure also serve to elucidate the thought process I underwent while creating the measure. All other measures that are used in this Power BI page are written in a very similar way with [The most winning first move by white] DAX measure. Please do not be misled by the fact that black players' first move is consistently recorded as move_number = 2. In response to the second request, the findings are as follows:
 
@@ -639,6 +648,8 @@ VAR _maxwin =
 RETURN
     _maxwin
 ```
+
+<br />
 
 (10) The third request, rephrased for clarity, is to identify the player with the most wins and calculate their winning percentage against opponents with a higher rating. The thought process for developing a solution entails the following steps:
 - Extract the 'player_id' column from the 'dim_player' table.
@@ -820,6 +831,8 @@ RETURN
 ```
 * Link to learn ADDCOLUMNS DAX function: [Link](https://learn.microsoft.com/en-us/dax/addcolumns-function-dax?wt.mc_id=DP-MVP-5004989)
 
+<br />
+
 (13) Until this juncture, I have developed DAX measures and visualizations within the Power BI Desktop file, serving as a proof of concept (POC) version. Moving forward, my focus shifts to crafting charts imbued with purposeful colors, thereby rendering a more intuitive and insightful experience.
 
 <br />
@@ -859,6 +872,7 @@ FORMAT ( [Win count], "#,#0" ) & " | "
 ```
 * Link to learn FORMAT DAX function: [Link](https://learn.microsoft.com/en-us/dax/format-function-dax?wt.mc_id=DP-MVP-5004989)
 
+<br />
 
 (2) The second inquiry pertains to identifying the most frequently employed first moves in games that were victorious for both black and white players. To present this information effectively, I have opted for a table visualization as the most suitable medium. To achieve this, it is imperative to include the [winner] column from the dim_game table in the table visualization. To facilitate this integration, I have slightly adjusted the formulation of the DAX measures, as detailed below:
 
