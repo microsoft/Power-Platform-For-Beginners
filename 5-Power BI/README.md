@@ -32,7 +32,7 @@
 
 ## <a name="chapter1"></a>1. Sample data: Online Chess Games 
 
-This open-source resource can be found on Mavenanalytics.io.
+The open-source resource utilized in this course is accessible through the provided link below.
 
 Link to the website: [Link](https://mavenanalytics.io/data-playground?page=5&pageSize=5)
 
@@ -109,7 +109,8 @@ Following discussions with stakeholders, the primary insights to be conveyed thr
 
 The dimension tables contain pertinent information about the Players and Games, while the fact table is populated with details about Moves.
 
-The visualization of the data model is represented in the figure below. It's important to note that this data model can be modified or adjusted as needed, based on the data available in the source or the evolving requirements for creating a comprehensive analysis report. 
+The visualization of the data model is presented in the figure below. This data model serves as the foundation of our analytical framework. As a seasoned Power BI developer, I understand the importance of tailoring the data model to meet the specific requirements of the data source and the ever-evolving needs of our analytical reports.
+I strongly advise that you begin by meticulously designing the data model before embarking on any data transformation. While it's natural for the data model's structure to evolve throughout the project, this initial blueprint serves as a guiding light, allowing developers to start their journey with confidence and precision.
 
 ![Datamodel planning fix](/5-Power%20BI/assets/Datamodel%20plan%20fix.jpg) 
 
