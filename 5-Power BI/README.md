@@ -118,7 +118,7 @@ I strongly advise that you begin by meticulously designing the data model before
 
 ### Store the source in Lakehouse  
 
-The source is given as a CSV file. I decide to store this source data in Fabric Lakehouse, and I plan to use Dataflow Gen2 to transform the source table and load it back to Lakehouse.
+The source is given as a CSV file. My approach involves saving this source data in a Fabric Lakehouse. And to refine and transform the data, I intend to employ Dataflow Gen2, although most of the transformations will occur in the Power Query Editor within Power BI Desktop. Finally, I'll reload the modified table back into the Lakehouse.
 
 * Link to learn Fabric lakehouse: [Link](https://learn.microsoft.com/en-us/fabric/data-engineering/lakehouse-overview?wt.mc_id=DP-MVP-5004989)
 
@@ -539,7 +539,7 @@ The DAX measures utilized on this page is composed as follows.
 ```dax
 The most winning first move by white = 
 
-VAR _whitewintable =  //Create a virtual table that shows white players win with showing the first move of each game.
+VAR _whitewintable =  //Generate a virtual table that displays the initial moves of white players who have won their games.
     FILTER (
         SUMMARIZE (
             FILTER ( moves_fct, moves_fct[move_number] = 1 ),
@@ -550,14 +550,14 @@ VAR _whitewintable =  //Create a virtual table that shows white players win with
         dim_game[winner] = "White"
     )
 
-VAR _countfirstmove =   // Group every first move in the above table with adding counting column. 
+VAR _countfirstmove =   // Group the initial moves in the table above while also adding a count column. 
     GROUPBY (
         _whitewintable,
         moves_fct[moves],
         "@count", SUMX ( CURRENTGROUP (), 1 )
     )
 
-VAR _maxwin =   // Maximum counting number means the most played first move.
+VAR _maxwin =   // The highest count number indicates the most frequently played initial move.
     MAXX ( _countfirstmove, [@count] )
 
 VAR _mostwinningfirstmove =
@@ -576,7 +576,7 @@ RETURN
 ```dax
 The most winning first move by black = 
 
-VAR _blackwintable =    // black player's first move is always move number 2
+VAR _blackwintable =    // The first move for black players is always the second move in the game.
     FILTER (
         SUMMARIZE (
             FILTER ( moves_fct, moves_fct[move_number] = 2 ),
@@ -672,7 +672,7 @@ Winning count by player =
 VAR _whiteplay =
     COUNTROWS ( FILTER ( dim_game, dim_game[winner] = "White" ) )
 
-//activating inactive relationship in the datamodel by using USERELATIONSHIP DAX function    
+// Use the USERELATIONSHIP DAX function to activate an inactive relationship in the data model.    
 VAR _blackplay =    
     CALCULATE (
         COUNTROWS ( FILTER ( dim_game, dim_game[winner] = "Black" ) ),
@@ -699,7 +699,7 @@ VAR _wincountbywhite =
         )
     )
 
-//activating inactive relationship in the datamodel by using USERELATIONSHIP DAX function    
+// Use the USERELATIONSHIP DAX function to activate an inactive relationship in the data model.    
 VAR _wincountbyblack =    
     CALCULATE (
         COUNTROWS (
@@ -1050,7 +1050,7 @@ The additinoal DAX measures utilized on this page is composed as follows.
 ```dax
 Black most winning move after white first move = 
 VAR _blackwinafterwhitefirstmove =
-    //get game ids that black wins
+    // Retrieve the game IDs for games where black emerges as the winner.
     SUMMARIZE (
         FILTER (
             SUMMARIZE ( moves_fct, dim_game[game_id], dim_game[winner] ),
@@ -1084,7 +1084,7 @@ RETURN
 ```dax
 Winning count after white first move = 
 VAR _blackwinafterwhitefirstmove =
-    //get game ids that black wins
+    // Retrieve the game IDs for games where black emerges as the winner.
     SUMMARIZE (
         FILTER (
             SUMMARIZE ( moves_fct, dim_game[game_id], dim_game[winner] ),
@@ -1116,7 +1116,7 @@ RETURN
 ```dax
 winning ratio after white first move = 
 VAR _blackwinafterwhitefirstmove =
-    //get game ids that black wins
+    //Retrieve the game IDs for games where black emerges as the winner.
     SUMMARIZE (
         FILTER (
             SUMMARIZE ( moves_fct, dim_game[game_id], dim_game[winner] ),
@@ -1177,7 +1177,7 @@ VAR _movetwogameid =  //find out what are move = 2 game id that shows black's fi
         dim_game[game_id]
     )
 VAR _whitesecondtmoveofthegame =
-    //white second move is move number 3
+    // The second move for white players occurs on move number 3.
     FILTER (
         ALL ( moves_fct ),
         moves_fct[game_id]
@@ -1207,7 +1207,7 @@ Winning count after black first move =
 VAR _blackfirstmove = [Black most winning move after white first move]
 VAR _moveonegameid =
     VALUES ( moves_fct[game_id] )
-VAR _movetwogameid =  //find out what are move = 2 game id that shows black's first move (previous result) and white-win
+VAR _movetwogameid =  //Determine the game IDs where, in the previous result, move number 2 represents black's first move and the game results in a white player's victory.
     SUMMARIZE (
         FILTER (
             SUMMARIZE (
@@ -1226,7 +1226,7 @@ VAR _movetwogameid =  //find out what are move = 2 game id that shows black's fi
         dim_game[game_id]
     )
 VAR _whitesecondtmoveofthegame =
-    //white second move is move number 3
+    //The second move for white players occurs on move number 3.
     FILTER (
         ALL ( moves_fct ),
         moves_fct[game_id]
@@ -1267,13 +1267,13 @@ VAR _movetwogameidall =
 VAR _movetwogamecount =
     COUNTROWS ( _movetwogameidall )
 VAR _movetwogameid =
-    //find out what are move = 2 game id that shows black's first move (previous result) and white-win
+    //Identify game IDs where move number 2 corresponds to black's first move (from the previous result), and the outcome of the game is a white player's victory.
     SUMMARIZE (
         FILTER ( _movetwogameidall, dim_game[winner] = "White" ),
         dim_game[game_id]
     )
 VAR _whitesecondtmoveofthegame =
-    //white second move is move number 3
+    //The second move for white players occurs on move number 3.
     FILTER (
         ALL ( moves_fct ),
         moves_fct[game_id]
