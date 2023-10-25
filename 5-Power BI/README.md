@@ -884,21 +884,21 @@ The additinoal DAX measures utilized on this page is composed as follows.
 ```dax
 The most winning first move = 
 VAR _whitewintable =
-    //Create a virtual table that shows the first move of each winning game.
+    //Generate a virtual table displaying the initial move in each victorious game.
     SUMMARIZE (
         FILTER ( moves_fct, moves_fct[move_number] = 1 ),
         moves_fct[moves],
         dim_game[game_id]
     )
 VAR _whitecountfirstmove =
-    // Group every first move in the above table with adding counting column. 
+    // Group the initial moves in the table above and add an extra column to count each move. 
     GROUPBY (
         _whitewintable,
         moves_fct[moves],
         "@count", SUMX ( CURRENTGROUP (), 1 )
     )
 VAR _whitemaxwin =
-    // Maximum counting number means the most played first move.
+    // The 'Maximum Counting Number' represents the most frequently played initial move.
     MAXX (
         _whitecountfirstmove,
         [@count]
@@ -934,21 +934,21 @@ RETURN
 ```dax
 How many wins by this first move = 
 VAR _whitewintable =
-    //Create a virtual table that shows the first move of each winning game.
+    //Generate a virtual table displaying the initial move in each victorious game.
     SUMMARIZE (
         FILTER ( moves_fct, moves_fct[move_number] = 1 ),
         moves_fct[moves],
         dim_game[game_id]
     )
 VAR _whitecountfirstmove =
-    // Group every first move in the above table with adding counting column. 
+    // Group the initial moves in the table above and add an extra column to count each move. 
     GROUPBY (
         _whitewintable,
         moves_fct[moves],
         "@count", SUMX ( CURRENTGROUP (), 1 )
     )
 VAR _whitemaxwin =
-    // Maximum counting number means the most played first move.
+    // The 'Maximum Counting Number' represents the most frequently played initial move.
     MAXX (
         _whitecountfirstmove,
         [@count]
@@ -1158,7 +1158,7 @@ White most winning move after black first move =
 VAR _blackfirstmove = [Black most winning move after white first move]
 VAR _moveonegameid =
     VALUES ( moves_fct[game_id] )
-VAR _movetwogameid =  //find out what are move = 2 game id that shows black's first move (previous result) and white-win
+VAR _movetwogameid =  //Identify the game IDs in which the second move was made by black (as per the previous result), and white won.
     SUMMARIZE (
         FILTER (
             SUMMARIZE (
