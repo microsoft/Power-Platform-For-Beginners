@@ -362,18 +362,365 @@ To access this feature, developers can activate it within Power Apps Studio thro
 
 The introduction of modern controls in Power Apps Canvas Apps is a testament to Microsoft's commitment to evolving with the demands of modern app development. As these controls transition from preview to production-ready features, they promise to redefine the app-making experience, making it more intuitive, efficient, and delightful.
 
-
 ### Functions
-<!-- - When to you use what
-- How to work with the functions documentation-->
 
-### variables and collections
+#### 30 Essential Functions in Power Apps Canvas Apps
 
-#### Global variables
+##### Introduction
 
-#### Context variables
+In Power Apps Canvas Apps, functions are the building blocks that empower app makers to create dynamic and interactive applications. They allow for the manipulation of data, the definition of app behavior, and interaction with various components and data sources. This chapter delves into 30 of the most crucial functions, with examples to illustrate their application.
 
-#### Collections
+##### LookUp
+
+**Usage**: Retrieves a single record from a data source.
+
+**Example**: `LookUp(Products, ProductID = 5)` - This fetches the product with the ProductID of 5.
+
+##### Filter
+
+**Usage**: Returns a subset of records based on criteria.
+
+**Example**: `Filter(Orders, OrderDate > DateValue("01-01-2023"))` - Retrieves all orders made after January 1, 2023.
+
+##### Search
+
+**Usage**: Searches for records containing specific text.
+
+**Example**: `Search(Customers, "Doe", "LastName")` - Finds customers with "Doe" in their last name.
+
+##### Sum
+
+**Usage**: Adds up numbers from records.
+
+**Example**: `Sum(Orders, Amount)` - Calculates the total of all order amounts.
+
+##### Patch
+
+**Usage**: Modifies or creates a record in a data source.
+
+**Example**: `Patch(Products, Defaults(Products), {ProductName: "New Product", Price: 10})` - Adds a new product.
+
+##### If
+
+**Usage**: Conditional logic.
+
+**Example**: `If(Age > 21, "Adult", "Minor")` - Returns "Adult" if Age is above 21, otherwise "Minor".
+
+---
+
+##### Switch
+
+**Usage**: Multiple condition checks.
+
+**Example**: `Switch(Status, "New", "Order received", "Shipped", "Order on its way")` - Returns different messages based on order status.
+
+---
+
+##### Navigate
+
+**Usage**: Moves between app screens.
+
+**Example**: `Navigate(Screen2, Fade)` - Navigates to `Screen2` with a fade transition.
+
+---
+
+##### Collect
+
+**Usage**: Adds records to a collection.
+
+**Example**: `Collect(Cart, {ProductID: 101, Quantity: 1})` - Adds a product to the cart.
+
+##### Concatenate
+
+**Usage**: Combines multiple text strings.
+
+**Example**: `Concatenate("Hello, ", UserName)` - Creates a greeting for a user.
+
+##### Len
+
+**Usage**: Returns the length of a text string.
+
+**Example**: `Len(Password) < 8` - Checks if the password is less than 8 characters.
+
+##### Today
+
+**Usage**: Retrieves the current date.
+
+**Example**: `Today()` - Used to fetch the current date.
+
+##### Now
+
+**Usage**: Retrieves the current date and time.
+
+**Example**: `Now()` - Used to fetch the current date and time.
+
+##### User
+
+**Usage**: Provides details about the current app user.
+
+**Example**: `User().Email` - Fetches the email address of the current user.
+
+##### Sort
+
+**Usage**: Orders records based on a column.
+
+**Example**: `Sort(Products, Price, Descending)` - Sorts products by price in descending order.
+
+##### SortByColumns
+
+**Usage**: Orders records based on multiple columns.
+
+**Example**: `SortByColumns(Orders, "OrderDate", Descending, "OrderID", Ascending)` - Sorts by order date, then by order ID.
+
+##### CountRows
+
+**Usage**: Counts the number of records.
+
+**Example**: `CountRows(Filter(Products, Price > 50))` - Counts products priced over $50.
+
+##### IsBlank
+
+**Usage**: Checks if a field is empty.
+
+**Example**: `IsBlank(Email)` - Validates if the email field is empty.
+
+##### Round
+
+**Usage**: Rounds numbers.
+
+**Example**: `Round(Price, 2)` - Rounds a price to two decimal places.
+
+##### Lower & Upper
+
+**Usage**: Converts text to lowercase or uppercase.
+
+**Example**: `Lower(Username)` - Converts a username to lowercase.
+
+
+##### Text
+
+**Usage**: Converts numbers and dates to text.
+
+**Example**: `Text(Today(), "[$-en-US]dddd, mmmm dd, yyyy")` - Formats the current date.
+
+##### Value
+
+**Usage**: Converts text to number.
+
+**Example**: `Value("123") + 10` - Converts the string "123" to a number and adds 10.
+
+##### Timer
+
+**Usage**: Works with a timer control for actions at intervals.
+
+**Example**: `Timer.Start()` - Starts the timer.
+
+##### Distinct
+
+**Usage**: Retrieves unique values from a column.
+
+**Example**: `Distinct(Orders, Country)` - Lists all unique countries from orders.
+
+##### ForAll
+
+**Usage**: Executes a formula for all records.
+
+**Example**: `ForAll(Products, Patch(Inventory, ThisRecord, {Stock: Stock - 1}))` - Decreases stock by 1 for all products.
+
+##### Gallery.Selected
+
+**Usage**: Retrieves the currently selected item in a gallery.
+
+**Example**: `Gallery1.Selected.ProductName` - Fetches the name of the selected product in `Gallery1`.
+
+##### Reset
+
+**Usage**: Resets a control to its default value.
+
+**Example**: `Reset(TextInput1)` - Resets the text input field `TextInput1`.
+
+##### Defaults
+
+**Usage**: Retrieves the default record structure for a data source.
+
+**Example**: `Patch(Products, Defaults(Products), {ProductName: "New Item"})` - Adds a new product with a default structure.
+
+##### IsNumeric
+
+**Usage**: Checks if a string is a number.
+
+**Example**: `IsNumeric(Input.Text)` - Validates if the input is numeric.
+
+##### With
+
+**Usage**: Creates a local variable for use within a block of formulas.
+
+**Example**: `With({localVar: "Hello"}, Concatenate(localVar, " World"))` - Combines "Hello" with " World".
+
+#### Link to Official Documentation
+
+For a more detailed understanding of these functions, as well as others, please visit the official Microsoft documentation: [Power Apps formula reference](https://learn.microsoft.com/powerapps/maker/canvas-apps/formula-reference).
+
+#### Conclusion
+
+Functions in Power Apps Canvas Apps are indispensable tools that, when used effectively, can transform a simple app into a dynamic and powerful tool. With the understanding of these essential functions, app creators are better equipped to craft intricate workflows, manipulate data, and tailor apps to specific needs. The key lies in experimentation, practice, and a deep dive into the official documentation for nuances and updates.
+
+### Variables in Power Apps Canvas Apps
+
+#### Introduction
+
+In Power Apps Canvas Apps, variables play a pivotal role in holding data temporarily, allowing for the dynamic manipulation and presentation of data across screens and controls. Variables can be seen as containers or placeholders that store values, which can then be used and modified throughout an app. Understanding the types of variables and how to employ them efficiently is foundational for anyone looking to create versatile and interactive apps.
+
+#### Global Variables
+
+##### Overview
+
+Global variables are variables that are accessible from any screen within the app. Once a global variable is set, its value remains consistent throughout the app unless altered or cleared.
+
+##### Setting a Global Variable
+
+Use the `Set` function to create or modify a global variable.
+Example: `Set(gbl_Greeting, "Hello World")` - This sets the global variable named `gbl_Greeting` to the string "Hello World".
+
+##### Using a Global Variable
+
+Use the variable name wherever required.
+Example: In a label's Text property, `gbl_Greeting` would display "Hello World".
+
+##### Clearing a Global Variable
+
+Setting a global variable to blank or resetting the app clears the variable's value.
+Example: `Set(gbl_Greeting, Blank())`
+
+#### Context Variables
+
+##### Overview
+
+Context variables are local to the screen or control where they are used. They're typically employed to pass data between screens.
+
+##### Setting a Context Variable
+
+Use the `Navigate` function with a context argument or the `UpdateContext` function.
+- Using `Navigate`: `Navigate(Screen2, None, { ctx_Greeting: "Hello from Screen1" })`
+- Using `UpdateContext`: `UpdateContext({ ctx_Greeting: "Hello on this Screen" })`
+
+##### Using a Context Variable
+
+Like global variables, use the variable name to access its value within the context it was set.
+
+##### Clearing a Context Variable
+
+To clear a context variable, you can either navigate away from the screen or use the `UpdateContext` function.
+Example: `UpdateContext({ ctx_Greeting: Blank() })`
+
+#### The 'With' Function and Local Variables
+
+##### Overview
+
+The `With` function is used to create local variables that exist within a specific block of formulas. These variables are especially useful to simplify and optimize formulas by storing values that are used repeatedly.
+
+##### Using the `With` Function
+
+The structure involves defining a local variable and then using it in a subsequent formula.
+Example:    `With({ locGreeting: "Hello" }, Concatenate(locGreeting, " World"))`
+
+This would result in "Hello World". The `locGreeting` only exists within the `With` function's context.
+
+#### Good Practices for Variables
+
+1. **Naming Convention**: Adopt a consistent naming convention for variables. For example, use prefixes like "gbl_" for global variables (e.g., `gbl_userName`) and "ctx_" for context variables (e.g., `ctx_orderDetails`).
+
+2. **Limit Global Variables**: Only use global variables for values needed across multiple screens. Excessive use of global variables can make apps harder to manage and debug.
+
+3. **Scope Appropriateness**: Choose the scope of your variable (global, context, local) based on its usage. Avoid using a global variable for something that's only needed on a single screen.
+
+4. **Clear When Done**: Especially for global variables, ensure you clear them when they're no longer needed to free up memory and reduce potential conflicts.
+
+#### Conclusion
+
+Variables are indispensable when creating interactive and dynamic Canvas Apps in Power Apps. They allow for data storage and manipulation across screens and controls, enabling app makers to craft intricate workflows and offer tailored user experiences. By understanding the types and scopes of variables and adopting best practices, app creators can build efficient and maintainable apps.
+
+### Collections in Power Apps Canvas Apps
+
+#### Introduction
+
+Collections are a powerful tool used to store, manipulate, and manage data temporarily. Think of collections as tables in memory that can be filled with rows of data. They can be used to store data from various sources, manipulate it as required, and then use or save that data back to a data source or use it within the app. This chapter aims to provide an in-depth understanding of collections, their creation, use, and best practices.
+
+#### What are Collections?
+
+Collections are temporary tables that exist only while the app is running. They can hold single or multiple records, and each record can have multiple columns. Collections are particularly useful when:
+
+- Working offline and needing to store data temporarily.
+- Accumulating data over time, like items in a shopping cart.
+- Manipulating data without affecting the original data source.
+
+#### Creating a Collection
+
+Use the `Collect` function to create or add data to a collection.
+Example:
+`Collect(colOrders, {OrderId: 1, Product: "Laptop", Quantity: 3})`
+
+This creates (or adds to) a collection named `colOrders` with the specified data.
+
+#### Adding Data to a Collection
+
+The same `Collect` function can add more records to an existing collection.
+Example: `Collect(colOrders, {OrderId: 2, Product: "Mouse", Quantity: 1})`
+
+#### Clearing a Collection
+
+Use the `Clear` function.
+Example: `Clear(colOrders)`
+
+#### Modifying Data
+
+Use the `Patch` function to modify existing records in a collection.
+Example:`Patch(colOrders, {OrderId: 2}, {Quantity: 2})`
+
+This modifies the quantity of the order with `OrderId: 2`.
+
+#### Filtering Data
+
+Use the `Filter` function to create a subset of data from a collection based on a condition.
+Example:
+`Filter(colOrders, Quantity > 1)`
+
+This filters the orders with a quantity greater than one.
+
+#### Sorting Data
+
+Use the `Sort` or `SortByColumns` functions.
+Example:
+`Sort(colOrders, Product)`
+
+This sorts the collection based on the Product column.
+
+#### Displaying Collection Data
+
+Collections can be easily bound to controls. For instance, a collection can be used as the data source for a gallery, allowing users to scroll through and interact with the data.
+Example: Setting a gallery's `Items` property to `colOrders` would display the data from the `colOrders` collection in the gallery.
+
+#### Saving Data
+
+While collections are temporary, you can save their data to a permanent data source using functions like `Patch` or save them to local storage using `SaveData`.
+
+#### Loading Data
+
+For data saved to local storage, use the `LoadData` function to load it back into a collection when the app starts.
+
+#### Good Practices for Collections
+
+1. **Efficient Data Manipulation**: Use collections for temporary data manipulation, ensuring that you don’t unnecessarily load large datasets into collections which can affect app performance.
+  
+2. **Naming Convention**: Adopt a consistent naming convention, such as prefixing collections with "col_" (e.g., `col_userDetails`).
+
+3. **Regularly Clear Unused Data**: To manage memory efficiently, clear collections that are no longer required.
+
+4. **Remember the Temporary Nature**: Always remember that collections are temporary. If you need to retain data, make sure to save it to a data source or use local storage for offline scenarios.
+
+#### Conclusion
+
+Collections in Power Apps Canvas Apps offer a dynamic way to handle data on-the-fly, making it possible to create intricate data-driven apps without constantly interacting with external data sources. They bridge the gap between raw data and user interactivity, and when utilized effectively, can greatly enhance the efficiency and user experience of an app.
 
 ## Model Driven Apps
 
