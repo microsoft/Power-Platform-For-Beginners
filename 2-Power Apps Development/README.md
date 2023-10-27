@@ -214,8 +214,8 @@ Creating a new screen in Power Apps Canvas Apps is akin to laying down a fresh c
 
 3. **Inserting a Screen**
 
-- Go to the 'Home' tab.
-- Click on the 'New Screen' option. A drop-down menu will display the various page designs available.
+- Go to the **Tree view** tab.
+- Select the **New Screen** option. A drop-down menu will display the various page designs available.
 - Choose your desired design, and the screen will be added to your app.
 
 #### Exploring Different Page Designs
@@ -244,24 +244,124 @@ Creating a new screen in Power Apps Canvas Apps is akin to laying down a fresh c
 
 The flexibility of Power Apps Canvas Apps shines through in its diverse screen creation options. Whether you're building a data-heavy application, a dynamic dashboard, or simply need a blank canvas to unleash your creativity, Power Apps provides the tools and templates to get you started. Remember, the choice of page design should align with your app's purpose, the user's needs, and the overall flow you envision.
 
+### Controls
 
-##### Explain key properties and what they do of popular controls
+Currently, we have 2 sets of controls in Power Apps Canvas Apps: Classic controls and Modern Controls.
 
-![Power Apps maker portal popular controls](/2-Power%20Apps%20Development/assets/studio_popularControls.png)
+#### Classic Controls in Power Apps Canvas Apps
 
-(without form)
+##### Introduction
 
-#### TextLabel
+Before the introduction of modern controls, Power Apps Canvas Apps heavily relied on what we now refer to as "classic controls". These controls formed the foundational elements that app creators used to design and build applications. Even as the platform evolves, understanding these classic controls remains crucial, as they underpin many existing applications and offer a historical perspective on app development in Power Apps.
 
-#### Textinput
+##### What Are Classic Controls?
 
-#### Datepicker
+Classic controls in canvas apps are the original set of tools and elements that Microsoft provided to app makers. They were designed to offer flexibility, ease of use, and a wide range of functionalities to cater to different app requirements. From simple buttons and labels to more complex galleries and forms, these controls covered the breadth of common app functionalities.
 
-#### Gallery
+##### Key Features of Classic Controls
 
-#### Rectangle
+- **Versatility**: The classic controls provided a broad spectrum of tools catering to various application needs – be it data input, display, navigation, or user interaction.
 
-#### Buttons
+- **Customizability**: App makers had the liberty to customize the appearance, behavior, and interactions of these controls to fit the desired app aesthetics and functionalities.
+
+- **Data Connectivity**: Many of these controls, such as galleries and forms, could easily connect to various data sources, allowing dynamic data display and manipulation.
+
+- **Functionality over Aesthetics**: While customization was possible, the primary focus of classic controls was functionality. Aesthetics and modern design principles became a stronger focus only with the advent of modern controls.
+
+##### Popular Classic Controls
+
+Some of the frequently used classic controls included:
+
+- **Buttons**: Used for triggering actions or navigating between screens.
+  
+- **Labels**: To display static text or dynamic data.
+  
+- **Text Input**: Allowed users to input data.
+
+- **Galleries**: Displayed lists of items sourced from data connections like SharePoint, SQL Server, or other connectors.
+  
+- **Forms**: Used for detailed data viewing, editing, or submission.
+  
+- **Dropdowns**: Presented users with a list of options to select from.
+
+- **Sliders and Toggles**: Enabled users to make selections based on a range or a binary choice.
+
+##### Transition to Modern Controls
+
+As user experience and design principles evolved, there was a pressing need to update the look and feel of Power Apps to match modern expectations. This led to the introduction of modern controls based on the Fluent design system. However, many existing apps still utilize classic controls, and app makers familiar with these controls might find them more intuitive or suitable for certain scenarios.
+
+##### Considerations when Using Classic Controls
+
+- **Legacy Support**: As Power Apps continues to evolve, there's a possibility that future support or updates for classic controls might be limited.
+
+- **Design Consistency**: When mixing classic and modern controls within an app, designers need to ensure there's a consistent look and feel to prevent a disjointed user experience.
+
+- **Performance**: While classic controls are robust, the new modern controls have been built with a focus on enhanced performance and responsiveness.
+
+##### Conclusion
+
+Classic controls in Power Apps Canvas Apps have played a pivotal role in the platform's journey, allowing countless app creators to bring their visions to life. Understanding these controls, their strengths, and their limitations is crucial, especially for those maintaining or updating older applications. As the platform transitions to modern controls, the classic controls serve as a testament to the platform's evolution and the continuous commitment to improvement.
+
+#### Modern Controls in Power Apps Canvas Apps
+
+##### Introduction
+
+Embracing the wave of modernity, Microsoft is introducing "modern controls" based on the Fluent 2 design system. This not only simplifies the configuration process but also enhances the overall user experience.
+
+##### What Are Modern Controls?
+
+Modern controls in canvas apps are a revamped set of controls drawing inspiration from the Microsoft Fluent 2 design system. These controls offer:
+
+- **Simplicity**: Easier to configure.
+- **Cohesiveness**: They ensure a uniform experience for end-users.
+- **Accessibility and Usability**: Designed with these core principles in mind.
+- **Performance**: Faster and visually more appealing.
+- **Theming**: With the Fluent 2 design system, modern theming becomes more centralized, allowing for an app’s aesthetics to be modified from a singular place.
+
+> **Note**: These features are in preview, implying they are still in the testing phase and might not be suitable for production use yet. However, the aim is to provide users with an opportunity to explore and provide feedback.
+
+##### Enabling Modern Controls and Themes
+
+To harness the power of modern controls in your canvas app:
+
+1. Open your canvas app for editing.
+2. On the command bar, choose **Settings** > **Upcoming features**.
+3. In the Preview tab, turn on the toggle for **Modern controls and themes**.
+4. Access these controls via **Insert** on the app authoring menu. Select **Modern controls** from the list.
+
+Similarly, to explore modern themes, select **Themes** on the app authoring menu.
+
+##### Limitations
+
+As with any preview feature, there are certain limitations:
+
+- Additional steps are required for items added via arrays.
+- The property naming convention has a distinct format for modern controls.
+- Some properties of the new controls don't mirror the original controls.
+- These controls currently don’t support properties visible in the command bar.
+- App checker rules don’t function on these controls yet.
+
+These limitations are expected to be addressed as the feature matures.
+
+##### The Promise of Modern Controls
+
+Advancements the modern controls bring:
+
+- **Modern Look**: Fluent design system that's sleek and supports richer interactions.
+- **Speed**: Emphasis on performance.
+- **Accessibility**: WCAG 2.1 compliant.
+- **Theming**: Though not part of the initial rollout, theming and per control styling are on the horizon.
+
+In a side-by-side comparison, the modern controls distinctively stand out, promising a suite of controls that are both stylish and swift. The initial release boasts 13 new controls, but the journey doesn't stop there. Power Apps is set to roll out per control styling, an updated theming system, and a plethora of new controls like toggles, breadcrumbs, and multi-select dropdowns.
+
+##### Engaging with the Modern Controls Feature
+
+To access this feature, developers can activate it within Power Apps Studio through the settings dialog. Upon activation, a list of these controls will be visible on the insert pane.
+
+##### Conclusion
+
+The introduction of modern controls in Power Apps Canvas Apps is a testament to Microsoft's commitment to evolving with the demands of modern app development. As these controls transition from preview to production-ready features, they promise to redefine the app-making experience, making it more intuitive, efficient, and delightful.
+
 
 ### Functions
 <!-- - When to you use what
