@@ -20,10 +20,10 @@ In the rapidly evolving digital age, businesses must be agile and adaptable. Tra
 
 ### Canvas Apps
 
-Canvas Apps enables users to design and develop custom applications tailored to their business needs regardless of their technical expertise. One of the significant draws of Canvas Apps is its ability to connect with various data sources, including Microsoft's own Dynamics 365, SharePoint, SQL Server, and many others, ensuring that apps can seamlessly integrate with a user's existing infrastructure. The drag-and-drop functionality and Excel-like low code language ([Power Fx](https://learn.microsoft.com/en-us/power-platform/power-fx/overview)), combined with a myriad of pre-built templates, ensures that individuals without a background in coding can create functional and efficient business applications.
+Canvas Apps enables users to design and develop custom applications tailored to their business needs regardless of their technical expertise. One of the significant draws of Canvas Apps is its ability to connect with various data sources, including Microsoft's own Dynamics 365, SharePoint, SQL Server, and many others, ensuring that apps can seamlessly integrate with a user's existing infrastructure. The drag-and-drop functionality and Excel-like low code language ([Power Fx](https://learn.microsoft.com/power-platform/power-fx/overview)), combined with a myriad of pre-built templates, ensures that individuals without a background in coding can create functional and efficient business applications.
 The flexible nature of Canvas Apps facilitates the creation of applications that work across various platforms, including web browsers, tablets, and smartphones. Canvas apps customizability extends to functionality and appearance, meaning that businesses can develop applications that perform the required tasks and align perfectly with their brand requirements.
 
-![Canvas App](/2-Power%20Apps%20Development/assets/expense-report-powerapp.png) 
+![Canvas App](/2-Power%20Apps%20Development/assets/expense-report-powerapp.png)
 ![Canvas App](/2-Power%20Apps%20Development/assets/MDA-vs-Canvas-fundraiser-app.png)
 
 ### Model-Driven Apps
@@ -61,7 +61,7 @@ The strength of Model-Driven Apps lies in their ability to automatically generat
 ### Use cases and examples
 <!-- - Rebekka -->
 
-## Canvas Apps
+## Canvas Appsd  
 
 <!-- - Exploring app templates and design principles.
 - Creating user interfaces with galleries, forms, and controls.
@@ -112,7 +112,6 @@ You can use this step by step guide: [add data to existing app](https://learn.mi
 
 #### Publishing and running your app
 <!-- - Version history -->
-
 
 ### Designing User Interfaces in Power Apps Canvas Apps
 
@@ -194,13 +193,13 @@ Screens aren't the only way to separate or introduce new content. Using differen
 
 - **User Flow**: Consider the user's journey. If the next step in their journey is a significant shift (e.g., moving from a product list to a checkout process), a new screen may be warranted. However, for smaller transitions or sub-steps, other UI elements might suffice.
 
-#### Conclusion
+#### Conclusion regarding screens
 
 While screens are fundamental building blocks in Power Apps Canvas Apps, it's essential to understand the myriad of UI elements at your disposal. By thoughtfully considering the user's needs, the flow of your app, and the type and amount of content to be displayed, you can create intuitive, efficient, and delightful app experiences, whether they span across multiple screens or elegantly fit within one.
 
 ### Creating a New Screen in Power Apps Canvas Apps
 
-#### Introduction
+#### Introduction to creating screens
 
 Creating a new screen in Power Apps Canvas Apps is akin to laying down a fresh canvas for a painter. The possibilities are endless. However, with Power Apps, Microsoft provides a range of predefined page designs to speed up development, streamline functionality, and enhance the overall user experience. In this chapter, we'll explore the step-by-step process of creating a new screen and delve into the various page designs available.
 
@@ -211,7 +210,6 @@ Creating a new screen in Power Apps Canvas Apps is akin to laying down a fresh c
 2. **Select Your App**: If you're working on an existing app, open it. For a new app, you can choose to start with a blank app optimized for either phone or tablet or you can leverage the **Start witha page design** feature
 
 ![Start with a page design](\assets\create-app-start-page-design.png)
-
 3. **Inserting a Screen**
 
 - Go to the **Tree view** tab.
@@ -240,7 +238,7 @@ Creating a new screen in Power Apps Canvas Apps is akin to laying down a fresh c
 
 - **Dashboard**: A design optimized for displaying a summary of data, metrics, or key performance indicators. Dashboards are often used in business or analytic apps to give users an at-a-glance view of critical data.
 
-#### Conclusion
+#### Conclusion to screen options
 
 The flexibility of Power Apps Canvas Apps shines through in its diverse screen creation options. Whether you're building a data-heavy application, a dynamic dashboard, or simply need a blank canvas to unleash your creativity, Power Apps provides the tools and templates to get you started. Remember, the choice of page design should align with your app's purpose, the user's needs, and the overall flow you envision.
 
@@ -250,7 +248,7 @@ Currently, we have 2 sets of controls in Power Apps Canvas Apps: Classic control
 
 #### Classic Controls in Power Apps Canvas Apps
 
-##### Introduction
+##### Introduction to classic controls
 
 Before the introduction of modern controls, Power Apps Canvas Apps heavily relied on what we now refer to as "classic controls". These controls formed the foundational elements that app creators used to design and build applications. Even as the platform evolves, understanding these classic controls remains crucial, as they underpin many existing applications and offer a historical perspective on app development in Power Apps.
 
@@ -298,13 +296,13 @@ As user experience and design principles evolved, there was a pressing need to u
 
 - **Performance**: While classic controls are robust, the new modern controls have been built with a focus on enhanced performance and responsiveness.
 
-##### Conclusion
+##### Conclusion to classic controls
 
 Classic controls in Power Apps Canvas Apps have played a pivotal role in the platform's journey, allowing countless app creators to bring their visions to life. Understanding these controls, their strengths, and their limitations is crucial, especially for those maintaining or updating older applications. As the platform transitions to modern controls, the classic controls serve as a testament to the platform's evolution and the continuous commitment to improvement.
 
 #### Modern Controls in Power Apps Canvas Apps
 
-##### Introduction
+##### Introduction to modern controls
 
 Embracing the wave of modernity, Microsoft is introducing "modern controls" based on the Fluent 2 design system. This not only simplifies the configuration process but also enhances the overall user experience.
 
@@ -358,7 +356,7 @@ In a side-by-side comparison, the modern controls distinctively stand out, promi
 
 To access this feature, developers can activate it within Power Apps Studio through the settings dialog. Upon activation, a list of these controls will be visible on the insert pane.
 
-##### Conclusion
+##### Conclusion to modern controls
 
 The introduction of modern controls in Power Apps Canvas Apps is a testament to Microsoft's commitment to evolving with the demands of modern app development. As these controls transition from preview to production-ready features, they promise to redefine the app-making experience, making it more intuitive, efficient, and delightful.
 
@@ -366,7 +364,7 @@ The introduction of modern controls in Power Apps Canvas Apps is a testament to 
 
 #### 30 Essential Functions in Power Apps Canvas Apps
 
-##### Introduction
+##### Introduction to functions in Canvas Apps
 
 In Power Apps Canvas Apps, functions are the building blocks that empower app makers to create dynamic and interactive applications. They allow for the manipulation of data, the definition of app behavior, and interaction with various components and data sources. This chapter delves into 30 of the most crucial functions, with examples to illustrate their application.
 
@@ -496,7 +494,6 @@ In Power Apps Canvas Apps, functions are the building blocks that empower app ma
 
 **Example**: `Lower(Username)` - Converts a username to lowercase.
 
-
 ##### Text
 
 **Usage**: Converts numbers and dates to text.
@@ -561,13 +558,13 @@ In Power Apps Canvas Apps, functions are the building blocks that empower app ma
 
 For a more detailed understanding of these functions, as well as others, please visit the official Microsoft documentation: [Power Apps formula reference](https://learn.microsoft.com/powerapps/maker/canvas-apps/formula-reference).
 
-#### Conclusion
+#### Conclusion to functions
 
 Functions in Power Apps Canvas Apps are indispensable tools that, when used effectively, can transform a simple app into a dynamic and powerful tool. With the understanding of these essential functions, app creators are better equipped to craft intricate workflows, manipulate data, and tailor apps to specific needs. The key lies in experimentation, practice, and a deep dive into the official documentation for nuances and updates.
 
 ### Variables in Power Apps Canvas Apps
 
-#### Introduction
+#### Introduction to variables in Canvas Apps
 
 In Power Apps Canvas Apps, variables play a pivotal role in holding data temporarily, allowing for the dynamic manipulation and presentation of data across screens and controls. Variables can be seen as containers or placeholders that store values, which can then be used and modified throughout an app. Understanding the types of variables and how to employ them efficiently is foundational for anyone looking to create versatile and interactive apps.
 
@@ -594,13 +591,14 @@ Example: `Set(gbl_Greeting, Blank())`
 
 #### Context Variables
 
-##### Overview
+##### Overview of context variables
 
 Context variables are local to the screen or control where they are used. They're typically employed to pass data between screens.
 
 ##### Setting a Context Variable
 
 Use the `Navigate` function with a context argument or the `UpdateContext` function.
+
 - Using `Navigate`: `Navigate(Screen2, None, { ctx_Greeting: "Hello from Screen1" })`
 - Using `UpdateContext`: `UpdateContext({ ctx_Greeting: "Hello on this Screen" })`
 
@@ -615,7 +613,7 @@ Example: `UpdateContext({ ctx_Greeting: Blank() })`
 
 #### The 'With' Function and Local Variables
 
-##### Overview
+##### Overview of the with function
 
 The `With` function is used to create local variables that exist within a specific block of formulas. These variables are especially useful to simplify and optimize formulas by storing values that are used repeatedly.
 
@@ -636,13 +634,13 @@ This would result in "Hello World". The `locGreeting` only exists within the `Wi
 
 4. **Clear When Done**: Especially for global variables, ensure you clear them when they're no longer needed to free up memory and reduce potential conflicts.
 
-#### Conclusion
+#### Conclusion to variables in Canvas apps
 
 Variables are indispensable when creating interactive and dynamic Canvas Apps in Power Apps. They allow for data storage and manipulation across screens and controls, enabling app makers to craft intricate workflows and offer tailored user experiences. By understanding the types and scopes of variables and adopting best practices, app creators can build efficient and maintainable apps.
 
 ### Collections in Power Apps Canvas Apps
 
-#### Introduction
+#### Introduction to collections in Canvas Apps
 
 Collections are a powerful tool used to store, manipulate, and manage data temporarily. Think of collections as tables in memory that can be filled with rows of data. They can be used to store data from various sources, manipulate it as required, and then use or save that data back to a data source or use it within the app. This chapter aims to provide an in-depth understanding of collections, their creation, use, and best practices.
 
@@ -718,19 +716,324 @@ For data saved to local storage, use the `LoadData` function to load it back int
 
 4. **Remember the Temporary Nature**: Always remember that collections are temporary. If you need to retain data, make sure to save it to a data source or use local storage for offline scenarios.
 
-#### Conclusion
+#### Conclusion to collections
 
 Collections in Power Apps Canvas Apps offer a dynamic way to handle data on-the-fly, making it possible to create intricate data-driven apps without constantly interacting with external data sources. They bridge the gap between raw data and user interactivity, and when utilized effectively, can greatly enhance the efficiency and user experience of an app.
 
-## Model Driven Apps
+## Model-Driven Apps within the Power Apps Ecosystem
 
-### Dataverse
+### Introduction to Model-Driven Apps
 
-#### Tables
+While both model-driven apps and canvas apps are integral parts of the Microsoft Power Apps platform, they are distinct in their design philosophy and purpose. This chapter will delve into the concept of model-driven apps, their integration with canvas apps, and the unique features they bring to the Power Apps ecosystem.
 
-#### Columns
+### What are Model-Driven Apps?
 
-#### Relationships
+Model-driven apps provide a no-code, component-focused approach to app development. They are built primarily on top of the Microsoft Dataverse and automatically generate great UIs that are responsive across devices.
+
+**Key Features**:
+
+- **Data-centric**: Designed around your core business data and processes.
+- **Component-Based**: Built using components like forms, views, and charts.
+- **Automatically Responsive**: Adjusts to different devices and screen sizes without additional design effort.
+
+### Canvas Apps vs Model-Driven Apps
+
+While canvas apps allow for pixel-perfect UI/UX design, granting app makers the flexibility to create a bespoke interface, model-driven apps abstract the UI layer, focusing more on the data and processes.
+
+**Differences**:
+
+- **Design Philosophy**: Canvas apps start with the user interface, then connect to data. Model-driven apps begin with the data model and generate the UI.
+- **Best Use Cases**: Canvas apps are ideal when a tailored UI/UX is crucial. Model-driven apps shine when dealing with complex data structures and business processes.
+
+### Integrating Model-Driven Apps with Canvas Apps
+
+Canvas apps can be embedded within model-driven apps, combining the strengths of both:
+
+1. **Embedding Canvas Apps**: Create a canvas app that caters to a specific function and embed it into a model-driven app's form or page. This allows for specialized UI/UX tasks within the broader, data-centric environment of the model-driven app.
+  
+2. **Shared Data Source**: Both app types can share the Microsoft Dataverse, ensuring data consistency and real-time updates.
+
+### Benefits of Using Model-Driven Apps
+
+- **Rapid Development**: With the UI generated from the data model, much of the design work is automated, allowing for faster app creation.
+  
+- **Complex Business Processes**: Model-driven apps handle complex business logic and processes with ease, leveraging capabilities from the Microsoft Power Platform like Power Automate.
+  
+- **Unified Data**: Built on the Dataverse, model-driven apps ensure that data is unified, consistent, and easily accessible across the organization.
+
+### Getting Started with Model-Driven Apps
+
+**Steps**:
+
+1. **Define the Data Model**: Begin by defining your entities (tables), attributes (fields), and relationships in the Dataverse.
+  
+2. **Design Components**: Create or customize forms, views, charts, and dashboards.
+  
+3. **Define Business Logic**: Implement business rules, workflows, and automated processes using Power Automate.
+  
+4. **Integrate Canvas Apps (if needed)**: Embed tailored canvas app solutions for specific UI/UX needs.
+
+5. **Test & Deploy**: Use the Power Apps platform to test the app's functionality and then deploy it to users.
+
+### Conclusion to Model-Driven Apps
+
+Model-driven apps represent a powerful, data-centric approach to app development within the Power Apps ecosystem. By understanding when and how to utilize them—alone or in tandem with canvas apps—organizations can streamline processes, enhance data interaction, and rapidly develop robust applications that cater to complex business needs.
+
+### Microsoft Dataverse: The Core of Power Platform Data Management
+
+#### Introduction to Dataverse
+
+Microsoft Dataverse is a key component of the Microsoft Power Platform. As a low-code data platform, Dataverse provides a secure and scalable storage solution for data used in applications like Power Apps, Power Automate, Power BI, and Microsoft Dynamics 365. This chapter will explore the foundations, features, and functionalities of Dataverse.
+
+#### Understanding Microsoft Dataverse
+
+Dataverse is a cloud-based service that provides an environment to store, manage, and secure business data. With its relational data capabilities, it allows for the storage of data in a structured manner, making data retrieval and management streamlined and efficient.
+
+**Key Features**:
+
+- **Rich Data Types**: Supports complex data types, including lookups, option sets, and image.
+- **Relational Data Model**: Tables (formerly entities), columns (formerly fields), and relationships define and structure the data.
+- **Security**: Robust security model ensures data protection and user-specific data access.
+- **Logic & Validation**: Business rules, workflows, and plugins ensure data integrity and automate processes.
+
+#### Key Components of Dataverse
+
+- **Tables**: Store data and consist of rows (records) and columns (fields).
+  
+- **Columns**: Define the data type and attributes of the data stored.
+  
+- **Relationships**: Establish connections between tables, allowing for data relationships like one-to-many or many-to-many.
+  
+- **Choice Columns**: Predefined list of values in a column.
+  
+- **Views**: Predefined ways to visualize and filter table data.
+  
+- **Forms**: Designed layouts to interact with table data.
+
+#### Security in Dataverse
+
+Ensuring the safety and appropriate access of data is paramount. Dataverse accomplishes this through:
+
+- **Role-Based Security**: Defines what actions a user can perform based on their role.
+  
+- **Field-Level Security**: Controls access to specific columns in a table.
+  
+- **Row-Level Security**: Regulates data access based on business rules, ensuring users see only the rows they need.
+
+#### Integration Capabilities
+
+Dataverse seamlessly integrates with other Microsoft and third-party apps:
+
+- **Power Platform**: Direct integration with Power Apps, Power BI, and Power Automate.
+  
+- **Dynamics 365**: Serves as the data platform for Microsoft's suite of business apps.
+  
+- **Azure Services**: Interact and augment with Azure functionalities, from AI to storage.
+  
+- **Custom Connectors**: Bridge to external systems, data sources, and APIs.
+
+#### Benefits of Using Dataverse
+
+- **Scalability**: Adjusts to fit varying amounts of data and user loads.
+  
+- **Productivity**: Automate processes and integrate seamlessly with other Microsoft products.
+  
+- **Flexibility**: Adapt and customize to unique business needs.
+  
+- **Unified Data**: Provides a central repository, ensuring consistent data across applications.
+
+#### Conclusion to Dataverse
+
+Microsoft Dataverse acts as the backbone for data management within the Power Platform. Its rich features, robust security measures, and flexibility make it a formidable tool for businesses aiming to harness their data effectively. By leveraging Dataverse, organizations can unify, protect, and optimize their data, fostering a conducive environment for growth and innovation.
+
+##### Tables in Microsoft Dataverse: Creation, Challenges, and Good Practices
+
+##### Introduction to tables in Dataverse
+
+In Microsoft Dataverse, tables serve as the foundational building blocks for data storage. They hold the structured data utilized by apps within the Power Platform and beyond. This chapter delves into creating tables in Dataverse, common pitfalls to be wary of, and best practices to adopt.
+
+##### Understanding Tables in Dataverse
+
+At its core, a table in Dataverse (formerly known as an 'entity') is a container for data. Each table consists of rows (records) and columns (fields). The structure and relationships of these tables mirror the complexities and nuances of real-world data.
+
+##### Creating Tables in Dataverse
+
+**Steps to Create a Table**:
+
+1. **Access Dataverse**: Navigate to the [make.powerapps.com](https://make.powerapps,com) and select your environment.
+2. **Navigate to Tables**: Within the **Data** section, choose **Tables**.
+3. **New Table**: Select **New Table** and provide a name, display name, and primary name column for your table.
+4. **Define Columns**: Add columns as required, specifying data type and properties for each.
+5. **Establish Relationships**: If needed, create relationships between this table and existing tables.
+6. **Save and Publish**: Once you've configured the table, save and publish it.
+
+##### Common Challenges and Their Solutions
+
+- **Data Duplication**: Duplication can arise when tables are not properly designed or when data imports aren't managed correctly. Utilize Dataverse's duplication detection tools to identify and resolve these issues.
+
+- **Poorly Defined Relationships**: Without clear relationships, data retrieval can become complex and slow. Ensure that relationships between tables are logical and well-defined.
+
+- **Over-customization**: Adding too many custom columns or unnecessary tables can lead to a cluttered and inefficient environment. Stick to necessary customizations and periodically review and refine your schema.
+
+##### Good Practices
+
+- **Descriptive Naming**: Use clear, descriptive names for tables and columns. This aids in future development and collaboration.
+
+- **Limit Unused Columns**: Each unused column in a table is a waste of resources. Regularly review tables and remove or hide unnecessary columns.
+
+- **Leverage Metadata**: Metadata provides context about the data. Make use of table and column descriptions to provide clarity to other developers or users.
+
+- **Plan for Scalability**: As your organization grows, so will the data. Design tables keeping scalability in mind, avoiding potential future roadblocks.
+
+- **Backup Regularly**: Changes to table structures can sometimes lead to data loss or corruption. Implement regular backup strategies.
+
+- **Test Before Deploying**: Especially in production environments, thoroughly test changes to tables, columns, and relationships before deploying.
+
+##### Conclusion to creating tables
+
+Tables in Dataverse are central to data management within the Power Platform ecosystem. While creating and managing tables can seem straightforward, attention to detail and adherence to best practices are key. A well-structured Dataverse environment, grounded on efficient tables, ensures that apps and processes run smoothly, reliably, and efficiently.
+
+#### Relationships in Dataverse Tables: Types, Creation, and Good Practices
+
+##### Introduction to Relationships
+
+In Microsoft Dataverse, relationships establish connections between tables, allowing them to interact and share data. This chapter provides a comprehensive guide to the different types of relationships in Dataverse, their creation, examples, and key practices to adopt for optimal use.
+
+##### Types of Relationships in Dataverse
+
+There are primarily three types of relationships in Dataverse:
+
+**One-to-Many (1:N) Relationship**:
+
+- A single record from one table is linked to multiple records in another.
+- Example: One customer can place many orders, but each order is associated with only one customer.
+
+**Many-to-One (N:1) Relationship**:
+
+- This is the reverse of a 1:N relationship. Multiple records from one table link to a single record in another table.
+- Example: Many orders can be linked to one product, signifying that one product can be ordered multiple times.
+
+**Many-to-Many (N:N) Relationship**:
+
+- Records from one table can relate to multiple records in another table and vice versa.
+- Example: Students and courses. One student can enroll in multiple courses, and one course can have multiple students.
+
+##### Creating Relationships
+
+**Steps to Create a Relationship**:
+
+1. **Access Dataverse**: Navigate to [make.powerapps.com](https://make.powerapps,com) and select your environment.
+2. **Select Table**: Choose the table you want to create a relationship for.
+3. **Define Relationship**: Depending on your requirement, select the appropriate relationship type (1:N, N:1, N:N).
+4. **Specify Tables**: Determine the primary (or 'parent') table and the related (or 'child') table.
+5. **Configure Fields**: Define which fields are connected through the relationship.
+6. **Save and Publish**: Finalize the relationship and make it active.
+
+##### Good Practices for relationships
+
+- **Clear Naming Conventions**: Name relationships descriptively for clarity and easier future management.
+  
+- **Limit Cascading Rules**: Cascading rules determine how actions like delete or reassign on a primary table affect related tables. Overuse can complicate data management and impact performance.
+  
+- **Document Relationships**: Maintain documentation of why and how relationships were created, aiding future developers and system architects.
+
+- **Review Relationships Regularly**: As business requirements change, relationships might need to be adjusted, removed, or added.
+
+##### Conclusion to relationships
+
+Establishing relationships between tables in Dataverse is a critical aspect of designing a cohesive and functional data model. By understanding the types of relationships, their appropriate use, and following best practices, you can ensure a robust, efficient, and scalable system.
+
+#### Dataverse Columns: Creation, Types, and Examples
+
+##### Introduction to columns
+
+Columns (previously known as fields) in Dataverse store individual pieces of data for a table, much like how a spreadsheet uses columns to hold data. In this chapter, we'll dive deep into understanding Dataverse columns, the various types available, and how to create them.
+
+##### Creating Columns in Dataverse
+
+**Steps to Create a Column**:
+
+1. **Navigate to Dataverse**: Head to the [make.powerapps.com](https://make.powerapps,com) and select your environment
+2. **Choose a Table**: Identify and select the table for which you want to create a column.
+3. **Add Column**: Click on the ‘Add column’ option.
+4. **Specify Details**:
+    - Name the column.
+    - Choose the column type.
+    - Fill out any additional settings or attributes specific to the column type.
+5. **Save and Publish**: Once satisfied, finalize by saving your changes, then publish the table to make the new column available.
+
+##### Types of Columns and Examples
+
+Dataverse provides a rich array of column types to cater to diverse data storage needs. Here's an overview:
+
+**Text**:
+
+- Stores alphanumeric characters.
+- Example: `FirstName`, storing values like "John".
+
+**Whole Number**:
+
+- Contains entire numbers without decimals.
+- Example: `TotalProductsSold`, with values like 150.
+
+**Decimal Number**:
+
+- Holds numbers with decimals.
+- Example: `ProductWeight`, storing values like 2.5.
+
+**Currency**:
+
+- Specifically for monetary values, with precision for currency calculations.
+- Example: `ProductPrice`, with values like $25.99.
+
+**Date and Time**:
+
+- Stores dates, times, or both.
+- Example: `PurchaseDate`, holding dates like "2023-05-01".
+
+**Choice**:
+
+- Contains a set of predefined options.
+- Example: `OrderStatus`, with choices like "Processing", "Shipped", "Delivered".
+
+**Lookup**:
+
+- Establishes a link to another table, allowing for the creation of relationships.
+- Example: `CustomerID`, referencing an ID from a Customers table.
+
+**Yes/No**:
+
+- Boolean values.
+- Example: `IsProductAvailable`, with values either being Yes or No.
+
+**Image**:
+
+- Holds image data.
+- Example: `ProductImage`, containing a picture of a product.
+
+**Floating Point Number**:
+
+- For numbers that can have an immense range of values.
+- Example: `ProductRating`, which might store values like 4.3.
+
+**GUID** (Globally Unique Identifier):
+
+- Unique alphanumeric strings used to identify records.
+- Example: `RecordID`, with values like "4f50b634-8fb3-43d9-a343-f5f9d909c3d7".
+
+**Customer**:
+
+- A special lookup that can reference either an 'Account' or 'Contact'.
+- Example: `PrimaryCustomer`, pointing to a specific account or contact.
+
+**Owner**:
+
+- Relates to users or teams, often used for record ownership or sharing purposes.
+- Example: `AssignedAgent`, linking to a specific user in the system.
+
+##### Conclusion to columns
+
+Dataverse columns form the backbone of data storage and manipulation within Power Platform's ecosystem. Understanding the available column types and their purposes helps in designing efficient and meaningful data models. When creating columns, always consider the nature of data to be stored, the kind of operations that might be performed on it, and how it relates to other data in the system.
 
 #### Forms
 
@@ -746,14 +1049,14 @@ Collections in Power Apps Canvas Apps offer a dynamic way to handle data on-the-
 
 #### Build your first Model Driven App
 
-#### Business Process flows
+#### Business Processflows
 
 ## Licensing
 
-### Introduction
+### Introduction to Licensing
 
 #### Canvas Apps with Standard connectors
 
 #### Canvas Apps with Premium connectors
 
-#### Model Driven Apps
+#### Model Driven Apps Licensing
