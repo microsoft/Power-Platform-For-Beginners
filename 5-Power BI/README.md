@@ -102,12 +102,15 @@ To achieve this, I will utilize sample data and assume that I have engaged in mu
 ## <a name="chapter3"></a>3. Datamodel 
 ### Draw datamodel  
 
-Following discussions with stakeholders, the primary insights to be conveyed through the analysis include:
+After engaging in conversations with key stakeholders and examining the column labels in the data source depicted in the figure below, the primary focus of our analysis will be to achieve the following objectives:
 
-- Determining wins or losses by players.
-- Identifying which subsequent moves lead to either a win or a loss in the game.
+- Uncovering the outcomes of games, specifically discerning victories and defeats for the players.
+- Pinpointing the specific moves within chess games that are associated with either a triumphant win or a regrettable loss.
 
-The dimension tables contain pertinent information about the Players and Games, while the fact table is populated with details about Moves.
+![source column name](/5-Power%20BI/assets/source%20column%20name.jpg)
+
+
+The data source can be neatly categorized into dimension tables, which provide detailed descriptions of the elements you wish to analyze, and fact tables that house the numerical data corresponding to the entities described within these dimensions. In the process of crafting our data model, the dimension tables are enriched with essential information about the Players and Games, while the fact table is enriched with intricate details about Moves.
 
 The visualization of the data model is presented in the figure below. This data model serves as the foundation of our analytical framework. As a seasoned Power BI developer, I understand the importance of tailoring the data model to meet the specific requirements of the data source and the ever-evolving needs of our analytical reports.
 I strongly advise that you begin by meticulously designing the data model before embarking on any data transformation. While it's natural for the data model's structure to evolve throughout the project, this initial blueprint serves as a guiding light, allowing developers to start their journey with confidence and precision.
