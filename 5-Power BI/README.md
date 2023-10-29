@@ -435,7 +435,8 @@ DAX Glossaries Link: [Link](https://learn.microsoft.com/en-us/dax/dax-glossary?w
 - What percentage of games were won by the participant with the superior rating? Is there any variance in this statistic based on the color of pieces?
 - What is the initial move for Black that demonstrates the highest likelihood of winning after White's first move of D4?
 
-- Note: During this session, we shall craft DAX measures and visualizations with the primary purpose of scrutinizing and substantiating data integrity, addressing pertinent inquiries, and validating responses. This phase constitutes an integral component of the initial proof of concept (POC) iteration. Subsequently, a Power BI report tailored for production will be meticulously conceived and developed, building upon the foundations laid during this preliminary POC phase, with the ultimate aim of sharing it effectively with stakeholders. 
+<span style="color:green">*Note: During this session, we shall craft DAX measures and visualizations with the primary purpose of scrutinizing and substantiating data integrity, addressing pertinent inquiries, and validating responses. This phase constitutes an integral component of the initial proof of concept (POC) iteration. Subsequently, a Power BI report tailored for production will be meticulously conceived and developed, building upon the foundations laid during this preliminary POC phase, with the ultimate aim of sharing it effectively with stakeholders.*</span>
+
 
 (3) Let's proceed to generate visualizations and DAX measures in response to the aforementioned request. To streamline the first request, our objective is to determine the total number of games won, lost, or drawn by both white and black players.
 
@@ -652,6 +653,10 @@ VAR _maxwin =
 RETURN
     _maxwin
 ```
+
+<br />
+
+<span style="color:green">*Note: In this course, some of the DAX measures may pose a slight challenge for beginners in terms of both writing and comprehension. However, the insights shared here on how to initiate the process of creating DAX measures, along with the comments provided within the DAX measures to explain the rationale behind using specific DAX functions, are instrumental in guiding your thought process when crafting your own DAX measures. While mastering DAX functions is crucial, it is equally vital to learn how to analyze problem statements and determine the appropriate DAX functions to effectively address these problem statements.*</span>
 
 <br />
 
