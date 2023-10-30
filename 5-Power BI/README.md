@@ -262,7 +262,7 @@ The source is given as a CSV file. My approach involves saving this source data 
 
 ![dim table advanced editor](/5-Power%20BI/assets/pq%20editor%20dim%20table%20advanced%20editor.jpg)
 
-<span style="color:green">*Note: The M code provided below is accompanied by comments following "//" that elucidate the purpose of each step. You can conveniently copy and paste the entire M code into the Advanced Editor within Power Query Editor.*</span>
+<span style="color:green">*Note: The following M code, complete with explanatory comments denoted by "//," outlines the step-by-step thought process behind code selection and composition. Feel assured that, despite the potential complexity of the M code within the Advanced Editor, there's no need to be intimidated. You can readily copy and paste the entire M code into Power Query Editor's Advanced Editor. While some of the M code in this course may appear intricate, don't hesitate to rely on the embedded comments to gain insight into my thought process and the M functions I considered using to achieve the desired outcome for each query*</span>
 
 ```M
 let
@@ -355,6 +355,8 @@ in
 - Assign a sequential numbering to each move within each game_id.
 
 ![pq editor fct table](/5-Power%20BI/assets/pq%20editor%20fct%20table.jpg)
+![pq editor fct table](/5-Power%20BI/assets/pq%20editor%20fct%20table%20advanced%20editor.jpg)
+
  
 ```M
 let
