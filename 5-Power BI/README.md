@@ -32,7 +32,7 @@
 
 ## <a name="chapter1"></a>1. Sample data: Online Chess Games 
 
-This open-source resource can be found on Mavenanalytics.io.
+The open-source resource utilized in this course is accessible through the provided link below.
 
 Link to the website: [Link](https://mavenanalytics.io/data-playground?page=5&pageSize=5)
 
@@ -102,14 +102,18 @@ To achieve this, I will utilize sample data and assume that I have engaged in mu
 ## <a name="chapter3"></a>3. Datamodel 
 ### Draw datamodel  
 
-Following discussions with stakeholders, the primary insights to be conveyed through the analysis include:
+After engaging in conversations with key stakeholders and examining the column labels in the data source depicted in the figure below, the primary focus of our analysis will be to achieve the following objectives:
 
-- Determining wins or losses by players.
-- Identifying which subsequent moves lead to either a win or a loss in the game.
+- Uncovering the outcomes of games, specifically discerning victories and defeats for the players.
+- Pinpointing the specific moves within chess games that are associated with either a triumphant win or a regrettable loss.
 
-The dimension tables contain pertinent information about the Players and Games, while the fact table is populated with details about Moves.
+![source column name](/5-Power%20BI/assets/source%20column%20name.jpg)
 
-The visualization of the data model is represented in the figure below. It's important to note that this data model can be modified or adjusted as needed, based on the data available in the source or the evolving requirements for creating a comprehensive analysis report. 
+
+The data source can be neatly categorized into dimension tables, which provide detailed descriptions of the elements you wish to analyze, and fact tables that house the numerical data corresponding to the entities described within these dimensions. In the process of crafting our data model, the dimension tables are enriched with essential information about the Players and Games, while the fact table is enriched with intricate details about Moves.
+
+The visualization of the data model is presented in the figure below. This data model serves as the foundation of our analytical framework. As a seasoned Power BI developer, I understand the importance of tailoring the data model to meet the specific requirements of the data source and the ever-evolving needs of our analytical reports.
+I strongly advise that you begin by meticulously designing the data model before embarking on any data transformation. While it's natural for the data model's structure to evolve throughout the project, this initial blueprint serves as a guiding light, allowing developers to start their journey with confidence and precision.
 
 ![Datamodel planning fix](/5-Power%20BI/assets/Datamodel%20plan%20fix.jpg) 
 
@@ -117,7 +121,7 @@ The visualization of the data model is represented in the figure below. It's imp
 
 ### Store the source in Lakehouse  
 
-The source is given as a CSV file. I decide to store this source data in Fabric Lakehouse, and I plan to use Dataflow Gen2 to transform the source table and load it back to Lakehouse.
+The source is given as a CSV file. My approach involves saving this source data in a Fabric Lakehouse. And to refine and transform the data, I intend to employ Dataflow Gen2, although most of the transformations will occur in the Power Query Editor within Power BI Desktop. Finally, I'll reload the modified table back into the Lakehouse.
 
 * Link to learn Fabric lakehouse: [Link](https://learn.microsoft.com/en-us/fabric/data-engineering/lakehouse-overview?wt.mc_id=DP-MVP-5004989)
 
@@ -258,7 +262,7 @@ The source is given as a CSV file. I decide to store this source data in Fabric 
 
 ![dim table advanced editor](/5-Power%20BI/assets/pq%20editor%20dim%20table%20advanced%20editor.jpg)
 
-<span style="color:green">*Note: The M code provided below is accompanied by comments following "//" that elucidate the purpose of each step. You can conveniently copy and paste the entire M code into the Advanced Editor within Power Query Editor.*</span>
+<span style="color:green">*Note: The following M code, complete with explanatory comments denoted by "//," outlines the step-by-step thought process behind code selection and composition. Feel assured that, despite the potential complexity of the M code within the Advanced Editor, there's no need to be intimidated. You can readily copy and paste the entire M code into Power Query Editor's Advanced Editor. While some of the M code in this course may appear intricate, don't hesitate to rely on the embedded comments to gain insight into my thought process and the M functions I considered using to achieve the desired outcome for each query*</span>
 
 ```M
 let
@@ -351,6 +355,8 @@ in
 - Assign a sequential numbering to each move within each game_id.
 
 ![pq editor fct table](/5-Power%20BI/assets/pq%20editor%20fct%20table.jpg)
+![pq editor fct table](/5-Power%20BI/assets/pq%20editor%20fct%20table%20advanced%20editor.jpg)
+
  
 ```M
 let
@@ -431,7 +437,8 @@ DAX Glossaries Link: [Link](https://learn.microsoft.com/en-us/dax/dax-glossary?w
 - What percentage of games were won by the participant with the superior rating? Is there any variance in this statistic based on the color of pieces?
 - What is the initial move for Black that demonstrates the highest likelihood of winning after White's first move of D4?
 
-- Note: During this session, we shall craft DAX measures and visualizations with the primary purpose of scrutinizing and substantiating data integrity, addressing pertinent inquiries, and validating responses. This phase constitutes an integral component of the initial proof of concept (POC) iteration. Subsequently, a Power BI report tailored for production will be meticulously conceived and developed, building upon the foundations laid during this preliminary POC phase, with the ultimate aim of sharing it effectively with stakeholders. 
+<span style="color:green">*Note: During this session, we shall craft DAX measures and visualizations with the primary purpose of scrutinizing and substantiating data integrity, addressing pertinent inquiries, and validating responses. This phase constitutes an integral component of the initial proof of concept (POC) iteration. Subsequently, a Power BI report tailored for production will be meticulously conceived and developed, building upon the foundations laid during this preliminary POC phase, with the ultimate aim of sharing it effectively with stakeholders.*</span>
+
 
 (3) Let's proceed to generate visualizations and DAX measures in response to the aforementioned request. To streamline the first request, our objective is to determine the total number of games won, lost, or drawn by both white and black players.
 
@@ -538,7 +545,7 @@ The DAX measures utilized on this page is composed as follows.
 ```dax
 The most winning first move by white = 
 
-VAR _whitewintable =  //Create a virtual table that shows white players win with showing the first move of each game.
+VAR _whitewintable =  //Generate a virtual table that displays the initial moves of white players who have won their games.
     FILTER (
         SUMMARIZE (
             FILTER ( moves_fct, moves_fct[move_number] = 1 ),
@@ -549,14 +556,14 @@ VAR _whitewintable =  //Create a virtual table that shows white players win with
         dim_game[winner] = "White"
     )
 
-VAR _countfirstmove =   // Group every first move in the above table with adding counting column. 
+VAR _countfirstmove =   // Group the initial moves in the table above while also adding a count column. 
     GROUPBY (
         _whitewintable,
         moves_fct[moves],
         "@count", SUMX ( CURRENTGROUP (), 1 )
     )
 
-VAR _maxwin =   // Maximum counting number means the most played first move.
+VAR _maxwin =   // The highest count number indicates the most frequently played initial move.
     MAXX ( _countfirstmove, [@count] )
 
 VAR _mostwinningfirstmove =
@@ -575,7 +582,7 @@ RETURN
 ```dax
 The most winning first move by black = 
 
-VAR _blackwintable =    // black player's first move is always move number 2
+VAR _blackwintable =    // The first move for black players is always the second move in the game.
     FILTER (
         SUMMARIZE (
             FILTER ( moves_fct, moves_fct[move_number] = 2 ),
@@ -651,6 +658,10 @@ RETURN
 
 <br />
 
+<span style="color:green">*Note: In this course, some of the DAX measures may pose a slight challenge for beginners in terms of both writing and comprehension. However, the insights shared here on how to initiate the process of creating DAX measures, along with the comments provided within the DAX measures to explain the rationale behind using specific DAX functions, are instrumental in guiding your thought process when crafting your own DAX measures. While mastering DAX functions is crucial, it is equally vital to learn how to analyze problem statements and determine the appropriate DAX functions to effectively address these problem statements.*</span>
+
+<br />
+
 (10) The third request, rephrased for clarity, is to identify the player with the most wins and calculate their winning percentage against opponents with a higher rating. The thought process for developing a solution entails the following steps:
 - Extract the 'player_id' column from the 'dim_player' table.
 - Calculate the counts of game IDs corresponding to 'white-win' and 'black-win' outcomes. Take into account the inactive relationship when calculating 'black-win.'
@@ -671,7 +682,7 @@ Winning count by player =
 VAR _whiteplay =
     COUNTROWS ( FILTER ( dim_game, dim_game[winner] = "White" ) )
 
-//activating inactive relationship in the datamodel by using USERELATIONSHIP DAX function    
+// Use the USERELATIONSHIP DAX function to activate an inactive relationship in the data model.    
 VAR _blackplay =    
     CALCULATE (
         COUNTROWS ( FILTER ( dim_game, dim_game[winner] = "Black" ) ),
@@ -698,7 +709,7 @@ VAR _wincountbywhite =
         )
     )
 
-//activating inactive relationship in the datamodel by using USERELATIONSHIP DAX function    
+// Use the USERELATIONSHIP DAX function to activate an inactive relationship in the data model.    
 VAR _wincountbyblack =    
     CALCULATE (
         COUNTROWS (
@@ -883,21 +894,21 @@ The additinoal DAX measures utilized on this page is composed as follows.
 ```dax
 The most winning first move = 
 VAR _whitewintable =
-    //Create a virtual table that shows the first move of each winning game.
+    //Generate a virtual table displaying the initial move in each victorious game.
     SUMMARIZE (
         FILTER ( moves_fct, moves_fct[move_number] = 1 ),
         moves_fct[moves],
         dim_game[game_id]
     )
 VAR _whitecountfirstmove =
-    // Group every first move in the above table with adding counting column. 
+    // Group the initial moves in the table above and add an extra column to count each move. 
     GROUPBY (
         _whitewintable,
         moves_fct[moves],
         "@count", SUMX ( CURRENTGROUP (), 1 )
     )
 VAR _whitemaxwin =
-    // Maximum counting number means the most played first move.
+    // The 'Maximum Counting Number' represents the most frequently played initial move.
     MAXX (
         _whitecountfirstmove,
         [@count]
@@ -933,21 +944,21 @@ RETURN
 ```dax
 How many wins by this first move = 
 VAR _whitewintable =
-    //Create a virtual table that shows the first move of each winning game.
+    //Generate a virtual table displaying the initial move in each victorious game.
     SUMMARIZE (
         FILTER ( moves_fct, moves_fct[move_number] = 1 ),
         moves_fct[moves],
         dim_game[game_id]
     )
 VAR _whitecountfirstmove =
-    // Group every first move in the above table with adding counting column. 
+    // Group the initial moves in the table above and add an extra column to count each move. 
     GROUPBY (
         _whitewintable,
         moves_fct[moves],
         "@count", SUMX ( CURRENTGROUP (), 1 )
     )
 VAR _whitemaxwin =
-    // Maximum counting number means the most played first move.
+    // The 'Maximum Counting Number' represents the most frequently played initial move.
     MAXX (
         _whitecountfirstmove,
         [@count]
@@ -1049,7 +1060,7 @@ The additinoal DAX measures utilized on this page is composed as follows.
 ```dax
 Black most winning move after white first move = 
 VAR _blackwinafterwhitefirstmove =
-    //get game ids that black wins
+    // Retrieve the game IDs for games where black emerges as the winner.
     SUMMARIZE (
         FILTER (
             SUMMARIZE ( moves_fct, dim_game[game_id], dim_game[winner] ),
@@ -1083,7 +1094,7 @@ RETURN
 ```dax
 Winning count after white first move = 
 VAR _blackwinafterwhitefirstmove =
-    //get game ids that black wins
+    // Retrieve the game IDs for games where black emerges as the winner.
     SUMMARIZE (
         FILTER (
             SUMMARIZE ( moves_fct, dim_game[game_id], dim_game[winner] ),
@@ -1115,7 +1126,7 @@ RETURN
 ```dax
 winning ratio after white first move = 
 VAR _blackwinafterwhitefirstmove =
-    //get game ids that black wins
+    //Retrieve the game IDs for games where black emerges as the winner.
     SUMMARIZE (
         FILTER (
             SUMMARIZE ( moves_fct, dim_game[game_id], dim_game[winner] ),
@@ -1157,7 +1168,7 @@ White most winning move after black first move =
 VAR _blackfirstmove = [Black most winning move after white first move]
 VAR _moveonegameid =
     VALUES ( moves_fct[game_id] )
-VAR _movetwogameid =  //find out what are move = 2 game id that shows black's first move (previous result) and white-win
+VAR _movetwogameid =  //Identify the game IDs in which the second move was made by black (as per the previous result), and white won.
     SUMMARIZE (
         FILTER (
             SUMMARIZE (
@@ -1176,7 +1187,7 @@ VAR _movetwogameid =  //find out what are move = 2 game id that shows black's fi
         dim_game[game_id]
     )
 VAR _whitesecondtmoveofthegame =
-    //white second move is move number 3
+    // The second move for white players occurs on move number 3.
     FILTER (
         ALL ( moves_fct ),
         moves_fct[game_id]
@@ -1206,7 +1217,7 @@ Winning count after black first move =
 VAR _blackfirstmove = [Black most winning move after white first move]
 VAR _moveonegameid =
     VALUES ( moves_fct[game_id] )
-VAR _movetwogameid =  //find out what are move = 2 game id that shows black's first move (previous result) and white-win
+VAR _movetwogameid =  //Determine the game IDs where, in the previous result, move number 2 represents black's first move and the game results in a white player's victory.
     SUMMARIZE (
         FILTER (
             SUMMARIZE (
@@ -1225,7 +1236,7 @@ VAR _movetwogameid =  //find out what are move = 2 game id that shows black's fi
         dim_game[game_id]
     )
 VAR _whitesecondtmoveofthegame =
-    //white second move is move number 3
+    //The second move for white players occurs on move number 3.
     FILTER (
         ALL ( moves_fct ),
         moves_fct[game_id]
@@ -1266,13 +1277,13 @@ VAR _movetwogameidall =
 VAR _movetwogamecount =
     COUNTROWS ( _movetwogameidall )
 VAR _movetwogameid =
-    //find out what are move = 2 game id that shows black's first move (previous result) and white-win
+    //Identify game IDs where move number 2 corresponds to black's first move (from the previous result), and the outcome of the game is a white player's victory.
     SUMMARIZE (
         FILTER ( _movetwogameidall, dim_game[winner] = "White" ),
         dim_game[game_id]
     )
 VAR _whitesecondtmoveofthegame =
-    //white second move is move number 3
+    //The second move for white players occurs on move number 3.
     FILTER (
         ALL ( moves_fct ),
         moves_fct[game_id]
