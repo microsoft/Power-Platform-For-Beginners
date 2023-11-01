@@ -18,7 +18,7 @@
 
 ## Contents
 
-#### [1. Sample data](#chapter1)
+#### [1. Opening & Sample data](#chapter1)
 #### [2. Unlocking the power of Power BI](#chapter2)
 #### [3. Datamodel](#chapter3)
 #### [4. Open Power BI Desktop](#chapter4)
@@ -30,7 +30,12 @@
 <br />
 <br />
 
-## <a name="chapter1"></a>1. Sample data: Online Chess Games 
+## <a name="chapter1"></a>1. Opening & Sample data: Online Chess Games 
+
+### Opening statement
+Welcome to the world of Power BI for Beginners - Chess Game Analysis! This course is designed with newcomers in mind, but I want to be upfront with you: as we delve into the intricacies of Power BI, M code, and DAX code, you might find it a little more challenging than you initially expected. However, fear not, for the journey of analyzing chess data, deciphering winning moves, and uncovering the excitement within is worth every effort. I've put extra care into providing clear explanations, intuitive comments, and plenty of images to ensure this article is as reader-friendly as possible. So, let's embark on this adventure together, and I promise you'll find the joy in unraveling the mysteries of chess data analysis. Stick with me until the end, and let's have some fun!
+
+### Sample data
 
 The open-source resource utilized in this course is accessible through the provided link below.
 
