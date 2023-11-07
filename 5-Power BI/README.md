@@ -1097,7 +1097,7 @@ RETURN
 * Link to learn ALL DAX function: [Link](https://learn.microsoft.com/en-us/dax/all-function-dax?wt.mc_id=DP-MVP-5004989)
 
 ```dax
-Winning count after white first move = 
+Black winning count after white first move = 
 VAR _blackwinafterwhitefirstmove =
     // Retrieve the game IDs for games where black emerges as the winner.
     SUMMARIZE (
@@ -1129,7 +1129,7 @@ RETURN
 <br />
 
 ```dax
-winning ratio after white first move = 
+Black winning ratio after white first move = 
 VAR _blackwinafterwhitefirstmove =
     //Retrieve the game IDs for games where black emerges as the winner.
     SUMMARIZE (
@@ -1218,7 +1218,7 @@ RETURN
 <br />
 
 ```dax
-Winning count after black first move = 
+White winning count after black first move = 
 VAR _blackfirstmove = [Black most winning move after white first move]
 VAR _moveonegameid =
     VALUES ( moves_fct[game_id] )
@@ -1263,7 +1263,7 @@ RETURN
 <br />
 
 ```dax
-Winning ratio after black first move = 
+White winning ratio after black first move = 
 VAR _blackfirstmove = [Black most winning move after white first move]
 VAR _moveonegameid =
     VALUES ( moves_fct[game_id] )
@@ -1311,7 +1311,7 @@ RETURN
 
 (6) To facilitate the productionization of the Power BI report, I opted to conceal all the pages I had previously crafted for data and data model validation. Instead, I created a single page that systematically incorporates all visualizations, thereby presenting stories and insights. Additionally, it is feasible to retain this Power BI file as a proof of concept (POC) version and initiate the development of a new one intended for production use. It's worth noting that designing of the report page falls outside the purview of this course, but ample resources are available for reference and those are easily found on web.
 
-![power bi report product](/5-Power%20BI/assets/pbi%20report%20production.jpg)
+![power bi report product](5-Power%20BI/assets/pbi%20report%20production.jpg)
 
 <span style="color:green">*Note: The DAX measures I've crafted above may not necessarily represent the most optimal performance and some of them might appear rather intricate to navigate and understand. However, it's essential to delve into each line of the formula to comprehend the specific outcome I intend to achieve. The primary goal is to ensure that the results meet the requirements of the report viewers. Subsequently, I can explore ways to improve the DAX measures for better performance, if necessary.*</span>
 

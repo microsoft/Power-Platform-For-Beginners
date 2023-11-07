@@ -8,7 +8,7 @@
       },
       {
         "name": "PBIDesktopVersion",
-        "value": "2.122.746.0 (23.10)"
+        "value": "2.122.1066.0 (23.10)"
       },
       {
         "name": "PBI_QueryOrder",
@@ -998,7 +998,7 @@
             "lineageTag": "c7a796ee-5421-465a-9467-7390a120555d"
           },
           {
-            "name": "winning ratio after white first move",
+            "name": "Black winning ratio after white first move",
             "expression": [
               "",
               "VAR _blackwinafterwhitefirstmove =",
@@ -1034,7 +1034,7 @@
             "lineageTag": "4ead6929-255f-4ef8-90b5-a82f7cb44555"
           },
           {
-            "name": "winning count after white first move",
+            "name": "Black winning count after white first move",
             "expression": [
               "",
               "VAR _blackwinafterwhitefirstmove =",
@@ -1118,7 +1118,7 @@
             "lineageTag": "9be16975-7d0c-4588-87c7-c47bd9ac808e"
           },
           {
-            "name": "winning count after black first move",
+            "name": "White winning count after black first move",
             "expression": [
               "",
               "VAR _blackfirstmove = [Black most winning move after white first move]",
@@ -1166,7 +1166,7 @@
             "lineageTag": "8256638b-0207-44bb-84a4-b778279a2895"
           },
           {
-            "name": "winning ratio after black first move",
+            "name": "White winning ratio after black first move",
             "expression": [
               "",
               "VAR _blackfirstmove = [Black most winning move after white first move]",
