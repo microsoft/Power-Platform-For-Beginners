@@ -1162,7 +1162,9 @@ RETURN
 
 <br />
 
-While constructing a table visualization to pinpoint the initial move by Black that exemplifies the most successful winning strategy, I also delved further to determine the subsequent White move that maximizes the chances of victory. The results of this table visualization are presented below.
+While constructing a table visualization to pinpoint the initial move by Black (move number = 2) that exemplifies the most successful winning strategy, I also delved further to determine the subsequent White move that maximizes the chances of victory. The results of this table visualization are presented below.
+As depicted in the below diagram, the filter pane situated on the right side of the visualization serves as our compass. It's set to display moves exclusively at number 1, along with their corresponding actual move. Additionally, our DAX measures diligently compute the odds of success for the subsequent moves. Although we've limited our discussion to moves up to number 3 (the second move of white), the same principles and logic can be applied to create further DAX measures, extending your insights into winning strategies for moves 4, 5, 6, 7, 8, and beyond.
+This journey of discovery allows you to not only pinpoint successful openings but also offers the tools to explore and analyze the strategies that lead to triumph in the world of chess.
 
 ![white move number 3 most winning move](/5-Power%20BI/assets/white%20most%20winning%20move%20(move%203).jpg)
 
