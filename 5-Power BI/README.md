@@ -37,11 +37,11 @@ Welcome to the world of Power BI for Beginners - Chess Game Analysis! This cours
 
 ### Sample data
 
-The open-source resource utilized in this course is accessible through the provided link below.
+The open-source material used in this course can be accessed via one of the provided links below.
 
-Link to the website: [Link](https://mavenanalytics.io/data-playground?page=5&pageSize=5)
+Link to the csv file: [Link](https://raw.githubusercontent.com/jihwankimdata/Power-Platform-For-Beginners/main/5-Power%20BI/chess_games.csv)
 
-Link to the file: [Link](https://maven-datasets.s3.amazonaws.com/Online+Chess+Games/Online+Chess+Games.zip)
+Here is the website [Link](https://www.mavenanalytics.io/data-playground) and the direct [download link](https://maven-datasets.s3.amazonaws.com/Online+Chess+Games/Online+Chess+Games.zip), from which the source data was acquired.
 
 <br />
 <br />
