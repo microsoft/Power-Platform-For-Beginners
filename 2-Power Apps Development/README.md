@@ -61,7 +61,7 @@ The strength of Model-Driven Apps lies in their ability to automatically generat
 ### Use cases and examples
 <!-- - Rebekka -->
 
-## Canvas Appsd  
+## Canvas Apps
 
 <!-- - Exploring app templates and design principles.
 - Creating user interfaces with galleries, forms, and controls.
@@ -94,8 +94,38 @@ How to add connector?
 
 You can use this step by step guide: [add data to existing app](https://learn.microsoft.com/power-apps/maker/canvas-apps/connections/connection-sharepoint-online#add-data-to-an-existing-app)
 
-##### Build an app using Excel
-<!-- - Angelo -->
+#### Build an app using Excel
+If you're new, you should kwnon that you can create a new App, starting from Excel file. This is a cool feature, usefull, if you:
+
+1. You have an Excel file your're using in your company, and want a quick solution to use manage data with a App.
+2. You're new in Power Apps world, and want to have a starting point to build an app.
+
+Before you start, make sure that a table has been defined in the Excel file you want to use. This is an essential requirement for generating the app, starting from an Excel file.
+
+I created a an Excel file, called ["Phonebook.xlsx"](/2-Power%20Apps%20Development/assets/app-from-excel/Phonebook.xlsx) to create our app:
+
+![Excel Data](/2-Power%20Apps%20Development/assets/app-from-excel/excel-data.png)
+
+Let's start! we're going to create our app in less then five minuts:
+
+Once you're logged in to Power Apps environment, click on the home screen and then, click on **"Start with data"** and select **"Upload an Excel file."**
+
+Now we must select Excel file, so choose **"Select from device"** and navigate to the location where your Excel file is stored, select and upload it.
+
+Once the table is created, you can to customize the properties according to your business requirements, then click on "Create app" and wait for the magic.
+
+![Steps to create app from Excel](/2-Power%20Apps%20Development/assets/app-from-excel/steps-to-create-app-from-excel.gif)
+
+The app is ready to use, with the following features: 
+
+1. Dataverse table (Yes, your Excel table is Dataverse table now) 
+2. Show list of records
+3. Possibility to filter records
+4. CRUD operation
+
+![Our App](/2-Power%20Apps%20Development/assets/app-from-excel/app-from-excel.gif)
+
+Here you can find official documentations: [Create app from data](https://learn.microsoft.com/en-us/power-apps/maker/canvas-apps/get-started-create-from-data)
 
 ##### Build an app using SharePoint
 <!-- - Angelo -->
