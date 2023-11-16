@@ -1380,9 +1380,10 @@ Throughout this course, we've delved into the following key aspects:
 2. **Unlocking the Power of Power BI:** Unraveling the capabilities and potential of this robust tool.
 3. **Data Modeling:** Crafting a structured and efficient data model.
 4. **Opening Power BI Desktop:** Initiating our journey in the Power BI ecosystem.
-5. **DAX Measures and Visualizations (Proof of Concept):** Experimenting with the power of Data Analysis Expressions and visualizations to lay the groundwork.
-6. **DAX Measures and Visualizations (Production):** Elevating our analysis to production-ready status.
-7. **Publishing and Sharing the Power BI Report:** The final step, where we disseminate our insights to stakeholders, ensuring that our data-driven narratives are shared and utilized for informed decision-making.
+5. **Bridging Power BI with Lakehouse and restructuring tables:** Connecting Power BI to the data's epicenter and bringing it into the Power Query editor initiates a process of strategic restructuring. This meticulous transformation results in a finely tuned data model, ensuring optimal performance.
+6. **DAX Measures and Visualizations (Proof of Concept):** Experimenting with the power of Data Analysis Expressions and visualizations to lay the groundwork.
+7. **DAX Measures and Visualizations (Production):** Elevating our analysis to production-ready status.
+8. **Publishing and Sharing the Power BI Report:** The final step, where we disseminate our insights to stakeholders, ensuring that our data-driven narratives are shared and utilized for informed decision-making.
 
 As I conclude this learning experience, it is important to remember that the knowledge and skills acquired in this course are not merely a conclusion but a beginning. Power BI is a dynamic tool that continues to evolve, and our ability to harness its capabilities will grow with it. Embrace the ever-expanding world of data visualization, and use your newfound expertise to bring meaningful insights to life, driving transformative decisions and innovation. The journey of data exploration is an ongoing one, and I encourage you to keep exploring, learning, and creating with Power BI. 
 
