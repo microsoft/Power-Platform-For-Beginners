@@ -37,11 +37,11 @@ Welcome to the world of Power BI for Beginners - Chess Game Analysis! This cours
 
 ### Sample data
 
-The open-source resource utilized in this course is accessible through the provided link below.
+The open-source material used in this course can be accessed via one of the provided links below.
 
-Link to the website: [Link](https://mavenanalytics.io/data-playground?page=5&pageSize=5)
+Link to the csv file: [Link](https://raw.githubusercontent.com/jihwankimdata/Power-Platform-For-Beginners/main/5-Power%20BI/chess_games.csv)
 
-Link to the file: [Link](https://maven-datasets.s3.amazonaws.com/Online+Chess+Games/Online+Chess+Games.zip)
+Here is the website [Link](https://www.mavenanalytics.io/data-playground) and the direct [download link](https://maven-datasets.s3.amazonaws.com/Online+Chess+Games/Online+Chess+Games.zip), from which the source data was acquired.
 
 <br />
 <br />
@@ -1097,7 +1097,7 @@ RETURN
 * Link to learn ALL DAX function: [Link](https://learn.microsoft.com/en-us/dax/all-function-dax?wt.mc_id=DP-MVP-5004989)
 
 ```dax
-Winning count after white first move = 
+Black winning count after white first move = 
 VAR _blackwinafterwhitefirstmove =
     // Retrieve the game IDs for games where black emerges as the winner.
     SUMMARIZE (
@@ -1129,7 +1129,7 @@ RETURN
 <br />
 
 ```dax
-winning ratio after white first move = 
+Black winning ratio after white first move = 
 VAR _blackwinafterwhitefirstmove =
     //Retrieve the game IDs for games where black emerges as the winner.
     SUMMARIZE (
@@ -1162,7 +1162,9 @@ RETURN
 
 <br />
 
-While constructing a table visualization to pinpoint the initial move by Black that exemplifies the most successful winning strategy, I also delved further to determine the subsequent White move that maximizes the chances of victory. The results of this table visualization are presented below.
+While constructing a table visualization to pinpoint the initial move by Black (move number = 2) that exemplifies the most successful winning strategy, I also delved further to determine the subsequent White move that maximizes the chances of victory. The results of this table visualization are presented below.
+As depicted in the below diagram, the filter pane situated on the right side of the visualization serves as our compass. It's set to display moves exclusively at number 1, along with their corresponding actual move. Additionally, our DAX measures diligently compute the odds of success for the subsequent moves. Although we've limited our discussion to moves up to number 3 (the second move of white), the same principles and logic can be applied to create further DAX measures, extending your insights into winning strategies for moves 4, 5, 6, 7, 8, and beyond.
+This journey of discovery allows you to not only pinpoint successful openings but also offers the tools to explore and analyze the strategies that lead to triumph in the world of chess.
 
 ![white move number 3 most winning move](/5-Power%20BI/assets/white%20most%20winning%20move%20(move%203).jpg)
 
@@ -1218,7 +1220,7 @@ RETURN
 <br />
 
 ```dax
-Winning count after black first move = 
+White winning count after black first move = 
 VAR _blackfirstmove = [Black most winning move after white first move]
 VAR _moveonegameid =
     VALUES ( moves_fct[game_id] )
@@ -1263,7 +1265,7 @@ RETURN
 <br />
 
 ```dax
-Winning ratio after black first move = 
+White winning ratio after black first move = 
 VAR _blackfirstmove = [Black most winning move after white first move]
 VAR _moveonegameid =
     VALUES ( moves_fct[game_id] )
@@ -1378,9 +1380,10 @@ Throughout this course, we've delved into the following key aspects:
 2. **Unlocking the Power of Power BI:** Unraveling the capabilities and potential of this robust tool.
 3. **Data Modeling:** Crafting a structured and efficient data model.
 4. **Opening Power BI Desktop:** Initiating our journey in the Power BI ecosystem.
-5. **DAX Measures and Visualizations (Proof of Concept):** Experimenting with the power of Data Analysis Expressions and visualizations to lay the groundwork.
-6. **DAX Measures and Visualizations (Production):** Elevating our analysis to production-ready status.
-7. **Publishing and Sharing the Power BI Report:** The final step, where we disseminate our insights to stakeholders, ensuring that our data-driven narratives are shared and utilized for informed decision-making.
+5. **Bridging Power BI with Lakehouse and restructuring tables:** Connecting Power BI to the data's epicenter and bringing it into the Power Query editor initiates a process of strategic restructuring. This meticulous transformation results in a finely tuned data model, ensuring optimal performance.
+6. **DAX Measures and Visualizations (Proof of Concept):** Experimenting with the power of Data Analysis Expressions and visualizations to lay the groundwork.
+7. **DAX Measures and Visualizations (Production):** Elevating our analysis to production-ready status.
+8. **Publishing and Sharing the Power BI Report:** The final step, where we disseminate our insights to stakeholders, ensuring that our data-driven narratives are shared and utilized for informed decision-making.
 
 As I conclude this learning experience, it is important to remember that the knowledge and skills acquired in this course are not merely a conclusion but a beginning. Power BI is a dynamic tool that continues to evolve, and our ability to harness its capabilities will grow with it. Embrace the ever-expanding world of data visualization, and use your newfound expertise to bring meaningful insights to life, driving transformative decisions and innovation. The journey of data exploration is an ongoing one, and I encourage you to keep exploring, learning, and creating with Power BI. 
 
