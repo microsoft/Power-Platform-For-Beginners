@@ -116,9 +116,9 @@ Once the table is created, you can to customize the properties according to your
 
 ![Steps to create app from Excel](/2-Power%20Apps%20Development/assets/app-from-excel/steps-to-create-app-from-excel.gif)
 
-The app is ready to use, with the following features: 
+The app is ready to use, with the following features:
 
-1. Dataverse table (Yes, your Excel table is Dataverse table now) 
+1. Dataverse table (Yes, your Excel table is Dataverse table now)
 2. Show list of records
 3. Possibility to filter records
 4. CRUD operation
@@ -128,11 +128,45 @@ The app is ready to use, with the following features:
 Here you can find official documentations: [Create app from data](https://learn.microsoft.com/en-us/power-apps/maker/canvas-apps/get-started-create-from-data)
 
 ##### Build an app using SharePoint
-<!-- - Angelo -->
+
+With the same simplicity with which you can create an app starting from an Excel file, as seen in the previous paragraph, you can create an app starting from a SharePoint list.
+
+Even in the case of an app generated from a SharePoint list, you will immediately have access to the following functionalities:
+
+1. In the browse screen, you can scroll through all items in the list.
+2. In the details screen, you can show all information about a single item in the list.
+3. In the edit screen, you can create an item or update information about an existing item.
+
+The steps to proceed are quite simple:
+
+1. Create a SharePoint list with column you need. You can find an example [here](https://learn.microsoft.com/en-us/sharepoint/dev/business-apps/get-started/set-up-sharepoint-site-lists-libraries#create-projects-list)
+2. Sign in to Power Apps
+3. Click on create
+4. Select "SharePoint"
+5. Select connection for SharePoint, if you don't see any connection, click on "New Connection" and create a newone
+6. Now you're to be able to find your SharePoint site and your list
+7. Select list
+8. Click on connect
+
+You can find more details [here](https://learn.microsoft.com/en-us/power-apps/maker/canvas-apps/app-from-sharepoint)
 
 ##### Build an app using Dataverse
-<!-- - Use sample data and show how to add that.  
-- Angelo -->
+
+After creating an application, either starting from an Excel file or from a SharePoint list, we can automatically generate an application using Dataverse. This capability can be very useful if you need to create a complex application with a real database 'behind the scenes'.
+
+Before start I want to suggest you to do [this training](https://learn.microsoft.com/en-us/training/modules/get-started-with-powerapps-common-data-service/) to understand how to create Table in Dataverse.
+
+If you have Dataverse table ready, you can start:
+
+1. Sign in to Power Apps
+2. Click on create
+3. Select "Dataverse"
+4. Select connection for Dataverse, if you don't see any connection, click on "New Connection" and create a newone
+5. Now you're to be able to flooking for your Dataverse table
+6. Choose it
+7. Click on connect
+
+You can find more details [here](https://learn.microsoft.com/en-us/power-apps/maker/canvas-apps/data-platform-create-app)
 
 #### Building an App that contains Media
 
