@@ -1065,7 +1065,24 @@ Dataverse provides a rich array of column types to cater to diverse data storage
 
 Dataverse columns form the backbone of data storage and manipulation within Power Platform's ecosystem. Understanding the available column types and their purposes helps in designing efficient and meaningful data models. When creating columns, always consider the nature of data to be stored, the kind of operations that might be performed on it, and how it relates to other data in the system.
 
-#### Forms
+### Forms
+With Power Apps model-driven apps, forms provide the user interface that people use to interact with the data they need to do their work. It's important that the forms people use are designed to allow them to find or enter the information they need efficiently.
+
+![Form](https://github.com/AhmedSalih-PowerPlatformPlace/Power-Platform-For-Beginners/blob/main/2-Power%20Apps%20Development/assets/Forms_WhatIsForms_FormExample.png)
+#### Type of Forms
+There are different types of forms, and each type has a specific functionality or use. These include:
+
+* Main (the main user interface).
+Used in model-driven apps, Dynamics 365 for tablets, and Dynamics 365 for Outlook.
+These forms provide the main user interface for viewing and interacting with table data.
+* Quick create (rapid data entry).Used in model-driven apps, Dynamics 365 for tablets, and Dynamics 365 for Outlook.For updated tables, these forms provide a basic form optimized for creating new records.
+* Quick view (to see related data).
+Used in model-driven apps, Dynamics 365 for tablets, and Dynamics 365 for Outlook. For updated tables, these forms appear within the main form to display additional data for a row that is referenced by a lookup column in the form. Users can view data from related tables without having to leave the form.
+* Card form (a compact view).Used in views for model-driven apps. Card forms are designed to present information in a compact format that is suitable for mobile devices.
+
+More information: [Types of forms in Power Apps.](https://learn.microsoft.com/en-us/power-apps/maker/model-driven-apps/types-forms)
+
+#### Edit a Main Form
 
 #### Views
 
