@@ -1121,7 +1121,6 @@ What you can do when after creating new form or editing existing form:
 
 ![Edit Forms](https://github.com/AhmedSalih-PowerPlatformPlace/Power-Platform-For-Beginners/blob/main/2-Power%20Apps%20Development/assets/Forms_EditForm.gif?raw=true)
 
-
 [Read more about How to create or edit a main form](https://learn.microsoft.com/en-us/power-apps/maker/model-driven-apps/create-edit-main-forms#how-to-create-or-edit-a-main-form)
 
 
