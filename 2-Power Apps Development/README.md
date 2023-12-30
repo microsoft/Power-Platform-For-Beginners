@@ -1066,9 +1066,9 @@ Dataverse provides a rich array of column types to cater to diverse data storage
 Dataverse columns form the backbone of data storage and manipulation within Power Platform's ecosystem. Understanding the available column types and their purposes helps in designing efficient and meaningful data models. When creating columns, always consider the nature of data to be stored, the kind of operations that might be performed on it, and how it relates to other data in the system.
 
 ### Forms
-With Power Apps model-driven apps, forms provide the user interface that people use to interact with the data they need to do their work. It's important that the forms people use are designed to allow them to find or enter the information they need efficiently.
+With Power Apps model-driven apps, Dataverse tables forms provide the user interface that people use to interact with the data they need to do their work. It's important that the forms people use are designed to allow them to find or enter the information they need efficiently.
 
-![Form](https://github.com/AhmedSalih-PowerPlatformPlace/Power-Platform-For-Beginners/blob/main/2-Power%20Apps%20Development/assets/Forms_WhatIsForms_FormExample.png)
+![Form](https://github.com/AhmedSalih-PowerPlatformPlace/Power-Platform-For-Beginners/blob/main/2-Power%20Apps%20Development/assets/Forms_WhatIsForms_FormExample.png?raw=true)
 #### Type of Forms
 There are different types of forms, and each type has a specific functionality or use. These include:
 
@@ -1082,7 +1082,48 @@ Used in model-driven apps, Dynamics 365 for tablets, and Dynamics 365 for Outloo
 
 More information: [Types of forms in Power Apps.](https://learn.microsoft.com/en-us/power-apps/maker/model-driven-apps/types-forms)
 
-#### Edit a Main Form
+#### Access Dataverse tables' default forms (Forms that are created when the table is created)
+Accessing Dataverse tables forms involves a few steps: you can access the forms by going to your tables in the [Power Apps Portal](https://make.powerapps.com) and selecting the Tables menu item on the left panel, then selecting the specific table and finally selecting forms from the table designer. Another way to access the forms is to go to the solution where you have created the table (If you created your table inside a custom solution) and from the object treeview, select tables, then select the table, and then select forms.
+
+![View Forms](https://github.com/AhmedSalih-PowerPlatformPlace/Power-Platform-For-Beginners/blob/main/2-Power%20Apps%20Development/assets/Forms_ExploreDefaultTableForms_0.gif?raw=true)
+
+![View Forms](https://github.com/AhmedSalih-PowerPlatformPlace/Power-Platform-For-Beginners/blob/main/2-Power%20Apps%20Development/assets/Forms_ExploreDefaultTableForms.gif?raw=true)
+
+#### Create and/or Edit Forms
+When a new form is created for a table, its form type is Main. When the new form opens, it is identical to the form named Information. Columns, sections, tabs, navigation, and properties associated with the form can be edited and the form can then be saved.
+
+Each main form is composed of one or more tabs. Each tab can have one or more sections. Each section contains one or more columns, also called form fields. Forms can be cloned to provide a simpler starting point for form development. To clone a form, open the form you want to copy in the form editor, on the command bar select the down arrow next to Save, select Save As, enter the name for the new form, and then select Save.
+
+1. Sign in to [Power Apps](https://make.powerapps.com/?utm_source=padocs&utm_medium=linkinadoc&utm_campaign=referralsfromdoc).
+
+2. Select Tables on the left navigation pane, select the table you want, and then select the Forms area. If the item isn’t in the left navigation pane, select …More and then select the item you want.
+
+3. To create a new main form, on the toolbar select Add form > Main Form.
+-OR- To edit an existing main form, select any form with the Type of Main.
+
+What you can do when after creating new form or editing existing form:
+
+#### Change the form design in any of the following ways, as needed:
+
+* Add a column to or remove a column from a form
+* Add a section to or remove a section from a form
+* Add a tab to or remove a tab from a form
+* Add or edit a subgrid on a form
+* Edit form headers
+
+#### Edit the properties for parts of the form, as needed:
+* Edit form properties
+* Edit form column properties
+* Edit tab properties
+* Edit section properties
+
+![Create Forms](https://github.com/AhmedSalih-PowerPlatformPlace/Power-Platform-For-Beginners/blob/main/2-Power%20Apps%20Development/assets/Forms_CreateForms.gif?raw=true)
+
+![Edit Forms](https://github.com/AhmedSalih-PowerPlatformPlace/Power-Platform-For-Beginners/blob/main/2-Power%20Apps%20Development/assets/Forms_EditForm.gif?raw=true)
+
+
+[Read more about How to create or edit a main form](https://learn.microsoft.com/en-us/power-apps/maker/model-driven-apps/create-edit-main-forms#how-to-create-or-edit-a-main-form)
+
 
 #### Views
 
@@ -1090,7 +1131,7 @@ More information: [Types of forms in Power Apps.](https://learn.microsoft.com/en
 
 #### Business Process flows
 
-#### Recurity roles
+#### Security roles
 
 ### Build
 
