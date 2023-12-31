@@ -1124,8 +1124,44 @@ What you can do when after creating new form or editing existing form:
 [Read more about How to create or edit a main form](https://learn.microsoft.com/en-us/power-apps/maker/model-driven-apps/create-edit-main-forms#how-to-create-or-edit-a-main-form)
 
 
-#### Views
+### Views
+Model-driven apps use views to define how a list of records for a specific table are displayed in the application.
 
+A view defines:
+
+* The columns to display.
+* The order of the columns.
+* How wide each column should be.
+* How the list of records should be sorted by default.
+* The default filters applied to restrict the records that will appear.
+
+Once a view has been made available in the app, the user can select it.
+
+![Views](https://github.com/AhmedSalih-PowerPlatformPlace/Power-Platform-For-Beginners/blob/main/2-Power%20Apps%20Development/assets/Views_switch-views.gif?raw=true)
+
+#### Types of views
+There are three types of views: personal, system, and public.
+
+* Personal view - Personal views are owned by individuals and only visible to that person unless they share their personal views with others.
+* System view - As a system administrator or system customizer, you can edit system views. System views are special views the application depends on, which exist for system tables or are automatically created when you create custom tables. These views have specific purposes and some additional capabilities.
+* Public view - Public views are general purpose views that you can customize as you see fit. They are important because all app users can access them, when they are made available, by using the view selector. It is possible to use public views in subgrids in a form or as a list in a dashboard.
+
+#### Create a View
+1- Sign in to [Power Apps.](https://make.powerapps.com/?utm_source=padocs&utm_medium=linkinadoc&utm_campaign=referralsfromdoc)
+
+2- Select an [environment.](https://learn.microsoft.com/en-us/power-apps/maker/model-driven-apps/model-driven-app-glossary#environment)
+
+3- Select Tables, and then open the table you want. If the item isn’t in the left navigation pane, select …More and then select the item you want.
+
+4- Select the Views area. If using a custom solution, open the solution, open the table, and then select the Views area.
+
+5- On the toolbar, select Add view.
+
+6- On the Create a view dialog, enter a name and, optionally, a description, and then select Create.
+
+![Create a View](https://github.com/AhmedSalih-PowerPlatformPlace/Power-Platform-For-Beginners/blob/main/2-Power%20Apps%20Development/assets/Views_CreateView.gif?raw=true)
+#### Edit a View
+![Edit a View](https://github.com/AhmedSalih-PowerPlatformPlace/Power-Platform-For-Beginners/blob/main/2-Power%20Apps%20Development/assets/Views_EditView.gif?raw=true)
 #### Business rules
 
 #### Business Process flows
