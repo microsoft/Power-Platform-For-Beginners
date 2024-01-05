@@ -1199,32 +1199,32 @@ The business rule designer window opens with a single condition already created 
 
 6- Add conditions. To add more conditions to your business rule:
 
-    a. Drag the Condition component from the Components tab to a plus sign in the designer.
+>a. Drag the Condition component from the Components tab to a plus sign in the designer.
 
 
-    b. To set properties for the condition, select the Condition component in the designer window, and then set the properties in the Properties tab on the right side of the screen. As you set properties, the Microsoft Dataverse creates an expression at the bottom of the Properties tab.
+>b. To set properties for the condition, select the Condition component in the designer window, and then set the properties in the Properties tab on the right side of the screen. As you set properties, the Microsoft Dataverse creates an expression at the bottom of the Properties tab.
 
-    c. To add an additional clause (an AND or OR) to the condition, select New in the Properties tab to create a new rule, and then set the properties for that rule. In the Rule Logic column, you can specify whether to add the new rule as an AND or an OR.
+>c. To add an additional clause (an AND or OR) to the condition, select New in the Properties tab to create a new rule, and then set the properties for that rule. In the Rule Logic column, you can specify whether to add the new rule as an AND or an OR.
 
-    d. When you're done setting properties for the condition, select Apply.
+>d. When you're done setting properties for the condition, select Apply.
 
 7- Add actions. To add an action:
 
-    a. Drag one of the action components from the Components tab to a plus sign next to Condition component. Drag the action to a plus sign next to a check mark if you want the business rule to take that action when the condition is met, or to a plus sign next to an x if you want the business rule to take that action if the condition isn't met.
+>a. Drag one of the action components from the Components tab to a plus sign next to Condition component. Drag the action to a plus sign next to a check mark if you want the business rule to take that action when the condition is met, or to a plus sign next to an x if you want the business rule to take that action if the condition isn't met.
 
-    b. To set properties for the action, select the Action component in the designer window, and then set the properties in the Properties tab.
+>b. To set properties for the action, select the Action component in the designer window, and then set the properties in the Properties tab.
 
-    c. When you're done setting properties, select Apply.
+>c. When you're done setting properties, select Apply.
 
 8- Add a business recommendation (model-driven apps only). To add a business recommendation:
 
-    a. Drag the Recommendation component from the Components tab to a plus sign next to a Condition component. Drag the Recommendation component to a plus sign next to a check mark if you want the business rule to take that action when the condition is met, or to a plus sign next to an x if you want the business rule to take that action if the condition isn't met.
+>a. Drag the Recommendation component from the Components tab to a plus sign next to a Condition component. Drag the Recommendation component to a plus sign next to a check mark if you want the business rule to take that action when the condition is met, or to a plus sign next to an x if you want the business rule to take that action if the condition isn't met.
 
-    b. To set properties for the recommendation, select the Recommendation component in the designer window, and then set the properties in the Properties tab.
+>b. To set properties for the recommendation, select the Recommendation component in the designer window, and then set the properties in the Properties tab.
 
-    c. To add more actions to the recommendation, drag them from the Components tab, and then set properties for each action in the Properties tab.
+>c. To add more actions to the recommendation, drag them from the Components tab, and then set properties for each action in the Properties tab.
 
-    d. When you're done setting properties, select Apply.
+>d. When you're done setting properties, select Apply.
 
 9- To validate the business rule, select Validate on the action bar.
 
