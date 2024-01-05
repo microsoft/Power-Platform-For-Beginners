@@ -1147,7 +1147,7 @@ There are three types of views: personal, system, and public.
 * Public view - Public views are general purpose views that you can customize as you see fit. They are important because all app users can access them, when they are made available, by using the view selector. It is possible to use public views in subgrids in a form or as a list in a dashboard.
 
 #### Create a View
-1- Sign in to [Power Apps.](https://make.powerapps.com/?utm_source=padocs&utm_medium=linkinadoc&utm_campaign=referralsfromdoc)
+1-  Sign in to [Power Apps.](https://make.powerapps.com/?utm_source=padocs&utm_medium=linkinadoc&utm_campaign=referralsfromdoc)
 
 2- Select an [environment.](https://learn.microsoft.com/en-us/power-apps/maker/model-driven-apps/model-driven-app-glossary#environment)
 
@@ -1163,7 +1163,78 @@ There are three types of views: personal, system, and public.
 #### Edit a View
 ![Edit a View](https://github.com/AhmedSalih-PowerPlatformPlace/Power-Platform-For-Beginners/blob/main/2-Power%20Apps%20Development/assets/Views_EditView.gif?raw=true)
 #### Business rules
+You can create business rules and recommendations to apply logic and validations without writing code or creating plug-ins. Business rules provide a simple interface to implement and maintain fast-changing and commonly used rules.
 
+ > Important: Business rules defined for a table apply to both canvas apps and model-driven apps if the table is used in the app. Not all business rule actions are available on canvas apps at this time. More information: [Differences between canvas and model-driven apps](https://learn.microsoft.com/en-us/power-apps/maker/data-platform/data-platform-create-business-rule#differences-between-canvas-and-model-driven-apps)
+
+
+Very often it is necessary to add in business logic to ensure that columns in a model-driven app are shown, hidden, or set with the correct values. By combining conditions and actions, the following actions are possible with business rules:
+
+* Set column values
+
+* Clear column values
+
+* Set column requirement levels
+
+* Show or hide columns
+
+* Enable or disable columns
+
+* Validate data and show error messages
+
+* Create business recommendations based on business intelligence.
+
+### Create a business rule
+1- Sign in to [Power Apps](https://make.powerapps.com/?utm_source=padocs&utm_medium=linkinadoc&utm_campaign=referralsfromdoc), on the left navigation pane, and select Tables. If the item isn’t in the left navigation pane, select […More](https://learn.microsoft.com/en-us/power-apps/maker/canvas-apps/intro-maker-portal#1--left-navigation-pane) and then select the item you want.
+
+2- Open the table you want to create the business rule for (for example, open the Account table), and then select the Business Rules tab.
+
+3- Select Add business rule.
+
+The business rule designer window opens with a single condition already created for you. Every rule starts with a condition. The business rule takes one or more actions based on that condition.
+
+4- Add a description, if you want, in the description box in the upper-left corner of the window.
+
+5- Set the scope, according to the following:
+
+6- Add conditions. To add more conditions to your business rule:
+
+    a. Drag the Condition component from the Components tab to a plus sign in the designer.
+
+
+    b. To set properties for the condition, select the Condition component in the designer window, and then set the properties in the Properties tab on the right side of the screen. As you set properties, the Microsoft Dataverse creates an expression at the bottom of the Properties tab.
+
+    c. To add an additional clause (an AND or OR) to the condition, select New in the Properties tab to create a new rule, and then set the properties for that rule. In the Rule Logic column, you can specify whether to add the new rule as an AND or an OR.
+
+    d. When you're done setting properties for the condition, select Apply.
+
+7- Add actions. To add an action:
+
+    a. Drag one of the action components from the Components tab to a plus sign next to Condition component. Drag the action to a plus sign next to a check mark if you want the business rule to take that action when the condition is met, or to a plus sign next to an x if you want the business rule to take that action if the condition isn't met.
+
+    b. To set properties for the action, select the Action component in the designer window, and then set the properties in the Properties tab.
+
+    c. When you're done setting properties, select Apply.
+
+8- Add a business recommendation (model-driven apps only). To add a business recommendation:
+
+    a. Drag the Recommendation component from the Components tab to a plus sign next to a Condition component. Drag the Recommendation component to a plus sign next to a check mark if you want the business rule to take that action when the condition is met, or to a plus sign next to an x if you want the business rule to take that action if the condition isn't met.
+
+    b. To set properties for the recommendation, select the Recommendation component in the designer window, and then set the properties in the Properties tab.
+
+    c. To add more actions to the recommendation, drag them from the Components tab, and then set properties for each action in the Properties tab.
+
+    d. When you're done setting properties, select Apply.
+
+9- To validate the business rule, select Validate on the action bar.
+
+10- To save the business rule, select Save on the action bar.
+
+11- To activate the business rule, select it in the Solution Explorer window, and then select Activate. You can't activate the business rule from the designer window.
+
+![Create Business Rules](https://github.com/AhmedSalih-PowerPlatformPlace/Power-Platform-For-Beginners/blob/main/2-Power%20Apps%20Development/assets/Create_Business_Rules.gif?raw=true)
+
+![Business Rule Applied](https://github.com/AhmedSalih-PowerPlatformPlace/Power-Platform-For-Beginners/blob/main/2-Power%20Apps%20Development/assets/Business_Rules_in_Actions.gif?raw=true)
 #### Business Process flows
 
 #### Security roles
