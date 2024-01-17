@@ -1099,15 +1099,187 @@ Dataverse provides a rich array of column types to cater to diverse data storage
 
 Dataverse columns form the backbone of data storage and manipulation within Power Platform's ecosystem. Understanding the available column types and their purposes helps in designing efficient and meaningful data models. When creating columns, always consider the nature of data to be stored, the kind of operations that might be performed on it, and how it relates to other data in the system.
 
-#### Forms
+### Forms
+With Power Apps model-driven apps, Dataverse tables forms provide the user interface that people use to interact with the data they need to do their work. It's important that the forms people use are designed to allow them to find or enter the information they need efficiently.
 
-#### Views
+![Form](https://github.com/AhmedSalih-PowerPlatformPlace/Power-Platform-For-Beginners/blob/main/2-Power%20Apps%20Development/assets/Forms_WhatIsForms_FormExample.png?raw=true)
+#### Type of Forms
+There are different types of forms, and each type has a specific functionality or use. These include:
 
+* Main (the main user interface).
+Used in model-driven apps, Dynamics 365 for tablets, and Dynamics 365 for Outlook.
+These forms provide the main user interface for viewing and interacting with table data.
+* Quick create (rapid data entry).Used in model-driven apps, Dynamics 365 for tablets, and Dynamics 365 for Outlook.For updated tables, these forms provide a basic form optimized for creating new records.
+* Quick view (to see related data).
+Used in model-driven apps, Dynamics 365 for tablets, and Dynamics 365 for Outlook. For updated tables, these forms appear within the main form to display additional data for a row that is referenced by a lookup column in the form. Users can view data from related tables without having to leave the form.
+* Card form (a compact view).Used in views for model-driven apps. Card forms are designed to present information in a compact format that is suitable for mobile devices.
+
+More information: [Types of forms in Power Apps.](https://learn.microsoft.com/en-us/power-apps/maker/model-driven-apps/types-forms)
+
+#### Access Dataverse tables' default forms (Forms that are created when the table is created)
+Accessing Dataverse tables forms involves a few steps: you can access the forms by going to your tables in the [Power Apps Portal](https://make.powerapps.com) and selecting the Tables menu item on the left panel, then selecting the specific table and finally selecting forms from the table designer. Another way to access the forms is to go to the solution where you have created the table (If you created your table inside a custom solution) and from the object treeview, select tables, then select the table, and then select forms.
+
+![View Forms](https://github.com/AhmedSalih-PowerPlatformPlace/Power-Platform-For-Beginners/blob/main/2-Power%20Apps%20Development/assets/Forms_ExploreDefaultTableForms_0.gif?raw=true)
+
+![View Forms](https://github.com/AhmedSalih-PowerPlatformPlace/Power-Platform-For-Beginners/blob/main/2-Power%20Apps%20Development/assets/Forms_ExploreDefaultTableForms.gif?raw=true)
+
+#### Create and/or Edit Forms
+When a new form is created for a table, its form type is Main. When the new form opens, it is identical to the form named Information. Columns, sections, tabs, navigation, and properties associated with the form can be edited and the form can then be saved.
+
+Each main form is composed of one or more tabs. Each tab can have one or more sections. Each section contains one or more columns, also called form fields. Forms can be cloned to provide a simpler starting point for form development. To clone a form, open the form you want to copy in the form editor, on the command bar select the down arrow next to Save, select Save As, enter the name for the new form, and then select Save.
+
+1. Sign in to [Power Apps](https://make.powerapps.com/?utm_source=padocs&utm_medium=linkinadoc&utm_campaign=referralsfromdoc).
+
+2. Select Tables on the left navigation pane, select the table you want, and then select the Forms area. If the item isn’t in the left navigation pane, select …More and then select the item you want.
+
+3. To create a new main form, on the toolbar select Add form > Main Form.
+-OR- To edit an existing main form, select any form with the Type of Main.
+
+What you can do when after creating new form or editing existing form:
+
+#### Change the form design in any of the following ways, as needed:
+
+* Add a column to or remove a column from a form
+* Add a section to or remove a section from a form
+* Add a tab to or remove a tab from a form
+* Add or edit a subgrid on a form
+* Edit form headers
+
+#### Edit the properties for parts of the form, as needed:
+* Edit form properties
+* Edit form column properties
+* Edit tab properties
+* Edit section properties
+
+![Create Forms](https://github.com/AhmedSalih-PowerPlatformPlace/Power-Platform-For-Beginners/blob/main/2-Power%20Apps%20Development/assets/Forms_CreateForms.gif?raw=true)
+
+![Edit Forms](https://github.com/AhmedSalih-PowerPlatformPlace/Power-Platform-For-Beginners/blob/main/2-Power%20Apps%20Development/assets/Forms_EditForm.gif?raw=true)
+
+[Read more about How to create or edit a main form](https://learn.microsoft.com/en-us/power-apps/maker/model-driven-apps/create-edit-main-forms#how-to-create-or-edit-a-main-form)
+
+
+### Views
+Model-driven apps use views to define how a list of records for a specific table are displayed in the application.
+
+A view defines:
+
+* The columns to display.
+* The order of the columns.
+* How wide each column should be.
+* How the list of records should be sorted by default.
+* The default filters applied to restrict the records that will appear.
+
+Once a view has been made available in the app, the user can select it.
+
+![Views](https://github.com/AhmedSalih-PowerPlatformPlace/Power-Platform-For-Beginners/blob/main/2-Power%20Apps%20Development/assets/Views_switch-views.gif?raw=true)
+
+#### Types of views
+There are three types of views: personal, system, and public.
+
+* Personal view - Personal views are owned by individuals and only visible to that person unless they share their personal views with others.
+* System view - As a system administrator or system customizer, you can edit system views. System views are special views the application depends on, which exist for system tables or are automatically created when you create custom tables. These views have specific purposes and some additional capabilities.
+* Public view - Public views are general purpose views that you can customize as you see fit. They are important because all app users can access them, when they are made available, by using the view selector. It is possible to use public views in subgrids in a form or as a list in a dashboard.
+
+#### Create a View
+1-  Sign in to [Power Apps.](https://make.powerapps.com/?utm_source=padocs&utm_medium=linkinadoc&utm_campaign=referralsfromdoc)
+
+2- Select an [environment.](https://learn.microsoft.com/en-us/power-apps/maker/model-driven-apps/model-driven-app-glossary#environment)
+
+3- Select Tables, and then open the table you want. If the item isn’t in the left navigation pane, select …More and then select the item you want.
+
+4- Select the Views area. If using a custom solution, open the solution, open the table, and then select the Views area.
+
+5- On the toolbar, select Add view.
+
+6- On the Create a view dialog, enter a name and, optionally, a description, and then select Create.
+
+![Create a View](https://github.com/AhmedSalih-PowerPlatformPlace/Power-Platform-For-Beginners/blob/main/2-Power%20Apps%20Development/assets/Views_CreateView.gif?raw=true)
+#### Edit a View
+![Edit a View](https://github.com/AhmedSalih-PowerPlatformPlace/Power-Platform-For-Beginners/blob/main/2-Power%20Apps%20Development/assets/Views_EditView.gif?raw=true)
 #### Business rules
+You can create business rules and recommendations to apply logic and validations without writing code or creating plug-ins. Business rules provide a simple interface to implement and maintain fast-changing and commonly used rules.
 
-#### Business Process flows
+ > Important: Business rules defined for a table apply to both canvas apps and model-driven apps if the table is used in the app. Not all business rule actions are available on canvas apps at this time. More information: [Differences between canvas and model-driven apps](https://learn.microsoft.com/en-us/power-apps/maker/data-platform/data-platform-create-business-rule#differences-between-canvas-and-model-driven-apps)
 
-#### Recurity roles
+
+Very often it is necessary to add in business logic to ensure that columns in a model-driven app are shown, hidden, or set with the correct values. By combining conditions and actions, the following actions are possible with business rules:
+
+* Set column values
+
+* Clear column values
+
+* Set column requirement levels
+
+* Show or hide columns
+
+* Enable or disable columns
+
+* Validate data and show error messages
+
+* Create business recommendations based on business intelligence.
+
+### Create a business rule
+1- Sign in to [Power Apps](https://make.powerapps.com/?utm_source=padocs&utm_medium=linkinadoc&utm_campaign=referralsfromdoc), on the left navigation pane, and select Tables. If the item isn’t in the left navigation pane, select […More](https://learn.microsoft.com/en-us/power-apps/maker/canvas-apps/intro-maker-portal#1--left-navigation-pane) and then select the item you want.
+
+2- Open the table you want to create the business rule for (for example, open the Account table), and then select the Business Rules tab.
+
+3- Select Add business rule.
+
+The business rule designer window opens with a single condition already created for you. Every rule starts with a condition. The business rule takes one or more actions based on that condition.
+
+4- Add a description, if you want, in the description box in the upper-left corner of the window.
+
+5- Set the scope, according to the following:
+
+6- Add conditions. To add more conditions to your business rule:
+
+>a. Drag the Condition component from the Components tab to a plus sign in the designer.
+
+
+>b. To set properties for the condition, select the Condition component in the designer window, and then set the properties in the Properties tab on the right side of the screen. As you set properties, the Microsoft Dataverse creates an expression at the bottom of the Properties tab.
+
+>c. To add an additional clause (an AND or OR) to the condition, select New in the Properties tab to create a new rule, and then set the properties for that rule. In the Rule Logic column, you can specify whether to add the new rule as an AND or an OR.
+
+>d. When you're done setting properties for the condition, select Apply.
+
+7- Add actions. To add an action:
+
+>a. Drag one of the action components from the Components tab to a plus sign next to Condition component. Drag the action to a plus sign next to a check mark if you want the business rule to take that action when the condition is met, or to a plus sign next to an x if you want the business rule to take that action if the condition isn't met.
+
+>b. To set properties for the action, select the Action component in the designer window, and then set the properties in the Properties tab.
+
+>c. When you're done setting properties, select Apply.
+
+8- Add a business recommendation (model-driven apps only). To add a business recommendation:
+
+>a. Drag the Recommendation component from the Components tab to a plus sign next to a Condition component. Drag the Recommendation component to a plus sign next to a check mark if you want the business rule to take that action when the condition is met, or to a plus sign next to an x if you want the business rule to take that action if the condition isn't met.
+
+>b. To set properties for the recommendation, select the Recommendation component in the designer window, and then set the properties in the Properties tab.
+
+>c. To add more actions to the recommendation, drag them from the Components tab, and then set properties for each action in the Properties tab.
+
+>d. When you're done setting properties, select Apply.
+
+9- To validate the business rule, select Validate on the action bar.
+
+10- To save the business rule, select Save on the action bar.
+
+11- To activate the business rule, select it in the Solution Explorer window, and then select Activate. You can't activate the business rule from the designer window.
+
+![Create Business Rules](https://github.com/AhmedSalih-PowerPlatformPlace/Power-Platform-For-Beginners/blob/main/2-Power%20Apps%20Development/assets/Create_Business_Rules.gif?raw=true)
+
+![Business Rule Applied](https://github.com/AhmedSalih-PowerPlatformPlace/Power-Platform-For-Beginners/blob/main/2-Power%20Apps%20Development/assets/Business_Rules_in_Actions.gif?raw=true)
+### Business Process flows
+Business process flows provide a guide for people to get work done. They provide a streamlined user experience that leads people through the processes their organization has defined for interactions that need to be advanced to a conclusion of some kind. This user experience can be tailored so that people with different security roles can have an experience that best suits the work they do.
+
+Use business process flows to define a set of steps for people to follow to take them to a desired outcome. These steps provide a visual indicator that tells people where they are in the business process. Business process flows reduce the need for training because new users don’t have to focus on which table they should be using. They can let the process guide them. You can configure business process flows to support common sales methodologies that can help your sales groups achieve better results. For service groups, business process flows can help new staff get up-to-speed more quickly and avoid mistakes that could result in unsatisfied customers.
+![BPF](https://github.com/AhmedSalih-PowerPlatformPlace/Power-Platform-For-Beginners/blob/main/2-Power%20Apps%20Development/assets/business-process-stages.png?raw=true)
+
+Each stage contains a group of steps. Each step represents a column where data can be entered. You can advance to the next stage by using the Next Stage button. In the unified interface, you can work with a business process flow stage inside the stage flyout or you can pin it to the side pane. Business process flows doesn't support expanding the stage flyout to the side pane on mobile devices.
+
+You can make a step required so that people must enter data for a corresponding column before they can proceed to the next stage. This is commonly called ”stage-gating”. If you are adding a business-required or system-required column to a business process flow stage, we recommend that you add this column to your form as well.
+
+#### Security roles
 
 ### Build
 
