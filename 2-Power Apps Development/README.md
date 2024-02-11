@@ -1282,6 +1282,39 @@ A user can have multiple security roles. Security role privileges are cumulative
 
  ![Assign Security Role to a user](https://github.com/AhmedSalih-PowerPlatformPlace/Power-Platform-For-Beginners/blob/main/2-Power%20Apps%20Development/assets/Assign%20Security%20Role%20to%20User.gif?raw=true)
 
+#### Create a security role by Copy Role
+1- [Sign in](https://admin.powerplatform.microsoft.com/environments) to the Power Platform admin center and select an environment.
+
+2- Select Settings > Users + permissions > Security roles.
+
+3- Select the security role you want to copy.
+
+4- Select Copy.
+
+5- Enter a name for the new role.
+
+6- Select OK.
+
+7- Use the [new](https://learn.microsoft.com/en-us/power-platform/admin/security-roles-privileges#define-the-privileges-and-properties-of-a-security-role) or [legacy](https://learn.microsoft.com/en-us/power-platform/admin/security-roles-privileges#security-roles-and-the-legacy-ui) experience to specify privileges for the security role.
+
+8- Select Save + close.
+
+#### Edit a security role
+
+Before you edit a security role, make sure you understand the principles of controlling data access.
+
+ > Note: You can't edit the System Administrator security role. Instead, copy the System Administrator security role and make changes to the new role.
+
+
+1- [Sign in](https://admin.powerplatform.microsoft.com/environments) to the Power Platform admin center and select an environment.
+
+2- Select Settings > Users + permissions > Security roles.
+
+3- Select the security role you want to edit.
+
+4- Use the new or legacy experience to specify privileges for the security role.
+
+5- Select Save + close.
 
 ### Build
 
