@@ -1336,7 +1336,7 @@ In this example, the app contains three tables (challenges, ideas, team projects
 
 ![MDA](https://github.com/AhmedSalih-PowerPlatformPlace/Power-Platform-For-Beginners/blob/main/2-Power%20Apps%20Development/assets/model-app-sample.png?raw=true)
 
-#### Build an app in three steps
+#### Build a Model-Driven App
 This interactive experience guides new makers through the creation of a model-driven app. Using the modern app designer, anyone can quickly create an app in three simple steps.
 
 1- Name your app.
