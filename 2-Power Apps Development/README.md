@@ -1347,6 +1347,7 @@ This interactive experience guides new makers through the creation of a model-dr
 
 ![Create Model Driven App](https://github.com/AhmedSalih-PowerPlatformPlace/Power-Platform-For-Beginners/blob/main/2-Power%20Apps%20Development/assets/Create%20MDA.gif?raw=true)
 
+
 ### Business Processflows
 #### Why business process flows are used
 Business process flows provide a guide for people to get work done. They provide a streamlined user experience that leads people through the processes their organization has defined for interactions that need to be advanced to a conclusion of some kind. This user experience can be tailored so that people with different security roles can have an experience that best suits the work they do.
@@ -1357,6 +1358,84 @@ Use business process flows to define a set of steps for people to follow to take
 With business process flows, you define a set of stages and steps that are then displayed in a control at the top of the form.
 
 ![Business Process Flow](https://github.com/AhmedSalih-PowerPlatformPlace/Power-Platform-For-Beginners/blob/main/2-Power%20Apps%20Development/assets/business-process-stages.png?raw=true)
+
+
+#### Create a business process flow
+1- In Power Apps or Power Automate, select Solutions from the navigation bar on the left.
+
+2- Select or create a solution to use for the business process flow.
+
+3- Within the solution, select New > Automation > Process > Business process flow. a. Give your flow a Display name and Name (LogicalName). c. Select the table from which the flow will be used. d. Select Create.
+![Business Process Flow Element](https://github.com/AhmedSalih-PowerPlatformPlace/Power-Platform-For-Beginners/blob/main/2-Power%20Apps%20Development/assets/business-process-flow-window-showing-main-elements.png?raw=true)
+> The new business process flow is created. You can now edit it with a first single stage created for you.
+Business process flow window showing main elements.
+
+4- Add stages. If your users will progress from one business stage to another in the process:
+
+> A) Drag a Stage component from the Components tab and drop it on a + sign in the designer.
+
+![Drag a Business Process Stage](https://github.com/AhmedSalih-PowerPlatformPlace/Power-Platform-For-Beginners/blob/main/2-Power%20Apps%20Development/assets/drag-business-process-stage.png?raw=true)
+
+> B) To set the properties for a stage, select the stage, and then set the properties in the Properties tab on the right side of the screen:
+
+* Enter a display name.
+
+* If desired, select a category for the stage. The category (such as Qualify or Develop), appears as a chevron in the process bar.
+![Business Process Bar Chevron](https://github.com/AhmedSalih-PowerPlatformPlace/Power-Platform-For-Beginners/blob/main/2-Power%20Apps%20Development/assets/business-process-bar-chevron.png?raw=true)
+
+* When you're done changing properties, select the Apply button.
+
+5- Add steps to a stage. To see the steps in a stage, select Details in the lower-right corner of the stage. To add more steps:
+
+> A) Drag the Step component to the stage from the Components tab.
+
+![Add Step Stage to Business Process](https://github.com/AhmedSalih-PowerPlatformPlace/Power-Platform-For-Beginners/blob/main/2-Power%20Apps%20Development/assets/add-step-stage-business-process.png?raw=true)
+
+
+> B Select the step, and then set properties in the Properties tab:
+
+* Enter a display name for the step.
+* If you want users to enter data to complete a step, select the appropriate column from the drop-down list.
+* Select Required if people must fill in the column to complete the step before moving to the next stage of the process.
+* Select Apply when you're done.
+ > Note: if you set a two-option boolean column as Required, users can't continue unless the column value is Yes. The user is required to mark the column as completed before moving to the next stage.
+If either Yes or No are acceptable column values, then you should make the column a choice instead of a two-option boolean column.
+
+
+6- Add a branch (condition) to the process. To add a branching condition:
+
+> A Drag the Condition component from the Components tab to a + sign between two stages.
+
+![Add Condition to Business Process Flow](https://github.com/AhmedSalih-PowerPlatformPlace/Power-Platform-For-Beginners/blob/main/2-Power%20Apps%20Development/assets/add-condition-business-process-flow.png?raw=true)
+
+
+> B Select the condition, and then set properties in the Properties tab. For more information on branching properties, go to Enhance business process flows with branching. When you're finished setting properties for the condition, select Apply.
+
+7- Add a workflow. To invoke a workflow:
+
+> A) Drag a Workflow component from the Components tab to a stage or to the Global Workflow item in the designer. Which one you add it to depends on the following:
+
+* Drag it to a stage when you want to trigger the workflow on entry or exit of the stage. The workflow component must be based on the same primary table as the stage.
+* Drag it to the Global Workflow item when you want to trigger the workflow when the process is activated or when the process is archived (when the status changes to Completed or Abandoned). The workflow component must be based on the same primary table as the process.
+> B) Select the workflow, and then set properties in the Properties tab:
+
+* Enter a display name.
+* Select when the workflow should be triggered.
+* Search for an existing on-demand active workflow that matches the stage table or create a new workflow by selecting New.
+* Select Apply when you're done.
+
+
+8- To validate the business process flow, select Validate on the action bar.
+
+9- To save the process as a draft while you continue to work on it, select Save in the action bar.
+
+10- To activate the process and make it available to your team, select Activate on the action bar.
+
+#### How to create Business Process Flow:
+![How to create BPF](https://github.com/AhmedSalih-PowerPlatformPlace/Power-Platform-For-Beginners/blob/main/2-Power%20Apps%20Development/assets/Orders%20BPF.gif?raw=true)
+
+#### See Business Process Flow in action:
+![BPF in Action](https://github.com/AhmedSalih-PowerPlatformPlace/Power-Platform-For-Beginners/blob/main/2-Power%20Apps%20Development/assets/BPF%20in%20Action.gif?raw=true)
 
 ## Licensing
 
