@@ -1348,7 +1348,7 @@ This interactive experience guides new makers through the creation of a model-dr
 ![Create Model Driven App](https://github.com/AhmedSalih-PowerPlatformPlace/Power-Platform-For-Beginners/blob/main/2-Power%20Apps%20Development/assets/Create%20MDA.gif?raw=true)
 
 
-### Business Processflows
+### Business Process Flows
 #### Why business process flows are used
 Business process flows provide a guide for people to get work done. They provide a streamlined user experience that leads people through the processes their organization has defined for interactions that need to be advanced to a conclusion of some kind. This user experience can be tailored so that people with different security roles can have an experience that best suits the work they do.
 
