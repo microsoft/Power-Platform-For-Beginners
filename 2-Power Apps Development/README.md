@@ -1245,7 +1245,43 @@ Each stage contains a group of steps. Each step represents a column where data c
 
 You can make a step required so that people must enter data for a corresponding column before they can proceed to the next stage. This is commonly called ”stage-gating”. If you are adding a business-required or system-required column to a business process flow stage, we recommend that you add this column to your form as well.
 
-#### Security roles
+### Security roles
+Security roles define how different users access different types of records. To control access to data and resources, you can create or modify security roles and change the security roles that are assigned to your users.
+
+A user can have multiple security roles. Security role privileges are cumulative. Users are granted the privileges that are available in each role that's assigned to them.
+
+#### Create a security role
+1- [Sign in](https://admin.powerplatform.microsoft.com/environments) to the Power Platform admin center and select an environment.
+
+2- Select Settings > Users + permissions > Security roles.
+
+3- Select + New role.
+
+4- Enter a role name.
+
+5- Select a business unit.
+
+6- To allow team members to inherit the privileges of this role when it's assigned to a team, accept the default Member's privilege inheritance setting, which is Direct User (Basic) access level and Team privileges.
+
+7- To use the new role to run model-driven apps, accept the default Include App Opener privileges for running Model-Driven apps setting, which is set to On.
+
+8- Use the new or legacy experience to specify privileges for the security role.
+
+9- Select Save. The properties of the new role are displayed.
+
+> Note: You must grant your app's table privileges to this newly created security role. You also need to review and update the default privileges that were copied from the App Opener security role's minimum privileges for common tasks. There are some privileges that were granted with an Organization-level read access, such as Process (Flows), that allow the user to run system-supplied flows. If your app or user doesn't need to run system-supplied flows, you can change this privilege to User (basic) level.
+
+
+10- Enter your table name in the Search input field to find your app's table.
+
+11- Select your table and set the Permission settings. Then select the Save button.
+
+ > Note: You may need to repeat the last two steps of this procedure if there is more than one table in your app.
+
+ ![Create Seacurity Role](https://github.com/AhmedSalih-PowerPlatformPlace/Power-Platform-For-Beginners/blob/main/2-Power%20Apps%20Development/assets/Create%20Security%20Role.gif?raw=true)
+
+ ![Assign Security Role to a user](https://github.com/AhmedSalih-PowerPlatformPlace/Power-Platform-For-Beginners/blob/main/2-Power%20Apps%20Development/assets/Assign%20Security%20Role%20to%20User.gif?raw=true)
+
 
 ### Build
 
