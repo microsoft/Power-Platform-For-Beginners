@@ -1316,11 +1316,47 @@ Before you edit a security role, make sure you understand the principles of cont
 
 5- Select Save + close.
 
-### Build
 
-#### Build your first Model Driven App
+### Build your first Model Driven App
+#### Model-driven apps overview
+Model-driven app design is an approach that focuses on adding components such as forms, views, and charts and dashboards to tables using an app designer tool. Additionally, [relationships](https://learn.microsoft.com/en-us/power-apps/maker/model-driven-apps/model-driven-app-glossary#relationship) connect tables together in a way that permits navigation between them and ensures that data is not repeated unnecessarily.
 
-#### Business Processflows
+Using the app designer with little or no code, you can build apps that are simple or very complex.
+
+#### Process driven apps
+Model-driven apps are especially well suited to process driven apps that are data dense and make it easy for users to move between related records. For example, if you are building an app to manage a complex process, such as onboarding new employees, managing a sales process, or member relationships in an organization such as a bank, a model-driven app is a great choice.
+
+#### Data modeling
+While they're called model-driven apps, it is often easier to think of them as data model driven apps. This is because, without a data model housed within Microsoft Dataverse, you can't create a model-driven app.
+
+#### User experience
+From the user's perspective, all model-driven apps offer a similar experience, which is both accessible to many users and to the device used. The experience is similar to the diagram shown below.
+
+In this example, the app contains three tables (challenges, ideas, team projects), one dashboard, and multiple charts and views. Users can navigate between the tables using the left pane or via the dashboard.
+
+![MDA](https://github.com/AhmedSalih-PowerPlatformPlace/Power-Platform-For-Beginners/blob/main/2-Power%20Apps%20Development/assets/model-app-sample.png?raw=true)
+
+#### Build an app in three steps
+This interactive experience guides new makers through the creation of a model-driven app. Using the modern app designer, anyone can quickly create an app in three simple steps.
+
+1- Name your app.
+
+2- Create a page and add the preselected table to the page.
+
+3- Publish and play your app.
+
+![Create Model Driven App](https://github.com/AhmedSalih-PowerPlatformPlace/Power-Platform-For-Beginners/blob/main/2-Power%20Apps%20Development/assets/Create%20MDA.gif?raw=true)
+
+### Business Processflows
+#### Why business process flows are used
+Business process flows provide a guide for people to get work done. They provide a streamlined user experience that leads people through the processes their organization has defined for interactions that need to be advanced to a conclusion of some kind. This user experience can be tailored so that people with different security roles can have an experience that best suits the work they do.
+
+Use business process flows to define a set of steps for people to follow to take them to a desired outcome. These steps provide a visual indicator that tells people where they are in the business process. Business process flows reduce the need for training because new users don’t have to focus on which table they should be using. They can let the process guide them. You can configure business process flows to support common sales methodologies that can help your sales groups achieve better results. For service groups, business process flows can help new staff get up-to-speed more quickly and avoid mistakes that could result in unsatisfied customers.
+
+#### What business process flows can do
+With business process flows, you define a set of stages and steps that are then displayed in a control at the top of the form.
+
+![Business Process Flow](https://github.com/AhmedSalih-PowerPlatformPlace/Power-Platform-For-Beginners/blob/main/2-Power%20Apps%20Development/assets/business-process-stages.png?raw=true)
 
 ## Licensing
 
