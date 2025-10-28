@@ -1279,13 +1279,196 @@ Each stage contains a group of steps. Each step represents a column where data c
 
 You can make a step required so that people must enter data for a corresponding column before they can proceed to the next stage. This is commonly called ”stage-gating”. If you are adding a business-required or system-required column to a business process flow stage, we recommend that you add this column to your form as well.
 
-#### Security roles
+### Security roles
+Security roles define how different users access different types of records. To control access to data and resources, you can create or modify security roles and change the security roles that are assigned to your users.
 
-### Build
+A user can have multiple security roles. Security role privileges are cumulative. Users are granted the privileges that are available in each role that's assigned to them.
 
-#### Build your first Model Driven App
+#### Create a security role
+1- [Sign in](https://admin.powerplatform.microsoft.com/environments) to the Power Platform admin center and select an environment.
 
-#### Business Processflows
+2- Select Settings > Users + permissions > Security roles.
+
+3- Select + New role.
+
+4- Enter a role name.
+
+5- Select a business unit.
+
+6- To allow team members to inherit the privileges of this role when it's assigned to a team, accept the default Member's privilege inheritance setting, which is Direct User (Basic) access level and Team privileges.
+
+7- To use the new role to run model-driven apps, accept the default Include App Opener privileges for running Model-Driven apps setting, which is set to On.
+
+8- Use the new or legacy experience to specify privileges for the security role.
+
+9- Select Save. The properties of the new role are displayed.
+
+> Note: You must grant your app's table privileges to this newly created security role. You also need to review and update the default privileges that were copied from the App Opener security role's minimum privileges for common tasks. There are some privileges that were granted with an Organization-level read access, such as Process (Flows), that allow the user to run system-supplied flows. If your app or user doesn't need to run system-supplied flows, you can change this privilege to User (basic) level.
+
+
+10- Enter your table name in the Search input field to find your app's table.
+
+11- Select your table and set the Permission settings. Then select the Save button.
+
+ > Note: You may need to repeat the last two steps of this procedure if there is more than one table in your app.
+
+ ![Create Seacurity Role](https://github.com/AhmedSalih-PowerPlatformPlace/Power-Platform-For-Beginners/blob/main/2-Power%20Apps%20Development/assets/Create%20Security%20Role.gif?raw=true)
+
+ ![Assign Security Role to a user](https://github.com/AhmedSalih-PowerPlatformPlace/Power-Platform-For-Beginners/blob/main/2-Power%20Apps%20Development/assets/Assign%20Security%20Role%20to%20User.gif?raw=true)
+
+#### Create a security role by Copy Role
+1- [Sign in](https://admin.powerplatform.microsoft.com/environments) to the Power Platform admin center and select an environment.
+
+2- Select Settings > Users + permissions > Security roles.
+
+3- Select the security role you want to copy.
+
+4- Select Copy.
+
+5- Enter a name for the new role.
+
+6- Select OK.
+
+7- Use the [new](https://learn.microsoft.com/en-us/power-platform/admin/security-roles-privileges#define-the-privileges-and-properties-of-a-security-role) or [legacy](https://learn.microsoft.com/en-us/power-platform/admin/security-roles-privileges#security-roles-and-the-legacy-ui) experience to specify privileges for the security role.
+
+8- Select Save + close.
+
+#### Edit a security role
+
+Before you edit a security role, make sure you understand the principles of controlling data access.
+
+ > Note: You can't edit the System Administrator security role. Instead, copy the System Administrator security role and make changes to the new role.
+
+
+1- [Sign in](https://admin.powerplatform.microsoft.com/environments) to the Power Platform admin center and select an environment.
+
+2- Select Settings > Users + permissions > Security roles.
+
+3- Select the security role you want to edit.
+
+4- Use the new or legacy experience to specify privileges for the security role.
+
+5- Select Save + close.
+
+
+### Build your first Model Driven App
+#### Model-driven apps overview
+Model-driven app design is an approach that focuses on adding components such as forms, views, and charts and dashboards to tables using an app designer tool. Additionally, [relationships](https://learn.microsoft.com/en-us/power-apps/maker/model-driven-apps/model-driven-app-glossary#relationship) connect tables together in a way that permits navigation between them and ensures that data is not repeated unnecessarily.
+
+Using the app designer with little or no code, you can build apps that are simple or very complex.
+
+#### Process driven apps
+Model-driven apps are especially well suited to process driven apps that are data dense and make it easy for users to move between related records. For example, if you are building an app to manage a complex process, such as onboarding new employees, managing a sales process, or member relationships in an organization such as a bank, a model-driven app is a great choice.
+
+#### Data modeling
+While they're called model-driven apps, it is often easier to think of them as data model driven apps. This is because, without a data model housed within Microsoft Dataverse, you can't create a model-driven app.
+
+#### User experience
+From the user's perspective, all model-driven apps offer a similar experience, which is both accessible to many users and to the device used. The experience is similar to the diagram shown below.
+
+In this example, the app contains three tables (challenges, ideas, team projects), one dashboard, and multiple charts and views. Users can navigate between the tables using the left pane or via the dashboard.
+
+![MDA](https://github.com/AhmedSalih-PowerPlatformPlace/Power-Platform-For-Beginners/blob/main/2-Power%20Apps%20Development/assets/model-app-sample.png?raw=true)
+
+#### Build a Model-Driven App
+This interactive experience guides new makers through the creation of a model-driven app. Using the modern app designer, anyone can quickly create an app in three simple steps.
+
+1- Name your app.
+
+2- Create a page and add the preselected table to the page.
+
+3- Publish and play your app.
+
+![Create Model Driven App](https://github.com/AhmedSalih-PowerPlatformPlace/Power-Platform-For-Beginners/blob/main/2-Power%20Apps%20Development/assets/Create%20MDA.gif?raw=true)
+
+
+### Business Process Flows
+#### Why business process flows are used
+Business process flows provide a guide for people to get work done. They provide a streamlined user experience that leads people through the processes their organization has defined for interactions that need to be advanced to a conclusion of some kind. This user experience can be tailored so that people with different security roles can have an experience that best suits the work they do.
+
+Use business process flows to define a set of steps for people to follow to take them to a desired outcome. These steps provide a visual indicator that tells people where they are in the business process. Business process flows reduce the need for training because new users don’t have to focus on which table they should be using. They can let the process guide them. You can configure business process flows to support common sales methodologies that can help your sales groups achieve better results. For service groups, business process flows can help new staff get up-to-speed more quickly and avoid mistakes that could result in unsatisfied customers.
+
+#### What business process flows can do
+With business process flows, you define a set of stages and steps that are then displayed in a control at the top of the form.
+
+![Business Process Flow](https://github.com/AhmedSalih-PowerPlatformPlace/Power-Platform-For-Beginners/blob/main/2-Power%20Apps%20Development/assets/business-process-stages.png?raw=true)
+
+#### Create a business process flow
+1- In Power Apps or Power Automate, select Solutions from the navigation bar on the left.
+
+2- Select or create a solution to use for the business process flow.
+
+3- Within the solution, select New > Automation > Process > Business process flow. a. Give your flow a Display name and Name (LogicalName). c. Select the table from which the flow will be used. d. Select Create.
+![Business Process Flow Element](https://github.com/AhmedSalih-PowerPlatformPlace/Power-Platform-For-Beginners/blob/main/2-Power%20Apps%20Development/assets/business-process-flow-window-showing-main-elements.png?raw=true)
+> The new business process flow is created. You can now edit it with a first single stage created for you.
+Business process flow window showing main elements.
+
+4- Add stages. If your users will progress from one business stage to another in the process:
+
+> A) Drag a Stage component from the Components tab and drop it on a + sign in the designer.
+
+![Drag a Business Process Stage](https://github.com/AhmedSalih-PowerPlatformPlace/Power-Platform-For-Beginners/blob/main/2-Power%20Apps%20Development/assets/drag-business-process-stage.png?raw=true)
+
+> B) To set the properties for a stage, select the stage, and then set the properties in the Properties tab on the right side of the screen:
+
+* Enter a display name.
+
+* If desired, select a category for the stage. The category (such as Qualify or Develop), appears as a chevron in the process bar.
+![Business Process Bar Chevron](https://github.com/AhmedSalih-PowerPlatformPlace/Power-Platform-For-Beginners/blob/main/2-Power%20Apps%20Development/assets/business-process-bar-chevron.png?raw=true)
+
+* When you're done changing properties, select the Apply button.
+
+5- Add steps to a stage. To see the steps in a stage, select Details in the lower-right corner of the stage. To add more steps:
+
+> A) Drag the Step component to the stage from the Components tab.
+
+![Add Step Stage to Business Process](https://github.com/AhmedSalih-PowerPlatformPlace/Power-Platform-For-Beginners/blob/main/2-Power%20Apps%20Development/assets/add-step-stage-business-process.png?raw=true)
+
+
+> B Select the step, and then set properties in the Properties tab:
+
+* Enter a display name for the step.
+* If you want users to enter data to complete a step, select the appropriate column from the drop-down list.
+* Select Required if people must fill in the column to complete the step before moving to the next stage of the process.
+* Select Apply when you're done.
+ > Note: if you set a two-option boolean column as Required, users can't continue unless the column value is Yes. The user is required to mark the column as completed before moving to the next stage.
+If either Yes or No are acceptable column values, then you should make the column a choice instead of a two-option boolean column.
+
+
+6- Add a branch (condition) to the process. To add a branching condition:
+
+> A Drag the Condition component from the Components tab to a + sign between two stages.
+
+![Add Condition to Business Process Flow](https://github.com/AhmedSalih-PowerPlatformPlace/Power-Platform-For-Beginners/blob/main/2-Power%20Apps%20Development/assets/add-condition-business-process-flow.png?raw=true)
+
+
+> B Select the condition, and then set properties in the Properties tab. For more information on branching properties, go to Enhance business process flows with branching. When you're finished setting properties for the condition, select Apply.
+
+7- Add a workflow. To invoke a workflow:
+
+> A) Drag a Workflow component from the Components tab to a stage or to the Global Workflow item in the designer. Which one you add it to depends on the following:
+
+* Drag it to a stage when you want to trigger the workflow on entry or exit of the stage. The workflow component must be based on the same primary table as the stage.
+* Drag it to the Global Workflow item when you want to trigger the workflow when the process is activated or when the process is archived (when the status changes to Completed or Abandoned). The workflow component must be based on the same primary table as the process.
+> B) Select the workflow, and then set properties in the Properties tab:
+
+* Enter a display name.
+* Select when the workflow should be triggered.
+* Search for an existing on-demand active workflow that matches the stage table or create a new workflow by selecting New.
+* Select Apply when you're done.
+
+
+8- To validate the business process flow, select Validate on the action bar.
+
+9- To save the process as a draft while you continue to work on it, select Save in the action bar.
+
+10- To activate the process and make it available to your team, select Activate on the action bar.
+
+#### How to create Business Process Flow:
+![How to create BPF](https://github.com/AhmedSalih-PowerPlatformPlace/Power-Platform-For-Beginners/blob/main/2-Power%20Apps%20Development/assets/Orders%20BPF.gif?raw=true)
+
+#### See Business Process Flow in action:
+![BPF in Action](https://github.com/AhmedSalih-PowerPlatformPlace/Power-Platform-For-Beginners/blob/main/2-Power%20Apps%20Development/assets/BPF%20in%20Action.gif?raw=true)
 
 ## Licensing
 
